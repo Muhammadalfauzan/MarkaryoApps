@@ -1,10 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white"
+    android:fillViewport="true"
     tools:context=".ui.fragment.HomeFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
 
 
     <ImageButton
@@ -49,9 +56,10 @@
             android:layout_alignParentTop="true"
             android:layout_marginTop="0dp"
             android:iconifiedByDefault="false"
-            android:queryHint="Mau cari resep apa?"
-            android:searchIcon="@drawable/ic_search"
+            android:queryHint="Search"
+            android:theme="@style/CustomSearchView"
             app:queryBackground="@android:color/transparent" />
+
 
     </RelativeLayout>
 
@@ -139,28 +147,69 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/recyclerView" />
 
+    <TextView
+        android:id="@+id/tv_nearest"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Terdekat"
+        android:textColor="#9FA8B7"
+        android:textSize="14sp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="@+id/textView7"
+        app:layout_constraintTop_toBottomOf="@+id/textView7" />
+
+    <TextView
+        android:id="@+id/tv_btnRatting"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="Ratting"
+        android:textSize="14sp"
+        android:textColor="#9FA8B7"
+        app:layout_constraintStart_toEndOf="@+id/tv_nearest"
+        app:layout_constraintTop_toTopOf="@+id/tv_nearest" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvRekomendasi"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView7"
+        app:layout_constraintTop_toBottomOf="@+id/tv_btnRatting"
         tools:itemCount="1"
         tools:listitem="@layout/item_rekomendasi" />
 
-    <ImageView
-        android:layout_width="328dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginEnd="12dp"
-        android:src="@drawable/component1"
+        <com.denzcoskun.imageslider.ImageSlider
+            android:id="@+id/image_slider"
+            android:layout_width="wrap_content"
+            android:layout_height="200dp"
+            app:iss_auto_cycle="true"
+            app:iss_delay="1000"
+            app:iss_period="1000"
+            app:iss_text_align="CENTER"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rvRekomendasi" />
+
+        <!-- <androidx.viewpager2.widget.ViewPager2
+             android:id="@+id/viewpager2"
+             android:layout_width="match_parent"
+             android:layout_height="140dp"
+             app:layout_constraintEnd_toEndOf="parent"
+             app:layout_constraintStart_toStartOf="parent"
+             app:layout_constraintTop_toBottomOf="@+id/rvRekomendasi" />-->
+
+       <!-- <LinearLayout
+        android:id="@+id/slide"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:gravity="center"
+        android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rvRekomendasi" />
-
-
+        app:layout_constraintTop_toBottomOf="@+id/viewpager2" />
+-->
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.core.widget.NestedScrollView>

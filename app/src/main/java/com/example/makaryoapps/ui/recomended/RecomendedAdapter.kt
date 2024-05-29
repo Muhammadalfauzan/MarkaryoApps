@@ -3,33 +3,37 @@ package com.example.makaryoapps.ui.recomended
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.makaryoapps.databinding.ItemKategoriBinding
 import com.example.makaryoapps.databinding.ItemRekomendasiBinding
-import com.example.makaryoapps.ui.category.CategoryModel
 
-class RecomendedAdapter(private val itemList: List<RecomendedModel>) : RecyclerView.Adapter<RecomendedAdapter.MyViewHolder>() {
+class RecomendedAdapter(private var recommendedList: MutableList<RecomendedModel>) :
+    RecyclerView.Adapter<RecomendedAdapter.RecommendedViewHolder>() {
 
-    // ViewHolder untuk item menggunakan View Binding
-    class MyViewHolder(val binding: ItemRekomendasiBinding) : RecyclerView.ViewHolder(binding.root)
-
-    // Inflate layout item dan buat ViewHolder
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecommendedViewHolder {
         val binding = ItemRekomendasiBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return MyViewHolder(binding)
+        return RecommendedViewHolder(binding)
     }
 
-    // Bind data ke ViewHolder
-    override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        val item = itemList[position]
-        holder.binding.imgRec.setImageResource(item.imageRec)
-        holder.binding.tvName.text = item.nameBuilder
-        holder.binding.tvService.text = item.service
-        holder.binding.tvSkill.text = item.skill
-        holder.binding.tvRatting.setImageResource(item.icRatting)
-        holder.binding.tvNilaiRatting.text= item.nilaiRatting
-    }
-    override fun getItemCount(): Int {
-        return itemList.size
+    override fun onBindViewHolder(holder: RecommendedViewHolder, position: Int) {
+        val recommendedModel = recommendedList[position]
+        holder.bind(recommendedModel)
     }
 
+    override fun getItemCount(): Int = recommendedList.size
+
+    fun replaceData(newList: List<RecomendedModel>) {
+        recommendedList.clear()
+        recommendedList.addAll(newList)
+        notifyDataSetChanged()
+    }
+
+    inner class RecommendedViewHolder(private val binding: ItemRekomendasiBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+        fun bind(recommendedModel: RecomendedModel) {
+            binding.imgRec.setImageResource(recommendedModel.imageRec)
+            binding.tvName.text = recommendedModel.nameBuilder
+            binding.tvRatting.setImageResource(recommendedModel.icRatting)
+            binding.tvNilaiRatting.text = recommendedModel.nilaiRatting.toString()
+            binding.tvSkill.text = recommendedModel.skill
+        }
+    }
 }

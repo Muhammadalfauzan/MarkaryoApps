@@ -1,3 +1,3 @@
 package com.example.makaryoapps.ui.category
 
-class CategoryModel (val imageCategory: Int)
+class CategoryModel (val imageCategory: Int, val category: String)

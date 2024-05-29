@@ -1,17 +1,168 @@
 <resources>
     <string name="app_name">MakaryoApps</string>
 
+    <!--data dummy-->
+    <string-array name="data_star">
+        <item>4.8</item>
+        <item>4.7</item>
+        <item>4.9</item>
+        <item>4.4</item>
+        <item>4.5</item>
+        <item>4.8</item>
+        <item>4.6</item>
+        <item>5.0</item>
+    </string-array>
+
+
+    <string-array name="data_category">
+        <item>Builder</item>
+        <item>Electronic</item>
+        <item>Otomotif</item>
+        <item>Cleaning</item>
+
+    </string-array>
+
+
+    <string-array name="data_skill">
+        <item>Karpet</item>
+        <item>Ac</item>
+        <item>Kipas</item>
+        <item>Cat Atap Pipa</item>
+        <item>Dedi Saputra</item>
+        <item>Eko Susanto</item>
+        <item>Fajar Hidayat</item>
+        <item>Guntur Pradipta</item>
+
+    </string-array>
+
+    <string-array name="data_dalam_proses">
+        <item>sedang dalam perjalanan</item>
+        <item>sedang di kerjakan</item>
+    </string-array>
+
+    <string-array name="data_">
+        <item>sedang dalam perjalanan</item>
+        <item>sedang di kerjakan</item>
+
+    </string-array>
+
+    <string-array name="data_riwayat">
+        <item>service sudah selesai</item>
+
+    </string-array>
+
+    <string-array name="data_date">
+        <item>2 May, 2024</item>
+        <item>3 May, 2024</item>
+        <item>4 May, 2024</item>
+        <item>5 May, 2024</item>
+        <item>6 May, 2024</item>
+        <item>7 May, 2024</item>
+        <item>2 May, 2024</item>
+        <item>9 May, 2024</item>
+        <item>14 May, 2024</item>
+        <item>2 May, 2024</item>
+        <item>18 May, 2024</item>
+
+    </string-array>
+
+
+    <string-array name="data_status">
+        <item>On</item>
+        <item>Off</item>
+
+    </string-array>
+
+    <!-- builder-->
+
+    <integer-array name="data_photo">
+        <item>@drawable/rec_1</item>
+        <item>@drawable/rec_1</item>
+        <item>@drawable/rec_1</item>
+        <item>@drawable/rec_1</item>
+        <item>@drawable/rec_1</item>
+        <item>@drawable/rec_1</item>
+        <item>@drawable/rec_1</item>
+        <item>@drawable/rec_1</item>
+
+    </integer-array>
+
+    <string-array name="data_craftsman">
+        <item>Ibrahim</item>
+        <item>Andi Pratama</item>
+        <item>Budi Santoso</item>
+        <item>Chandra Wijaya</item>
+        <item>Dedi Saputra</item>
+        <item>Eko Susanto</item>
+        <item>Fajar Hidayat</item>
+        <item>Guntur Pradipta</item>
+
+    </string-array>
+    <string-array name="data_skill1">
+        <item>Cat Pipa</item>
+        <item>Pipa Atap Cat</item>
+        <item>Pipa</item>
+        <item>Cat</item>
+        <item>Pipa Atap Cat</item>
+        <item>Pipa</item>
+        <item>Atap Pipa</item>
+        <item>Atap Pipa</item>
+    </string-array>
+
+
+    <string-array name="data_skill2">
+        <item>Pipa</item>
+        <item>Pipa</item>
+        <item>Atap</item>
+        <item>Atap</item>
+        <item>Atap</item>
+        <item>Atap</item>
+        <item>Atap</item>
+        <item>Atap</item>
+
+    </string-array>
+
+    <string-array name="data_skill3">
+        <item>Atap</item>
+        <item>Pipa</item>
+        <item>Atap</item>
+        <item>Atap</item>
+        <item>Atap</item>
+
+    </string-array>
+
+    <integer-array name="data_img_status">
+        <item>@drawable/ic_on</item>
+        <item>@drawable/ic_on</item>
+        <item>@drawable/ic_off</item>
+        <item>@drawable/ic_off</item>
+
+    </integer-array>
+
+    <string-array name="data_statusCrafts">
+        <item>On</item>
+        <item>On</item>
+        <item>Off</item>
+        <item>Off</item>
+
+    </string-array>
+
     <!-- Login-->
     <string name="login_sekarang">Login Sekarang</string>
     <string name="berhasil">Berhasil</string>
     <string name="masuk">Masuk</string>
     <string name="daftar">Daftar</string>
     <string name="masukan_kata_sandi">Masukan sandi anda</string>
+    <string name="konfirmasi_kata_sandi"> Masukan ulang sandi anda</string>
     <string name="masukan_email">Masukan email anda</string>
     <string name="belum_punya_akun">Belum mempunyai akun?</string>
+    <string name="sudah_mempunyai_akun">Sudah mempunyai akun?</string>
     <string name="lupa_kata_sandi">Lupa kata sandi</string>
     <string name="atau_masuk_dengan_menggunakan">atau masuk dengan menggunakan  :</string>
-    <string name="invalid_password">invalid password :</string>
+    <string name="invalid_password">invalid password </string>
+    <string name="proses_login_anda_berhasil">Proses login anda berhasil! </string>
+    <string name="proses_register_anda_berhasil">Proses Register anda berhasil! </string>
+    <string name="lanjutkan">Lanjutkan</string>
 
 
     <!-- Profile-->
@@ -30,8 +181,6 @@
     <string name="riwayat">Riwayat</string>
     <string name="ratting">4.8</string>
     <string name="pesan_lagi">Pesan Lagi</string>
-
-
     <string name="kategori">Kategori</string>
     <string name="rekomendasi">Rekomendasi</string>
 

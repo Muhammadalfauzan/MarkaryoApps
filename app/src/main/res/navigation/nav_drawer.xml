@@ -19,12 +19,31 @@
         <action
             android:id="@+id/action_homeFragment_to_chatFragment2"
             app:destination="@id/chatFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_builderFragment"
+            app:destination="@id/builderFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_cleaningFragment"
+            app:destination="@id/cleaningFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_electronicFragment"
+            app:destination="@id/electronicFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_otomotifFragment"
+            app:destination="@id/otomotifFragment" />
     </fragment>
     <fragment
         android:id="@+id/historyFragment"
         android:name="com.example.makaryoapps.ui.fragment.HistoryFragment"
         android:label="fragment_history"
-        tools:layout="@layout/fragment_history" />
+        tools:layout="@layout/fragment_history" >
+        <action
+            android:id="@+id/action_historyFragment_to_riwayatFragment"
+            app:destination="@id/riwayatFragment" />
+        <action
+            android:id="@+id/action_historyFragment_to_dalamProsesFragment"
+            app:destination="@id/dalamProsesFragment" />
+    </fragment>
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.example.makaryoapps.ui.fragment.ProfileFragment"
@@ -35,4 +54,37 @@
         android:name="com.example.makaryoapps.ui.fragment.ChatFragment"
         android:label="fragment_chat"
         tools:layout="@layout/fragment_chat" />
+    <activity
+        android:id="@+id/activityLogin"
+        android:name="com.example.makaryoapps.ui.activity.ActivityLogin"
+        android:label="activity_login"
+        tools:layout="@layout/activity_login" />
+    <fragment
+        android:id="@+id/riwayatFragment"
+        android:name="com.example.makaryoapps.ui.fragment.RiwayatFragment"
+        android:label="fragment_riwayat"
+        tools:layout="@layout/fragment_riwayat" />
+    <fragment
+        android:id="@+id/dalamProsesFragment"
+        android:name="com.example.makaryoapps.ui.fragment.DalamProsesFragment"
+        android:label="fragment_dalam_proses"
+        tools:layout="@layout/fragment_dalam_proses" />
+    <fragment
+        android:id="@+id/builderFragment"
+        android:name="com.example.makaryoapps.ui.fragment.BuilderFragment"
+        android:label="fragment_builder"
+        tools:layout="@layout/fragment_builder" />
+    <fragment
+        android:id="@+id/cleaningFragment"
+        android:name="com.example.makaryoapps.ui.fragment.CleaningFragment"
+        android:label="fragment_cleaning"
+        tools:layout="@layout/fragment_cleaning" />
+    <fragment
+        android:id="@+id/electronicFragment"
+        android:name="com.example.makaryoapps.ui.fragment.ElectronicFragment"
+        android:label="ElectronicFragment" />
+    <fragment
+        android:id="@+id/otomotifFragment"
+        android:name="com.example.makaryoapps.ui.fragment.OtomotifFragment"
+        android:label="OtomotifFragment" />
 </navigation>

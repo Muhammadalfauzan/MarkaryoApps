@@ -1,6 +1,7 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id ("kotlin-parcelize")
 }
 
 android {
@@ -52,4 +53,11 @@ dependencies {
 
     //otp view
     implementation ("io.github.chaosleung:pinview:1.4.4")
+    implementation("com.github.bumptech.glide:glide:4.16.0")
+
+    //slider
+    implementation ("com.github.denzcoskun:ImageSlideshow:0.1.2")
+
+    //lottie
+    implementation ("com.airbnb.android:lottie:6.2.0")
 }
