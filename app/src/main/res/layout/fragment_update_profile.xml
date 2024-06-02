@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.fragment.UpdateProfileFragment">
+
+
+    <ImageButton
+        android:id="@+id/ib_back"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:background="?android:attr/selectableItemBackgroundBorderless"
+        android:contentDescription="back"
+        android:src="@drawable/ic_backk"
+        android:scaleType="centerInside"
+        android:paddingTop="5dp"
+        android:paddingStart="5dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="TouchTargetSizeCheck" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/materialTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="@string/update_account"
+        android:textSize="16sp"
+        android:fontFamily="@font/poppins_bold"
+        app:layout_constraintBottom_toBottomOf="@+id/ib_back"
+        app:layout_constraintStart_toEndOf="@+id/ib_back"
+        app:layout_constraintTop_toTopOf="@+id/ib_back" />
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginTop="16dp"
+        android:background="@color/dark_white"
+        android:outlineSpotShadowColor="@color/black"
+        app:layout_constraintTop_toBottomOf="@+id/ib_back"
+        tools:layout_editor_absoluteX="16dp" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/profile_image"
+        android:layout_width="96dp"
+        android:layout_height="96dp"
+        android:src="@drawable/jihan"
+        android:layout_marginTop="16dp"
+        app:civ_border_color="#FFA726"
+        app:civ_border_width="2dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view" />
+
+    <TextView
+        android:id="@+id/textView16"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:fontFamily="@font/poppins_bold"
+        android:text="@string/update"
+        android:textColor="@color/yellow"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="@+id/profile_image"
+        app:layout_constraintStart_toStartOf="@+id/profile_image"
+        app:layout_constraintTop_toBottomOf="@+id/profile_image" />
+
+    <TextView
+        android:id="@+id/textView18"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/poppins_semi_bold"
+        android:text="Info Akun"
+        android:textSize="15sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView16" />
+
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_medium"
+        android:layout_marginTop="10dp"
+        android:text="Nama"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="@+id/textView18"
+        app:layout_constraintTop_toBottomOf="@+id/textView18" />
+
+
+    <com.example.makaryoapps.ui.costumview.GeneralEditText
+        android:id="@+id/emailLog_lay"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/rounded"
+        android:fontFamily="@font/poppins_regular"
+        android:hint="Masukan email anda"
+        android:imeOptions="actionNext"
+        android:inputType="textEmailAddress"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        android:text="Jihan Audy"
+        android:textSize="12sp"
+        app:boxStrokeColor="@color/yellow"
+        app:errorEnabled="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        tools:ignore="HardcodedText">
+
+
+    </com.example.makaryoapps.ui.costumview.GeneralEditText>
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nomor Hp"
+        android:textSize="14sp"
+        android:fontFamily="@font/poppins_medium"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toStartOf="@+id/et_password"
+        app:layout_constraintTop_toBottomOf="@+id/emailLog_lay" />
+
+
+    <com.example.makaryoapps.ui.costumview.GeneralEditText
+        android:id="@+id/et_password"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginTop="5dp"
+        android:imeOptions="actionDone"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:textSize="12sp"
+        android:text="085748749796"
+        app:boxStrokeColor="@color/yellow"
+        android:fontFamily="@font/poppins_regular"
+        android:background="@drawable/rounded"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView1"
+        tools:ignore="TextContrastCheck" />
+
+    <TextView
+        android:id="@+id/textViewConfirm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Kata sandi"
+        android:layout_marginTop="12dp"
+        android:layout_marginStart="4dp"
+        android:textSize="14sp"
+        android:fontFamily="@font/poppins_medium"
+        app:layout_constraintStart_toStartOf="@+id/et_password"
+        app:layout_constraintTop_toBottomOf="@+id/et_password" />
+
+
+    <com.example.makaryoapps.ui.costumview.PasswordEditTextUpdate
+        android:id="@+id/et_confirmPassword"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/rounded"
+        android:imeOptions="actionDone"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:text="12345678"
+        app:boxStrokeColor="@color/yellow"
+        android:textSize="12sp"
+        android:fontFamily="@font/poppins_regular"
+        android:textColorHint="@color/light_grey"
+        app:layout_constraintStart_toStartOf="@+id/textViewConfirm"
+        app:layout_constraintTop_toBottomOf="@+id/textViewConfirm"
+        tools:ignore="TextContrastCheck" />
+
+    <Button
+        android:id="@+id/btn_register"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="30dp"
+        android:backgroundTint="@color/yellow"
+        android:shadowColor="@android:color/transparent"
+        android:text="@string/save"
+        android:fontFamily="@font/poppins_medium"
+        app:cornerRadius="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.54"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_confirmPassword"
+        tools:ignore="TextContrastCheck,VisualLintButtonSize,DuplicateSpeakableTextCheck" />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

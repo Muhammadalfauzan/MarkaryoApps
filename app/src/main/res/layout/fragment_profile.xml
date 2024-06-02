@@ -279,6 +279,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
+                    android:background="@drawable/statelist_item_background"
                     android:padding="16dp">
 
                     <ImageView
@@ -307,12 +308,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
+                    android:background="@drawable/statelist_item_background"
                     android:padding="16dp">
 
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/ic_user_profile" />
+                        android:src="@drawable/ic_profile" />
 
                     <TextView
                         android:layout_width="match_parent"

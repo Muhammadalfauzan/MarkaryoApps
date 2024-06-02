@@ -36,8 +36,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:text="Cleaning"
-            android:textSize="16dp"
-            android:textStyle="bold"
+            android:textSize="16sp"
+            android:fontFamily="@font/poppins_bold"
             app:layout_constraintBottom_toBottomOf="@+id/ib_back"
             app:layout_constraintStart_toEndOf="@+id/ib_back"
             app:layout_constraintTop_toTopOf="@+id/ib_back" />

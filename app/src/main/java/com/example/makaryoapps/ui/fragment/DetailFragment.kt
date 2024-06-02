@@ -5,56 +5,122 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.bumptech.glide.Glide
 import com.example.makaryoapps.R
+import com.example.makaryoapps.databinding.FragmentDetailBinding
+import com.example.makaryoapps.databinding.FragmentHomeBinding
+import com.example.makaryoapps.ui.category.CategoryAdapter
+import com.example.makaryoapps.ui.category.CategoryModel
+import com.example.makaryoapps.ui.category.DetailCategoryModel
+import com.example.makaryoapps.ui.detail.PortofolioAdapter
+import com.example.makaryoapps.ui.detail.PortofolioModel
+import com.example.makaryoapps.ui.detail.ReviewAdapter
+import com.example.makaryoapps.ui.detail.ReviewModel
+import com.example.makaryoapps.ui.recomended.RecomendedAdapter
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [DetailFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class DetailFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+    private var _binding: FragmentDetailBinding? = null
+    private val binding get() = _binding!!
+    private lateinit var portofolioAdapter: PortofolioAdapter
+    private lateinit var reviewAdapter: ReviewAdapter
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private var allReviews: List<ReviewModel> = listOf()
+    private var limitedReviews: List<ReviewModel> = listOf()
+    private var showingAllReviews: Boolean = false
+    private var item: DetailCategoryModel? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_detail, container, false)
+        _binding = FragmentDetailBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment DetailFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            DetailFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        portofolioRecyclerView()
+        reviewRecyclerView()
+        setData()
+        iconBackClicked()
+
+        binding.tvLihatSemua.setOnClickListener {
+            toggleReviews()
+        }
+    }
+
+    private fun portofolioRecyclerView() {
+        binding.rvPortofolio.layoutManager =
+            LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+        val dataFirst = listOf(
+            PortofolioModel(R.drawable.builder),
+            PortofolioModel(R.drawable.electronic),
+            PortofolioModel(R.drawable.cleaning),
+            PortofolioModel(R.drawable.otomotif)
+        )
+        // Initialize the adapter with the data
+        portofolioAdapter = PortofolioAdapter(dataFirst)
+
+        binding.rvPortofolio.adapter = portofolioAdapter
+    }
+
+    private fun reviewRecyclerView() {
+        binding.rvReview.layoutManager =
+            LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+        allReviews = listOf(
+            ReviewModel(R.drawable.jihan, "Jihan Audy", "Cukup memuaskan, pelayananuya baik\n" + "abangnya ramah"),
+            ReviewModel(R.drawable.jihan, "Jihan Audy", "Cukup memuaskan, pelayananuya baik\n" + "abangnya ramah"),
+            ReviewModel(R.drawable.jihan, "Jihan Audy", "Cukup memuaskan, pelayananuya baik\n" + "abangnya ramah"),
+            ReviewModel(R.drawable.jihan, "Jihan Audy", "Cukup memuaskan, pelayananuya baik\n" + "abangnya ramah"),
+            ReviewModel(R.drawable.jihan, "Jihan Audy", "Cukup memuaskan, pelayananuya baik\n" + "abangnya ramah"),
+            ReviewModel(R.drawable.jihan, "Jihan Audy", "Cukup memuaskan, pelayananuya baik\n" + "abangnya ramah"),
+        )
+
+        // Show only the first 3 items initially
+        limitedReviews = allReviews.take(2)
+
+        // Initialize the adapter with the limited data
+        reviewAdapter = ReviewAdapter(limitedReviews)
+        binding.rvReview.adapter = reviewAdapter
+    }
+
+    private fun toggleReviews() {
+        if (showingAllReviews) {
+            // Show limited reviews
+            reviewAdapter.updateData(limitedReviews)
+            binding.tvLihatSemua.text = "Lihat Semua"
+        } else {
+            // Show all reviews
+            reviewAdapter.updateData(allReviews)
+            binding.tvLihatSemua.text = "Tutup"
+        }
+        showingAllReviews = !showingAllReviews
+    }
+
+    private fun setData() {
+        @Suppress("DEPRECATION")
+        item = arguments?.getParcelable("item")
+
+        item?.let {
+            binding.imgCraftsman.setImageResource(item!!.imageCrafts)
+            binding.tvCraftsName.text = item?.nameCrafts
+            binding.tvSkilled.text = item?.skill1
+            binding.tvRatting.text = item?.ratting.toString()
+        }
+    }
+
+    private fun iconBackClicked() {
+        binding.ibBack.setOnClickListener {
+            requireActivity().onBackPressed()
+        }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }
+

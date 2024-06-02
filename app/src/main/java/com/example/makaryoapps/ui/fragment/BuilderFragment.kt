@@ -2,6 +2,7 @@ package com.example.makaryoapps.ui.fragment
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,11 +15,10 @@ import com.example.makaryoapps.databinding.FragmentBuilderBinding
 import com.example.makaryoapps.ui.category.DetailCategoryAdapter
 import com.example.makaryoapps.ui.category.DetailCategoryModel
 
-class BuilderFragment : Fragment() {
+class BuilderFragment : Fragment(), DetailCategoryAdapter.OnItemClickListener {
 
     private var _binding: FragmentBuilderBinding? = null
     private val binding get() = _binding!!
-
     private var dataBuilder: ArrayList<DetailCategoryModel> = ArrayList()
 
 
@@ -67,7 +67,7 @@ class BuilderFragment : Fragment() {
     private fun showRecycler() {
         binding.rvBuilder.layoutManager =
             LinearLayoutManager(requireActivity(), LinearLayoutManager.VERTICAL, false)
-        val listDetailCategoryAdapter = DetailCategoryAdapter(dataBuilder)
+        val listDetailCategoryAdapter = DetailCategoryAdapter(dataBuilder, this)
         binding.rvBuilder.adapter = listDetailCategoryAdapter
     }
 
@@ -76,9 +76,10 @@ class BuilderFragment : Fragment() {
             requireActivity().onBackPressed()
         }
     }
-
-    private fun itemClicked() {
-
+    override fun onItemClick(data :DetailCategoryModel) {
+        Log.d("Item clicked", "Builder Item clicked")
+        val bundle = bundleOf("item" to data)
+        findNavController().navigate(R.id.action_builderFragment_to_detailFragment, bundle)
     }
 
     override fun onDestroyView() {

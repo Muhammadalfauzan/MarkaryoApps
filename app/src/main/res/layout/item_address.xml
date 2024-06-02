@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="140dp"
+    android:layout_marginTop="12dp"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:elevation="10dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="140dp"
+            android:background="@color/white"
+            tools:ignore="TextSizeCheck">
+
+            <ImageView
+                android:id="@+id/imgCraftsman"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginStart="10dp"
+                android:src="@drawable/ic_location"
+                app:layout_constraintEnd_toStartOf="@+id/tv_alamatUtama"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_alamatUtama"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="50dp"
+                android:fontFamily="@font/poppins_semi_bold"
+                android:text="Alamat Utama"
+                android:textSize="15sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/imgCraftsman" />
+
+            <ImageButton
+                android:id="@+id/ib_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="?android:attr/selectableItemBackgroundBorderless"
+                android:contentDescription="check"
+                android:scaleType="centerInside"
+                android:layout_marginEnd="16dp"
+                android:src="@drawable/ic_check_done"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="TouchTargetSizeCheck" />
+            <TextView
+                android:id="@+id/tv_nama"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_regular"
+                android:text="Gang Kenangan No.70 "
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="@+id/tv_alamatUtama"
+                app:layout_constraintTop_toBottomOf="@+id/tv_labelAlamat" />
+
+            <TextView
+                android:id="@+id/tv_labelAlamat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:fontFamily="@font/poppins_regular"
+                android:text="Jeniver (0847723823)"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="@+id/tv_alamatUtama"
+                app:layout_constraintTop_toBottomOf="@+id/tv_alamatUtama"
+                tools:ignore="SpUsage,TextSizeCheck" />
+
+            <TextView
+                android:id="@+id/tv_alamatLengkap"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_regular"
+                android:text="Wedomartani, Ngemplak, Sleman, DI Yogyakarta "
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="@+id/tv_alamatUtama"
+                app:layout_constraintTop_toBottomOf="@+id/tv_nama"
+                tools:ignore="SpUsage,TextSizeCheck" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="8dp"
+                android:fontFamily="@font/poppins_medium"
+                android:text="Ubah alamat"
+                android:textColor="@color/yellow"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

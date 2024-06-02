@@ -1,0 +1,45 @@
+<!--<com.facebook.shimmer.ShimmerFrameLayout
+    android:id="@+id/shimmerLayout"
+    android:layout_width="match_parent"
+    android:layout_height="150dp"
+    android:layout_marginStart="12dp"
+    android:layout_marginEnd="12dp"
+    android:layout_marginTop="5dp"
+    android:layout_marginBottom="5dp"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">-->
+
+<androidx.cardview.widget.CardView android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:cardCornerRadius="8dp"
+    android:layout_height="150dp"
+    android:layout_marginStart="12dp"
+    android:layout_marginEnd="12dp"
+    android:layout_marginTop="5dp"
+    android:layout_marginBottom="5dp"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/iv_portofolio"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:contentDescription="builder"
+                android:scaleType="fitXY"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="HardcodedText"
+                tools:src="@drawable/electronic" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+

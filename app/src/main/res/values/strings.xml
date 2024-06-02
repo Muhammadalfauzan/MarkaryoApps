@@ -152,6 +152,7 @@
     <string name="berhasil">Berhasil</string>
     <string name="masuk">Masuk</string>
     <string name="daftar">Daftar</string>
+    <string name="save">Simpan</string>
     <string name="masukan_kata_sandi">Masukan sandi anda</string>
     <string name="konfirmasi_kata_sandi"> Masukan ulang sandi anda</string>
     <string name="masukan_email">Masukan email anda</string>
@@ -184,6 +185,29 @@
     <string name="kategori">Kategori</string>
     <string name="rekomendasi">Rekomendasi</string>
 
+
+    <string name="detail">Detail Tukang</string>
+    <string name="deskripsi">Deskripsi</string>
+    <string name="portofolio">Portofolio</string>
+    <string name="ulasan">Ulasan</string>
+    <string name="rp">Rp.</string>
+    <string name="price">Rp.19500</string>
+    <string name="order_now">Pesan Sekarang</string>
+    <string name="selesai">Selesai</string>
+
+    <string name="update">Ubah Foto Profil</string>
+
+
+    <string name="confirmation">Konfirmasi</string>
+    <string name="adress_list">Daftar Alamat</string>
+    <string name="update_account">Ubah Akun</string>
+    <string name="searchbar_hint">Search</string>
+
+    <string name="cat">Cat Atap Pipa</string>
+    <string name="example_deskripsi">Tukang bangunan terlibat dalam konstruksi dan renovasi bangunan. Mereka memiliki keterampilan dalam membaca gambar teknis, mengukur, memotong, dan memasang material seperti kayu, batu, beton, dan logam. </string>
+
+
+    <string name="field_can_not_be_empty">username tidak boleh kosong</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

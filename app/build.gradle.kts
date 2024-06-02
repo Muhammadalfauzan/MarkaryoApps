@@ -60,4 +60,14 @@ dependencies {
 
     //lottie
     implementation ("com.airbnb.android:lottie:6.2.0")
+
+    //circle image view
+    implementation ("de.hdodenhof:circleimageview:3.1.0")
+
+    //Shimmer
+    implementation ("com.facebook.shimmer:shimmer:0.5.0")
+
+    //Navigation Component
+    implementation ("androidx.navigation:navigation-fragment-ktx:2.7.7")
+    implementation ("androidx.navigation:navigation-ui-ktx:2.7.7")
 }

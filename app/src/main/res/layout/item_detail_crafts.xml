@@ -51,6 +51,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/ratting"
                 android:textColor="@color/black"
+                android:fontFamily="@font/poppins_bold"
                 android:textSize="12sp"
                 app:layout_constraintStart_toEndOf="@+id/imageView4"
                 app:layout_constraintTop_toTopOf="@+id/imageView4" />
@@ -61,8 +62,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:text="Sumanto"
-                android:textSize="16sp"
-                android:textStyle="bold"
+                android:fontFamily="@font/poppins_semi_bold"
+                android:textSize="15sp"
                 app:layout_constraintStart_toEndOf="@+id/imageView3"
                 app:layout_constraintTop_toTopOf="@+id/imageView3" />
 
@@ -73,6 +74,8 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="8dp"
                 android:text="Service"
+                android:fontFamily="@font/poppins_regular"
+                android:textSize="12sp"
                 app:layout_constraintStart_toEndOf="@+id/imageView3"
                 app:layout_constraintTop_toBottomOf="@+id/tv_craftsName" />
 
@@ -87,8 +90,8 @@
                 android:paddingBottom="2dp"
                 android:textColor="@color/yellow"
                 android:text="Cat   Atap    Pipa"
-                android:textSize="12dp"
-                android:textStyle="bold"
+                android:fontFamily="@font/poppins_bold"
+                android:textSize="10sp"
                 app:layout_constraintStart_toEndOf="@+id/tv_status"
                 app:layout_constraintTop_toTopOf="@+id/tv_status" />
 

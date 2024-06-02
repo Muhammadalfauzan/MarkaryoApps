@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.fragment.AdressListFragment">
+
+
+    <ImageButton
+        android:id="@+id/ib_back"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:background="?android:attr/selectableItemBackgroundBorderless"
+        android:contentDescription="back"
+        android:src="@drawable/ic_backk"
+        android:scaleType="centerInside"
+        android:paddingTop="5dp"
+        android:paddingStart="5dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="TouchTargetSizeCheck" />
+
+    <!--  android:background="?android:attr/selectableItemBackground"-->
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/materialTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="@string/adress_list"
+        android:textSize="16sp"
+        android:fontFamily="@font/poppins_bold"
+        app:layout_constraintBottom_toBottomOf="@+id/ib_back"
+        app:layout_constraintStart_toEndOf="@+id/ib_back"
+        app:layout_constraintTop_toTopOf="@+id/ib_back" />
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginTop="16dp"
+        android:background="@color/dark_white"
+        android:outlineSpotShadowColor="@color/black"
+        app:layout_constraintTop_toBottomOf="@+id/ib_back"
+        tools:layout_editor_absoluteX="-16dp" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view" />
+
+    <ImageButton
+        android:id="@+id/ib_add"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:background="?android:attr/selectableItemBackgroundBorderless"
+        android:contentDescription="check"
+        android:scaleType="centerInside"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:src="@drawable/ic_add_circle_24"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:ignore="TouchTargetSizeCheck" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

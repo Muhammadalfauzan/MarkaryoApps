@@ -5,16 +5,16 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.makaryoapps.R
-import com.example.makaryoapps.databinding.FragmentBuilderBinding
 import com.example.makaryoapps.databinding.FragmentOtomotifBinding
 import com.example.makaryoapps.ui.category.DetailCategoryAdapter
 import com.example.makaryoapps.ui.category.DetailCategoryModel
 
-
-class OtomotifFragment : Fragment() {
+class OtomotifFragment : Fragment(), DetailCategoryAdapter.OnItemClickListener {
 
     private var _binding: FragmentOtomotifBinding? = null
     private val binding get() = _binding!!
@@ -66,7 +66,7 @@ class OtomotifFragment : Fragment() {
     private fun showRecycler() {
         binding.rvOtomotif.layoutManager =
             LinearLayoutManager(requireActivity(), LinearLayoutManager.VERTICAL, false)
-        val listDetailCategoryAdapter = DetailCategoryAdapter(dataBuilder)
+        val listDetailCategoryAdapter = DetailCategoryAdapter(dataBuilder,this)
         binding.rvOtomotif.adapter = listDetailCategoryAdapter
     }
 
@@ -74,6 +74,12 @@ class OtomotifFragment : Fragment() {
         binding.ibBack.setOnClickListener {
             requireActivity().onBackPressed()
         }
+    }
+
+    override fun onItemClick(data: DetailCategoryModel) {
+        // Tangani aksi klik item di sini
+        val bundle = bundleOf("item" to data)
+        findNavController().navigate(R.id.action_otomotifFragment_to_detailFragment, bundle)
     }
 
     override fun onDestroyView() {

@@ -2,19 +2,21 @@ package com.example.makaryoapps.ui.fragment
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.makaryoapps.R
-import com.example.makaryoapps.databinding.FragmentBuilderBinding
 import com.example.makaryoapps.databinding.FragmentElectronicBinding
 import com.example.makaryoapps.ui.category.DetailCategoryAdapter
 import com.example.makaryoapps.ui.category.DetailCategoryModel
 
 
-class ElectronicFragment : Fragment() {
+class ElectronicFragment : Fragment(), DetailCategoryAdapter.OnItemClickListener {
 
     private var _binding: FragmentElectronicBinding? = null
     private val binding get() = _binding!!
@@ -66,7 +68,7 @@ class ElectronicFragment : Fragment() {
     private fun showRecycler() {
         binding.rvElectronic.layoutManager =
             LinearLayoutManager(requireActivity(), LinearLayoutManager.VERTICAL, false)
-        val listDetailCategoryAdapter = DetailCategoryAdapter(dataBuilder)
+        val listDetailCategoryAdapter = DetailCategoryAdapter(dataBuilder,this )
         binding.rvElectronic.adapter = listDetailCategoryAdapter
     }
 
@@ -74,6 +76,11 @@ class ElectronicFragment : Fragment() {
         binding.ibBack.setOnClickListener {
             requireActivity().onBackPressed()
         }
+    }
+    override fun onItemClick(data :DetailCategoryModel) {
+        Log.d("Item clicked", "Builder Item clicked")
+        val bundle = bundleOf("item" to data)
+        findNavController().navigate(R.id.action_electronicFragment_to_detailFragment, bundle)
     }
 
     override fun onDestroyView() {

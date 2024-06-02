@@ -1,6 +1,7 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Base.Theme.MakaryoApps" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="android:statusBarColor">@color/yellow</item>
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
     </style>
@@ -8,7 +9,12 @@
     <style name="Theme.MakaryoApps" parent="Base.Theme.MakaryoApps" />
 
     <style name="CustomSearchView" parent="Widget.AppCompat.SearchView">
-        <item name="queryBackground">@android:color/transparent</item>
-        <item name="searchIcon">@drawable/ic_search</item>
+        <item name="queryBackground">@color/white</item> <!-- Background color of the query text area -->
+        <item name="backgroundTint">@color/white</item> <!-- Background color of the search bar -->
+        <item name="iconTint">@color/grey_font</item> <!-- Tint color of the search icon -->
+        <item name="android:textColor">@color/black</item> <!-- Color of the search text -->
+        <item name="hintTextColor">@color/grey_font</item> <!-- Color of the hint text -->
+
     </style>
+
 </resources>

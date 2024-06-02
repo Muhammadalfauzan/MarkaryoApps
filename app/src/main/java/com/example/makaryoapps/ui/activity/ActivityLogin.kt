@@ -18,8 +18,8 @@ import com.example.makaryoapps.databinding.ActivityMainBinding
 
 class ActivityLogin : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
-    private val dummyEmail = "fauzan2024@gmail.com"
-    private val dummyPassword = "12345678"
+ /*   private val dummyEmail = "fauzan2024@gmail.com"
+    private val dummyPassword = "12345678"*/
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -27,20 +27,19 @@ class ActivityLogin : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.btnLogin.setOnClickListener {
-
-            val email = binding.emailLogLay.text.toString()
+            hideProgressBar()
+            dialogSukses()
+           /* val email = binding.emailLogLay.text.toString()
             val password = binding.etPassword.text.toString()
-
             if (validateLogin(email, password)) {
                 showProgressBar()
                 // Simulate login delay
                 Handler(Looper.getMainLooper()).postDelayed({
-                    hideProgressBar()
-                    dialogSukses()
+
                 }, 2000) // 2 seconds delay
             } else {
                 Toast.makeText(this, "Email or Password is incorrect", Toast.LENGTH_SHORT).show()
-            }
+            }*/
         }
 
         binding.tvRegister.setOnClickListener {
@@ -48,9 +47,9 @@ class ActivityLogin : AppCompatActivity() {
             startActivity(i)
         }
     }
-    private fun validateLogin(email: String, password: String): Boolean {
+ /*   private fun validateLogin(email: String, password: String): Boolean {
         return email == dummyEmail && password == dummyPassword
-    }
+    }*/
     private fun showProgressBar() {
         binding.progressBar.visibility = View.VISIBLE
         binding.btnLogin.isEnabled = false

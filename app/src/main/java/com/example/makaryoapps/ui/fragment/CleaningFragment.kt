@@ -6,14 +6,15 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.makaryoapps.R
-import com.example.makaryoapps.databinding.FragmentBuilderBinding
 import com.example.makaryoapps.databinding.FragmentCleaningBinding
 import com.example.makaryoapps.ui.category.DetailCategoryAdapter
 import com.example.makaryoapps.ui.category.DetailCategoryModel
 
-class CleaningFragment : Fragment() {
+class CleaningFragment : Fragment(),DetailCategoryAdapter.OnItemClickListener {
 
     private var _binding: FragmentCleaningBinding? = null
     private val binding get() = _binding!!
@@ -65,7 +66,7 @@ class CleaningFragment : Fragment() {
     private fun showRecycler() {
         binding.rvCleaning.layoutManager =
             LinearLayoutManager(requireActivity(), LinearLayoutManager.VERTICAL, false)
-        val listDetailCategoryAdapter = DetailCategoryAdapter(dataBuilder)
+        val listDetailCategoryAdapter = DetailCategoryAdapter(dataBuilder,this)
         binding.rvCleaning.adapter = listDetailCategoryAdapter
     }
 
@@ -78,5 +79,11 @@ class CleaningFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    override fun onItemClick(data: DetailCategoryModel) {
+        // Tangani aksi klik item di sini
+        val bundle = bundleOf("item" to data)
+        findNavController().navigate(R.id.action_cleaningFragment_to_detailFragment, bundle)
     }
 }

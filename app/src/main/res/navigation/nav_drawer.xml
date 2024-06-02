@@ -31,6 +31,9 @@
         <action
             android:id="@+id/action_homeFragment_to_otomotifFragment"
             app:destination="@id/otomotifFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_detailFragment"
+            app:destination="@id/detailFragment" />
     </fragment>
     <fragment
         android:id="@+id/historyFragment"
@@ -48,7 +51,11 @@
         android:id="@+id/profileFragment"
         android:name="com.example.makaryoapps.ui.fragment.ProfileFragment"
         android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_profileFragment_to_updateProfileFragment"
+            app:destination="@id/updateProfileFragment" />
+    </fragment>
     <fragment
         android:id="@+id/chatFragment"
         android:name="com.example.makaryoapps.ui.fragment.ChatFragment"
@@ -73,18 +80,44 @@
         android:id="@+id/builderFragment"
         android:name="com.example.makaryoapps.ui.fragment.BuilderFragment"
         android:label="fragment_builder"
-        tools:layout="@layout/fragment_builder" />
+        tools:layout="@layout/fragment_builder" >
+        <action
+            android:id="@+id/action_builderFragment_to_detailFragment"
+            app:destination="@id/detailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/cleaningFragment"
         android:name="com.example.makaryoapps.ui.fragment.CleaningFragment"
         android:label="fragment_cleaning"
-        tools:layout="@layout/fragment_cleaning" />
+        tools:layout="@layout/fragment_cleaning" >
+        <action
+            android:id="@+id/action_cleaningFragment_to_detailFragment"
+            app:destination="@id/detailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/electronicFragment"
         android:name="com.example.makaryoapps.ui.fragment.ElectronicFragment"
-        android:label="ElectronicFragment" />
+        android:label="ElectronicFragment" >
+        <action
+            android:id="@+id/action_electronicFragment_to_detailFragment"
+            app:destination="@id/detailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/otomotifFragment"
         android:name="com.example.makaryoapps.ui.fragment.OtomotifFragment"
-        android:label="OtomotifFragment" />
+        android:label="OtomotifFragment" >
+        <action
+            android:id="@+id/action_otomotifFragment_to_detailFragment"
+            app:destination="@id/detailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="com.example.makaryoapps.ui.fragment.DetailFragment"
+        android:label="fragment_detail"
+        tools:layout="@layout/fragment_detail" />
+    <fragment
+        android:id="@+id/updateProfileFragment"
+        android:name="com.example.makaryoapps.ui.fragment.UpdateProfileFragment"
+        android:label="fragment_update_profile"
+        tools:layout="@layout/fragment_update_profile" />
 </navigation>
