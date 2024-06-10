@@ -3,22 +3,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.fragment.AdressListFragment">
 
 
     <ImageButton
         android:id="@+id/ib_back"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:background="?android:attr/selectableItemBackgroundBorderless"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
         android:contentDescription="back"
-        android:src="@drawable/ic_backk"
-        android:scaleType="centerInside"
-        android:paddingTop="5dp"
-        android:paddingStart="5dp"
+        android:layout_marginTop="8dp"
+        android:background="?android:attr/selectableItemBackgroundBorderless"
+        android:src="@drawable/round_arrow_back_24"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="TouchTargetSizeCheck" />
@@ -28,7 +26,7 @@
         android:id="@+id/materialTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="16dp"
         android:text="@string/adress_list"
         android:textSize="16sp"
         android:fontFamily="@font/poppins_bold"
@@ -47,6 +45,7 @@
         tools:layout_editor_absoluteX="-16dp" />
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvAddressList"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -54,19 +53,25 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/view" />
 
-    <ImageButton
-        android:id="@+id/ib_add"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:background="?android:attr/selectableItemBackgroundBorderless"
-        android:contentDescription="check"
-        android:scaleType="centerInside"
-        android:layout_marginEnd="16dp"
+
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floating_action_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="16dp"
         android:layout_marginBottom="16dp"
-        android:src="@drawable/ic_add_circle_24"
+        android:backgroundTint="@color/yellow"
+        app:rippleColor="@color/white"
+        app:tint ="@color/white"
+
+        android:contentDescription="fab_content_desc"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        tools:ignore="TouchTargetSizeCheck" />
+        app:srcCompat="@drawable/baseline_add_24" />
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

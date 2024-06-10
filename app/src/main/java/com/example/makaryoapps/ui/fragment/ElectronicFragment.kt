@@ -68,10 +68,10 @@ class ElectronicFragment : Fragment(), DetailCategoryAdapter.OnItemClickListener
     private fun showRecycler() {
         binding.rvElectronic.layoutManager =
             LinearLayoutManager(requireActivity(), LinearLayoutManager.VERTICAL, false)
-        val listDetailCategoryAdapter = DetailCategoryAdapter(dataBuilder,this )
+        val listDetailCategoryAdapter = DetailCategoryAdapter(this) // Pass 'this' as the listener
         binding.rvElectronic.adapter = listDetailCategoryAdapter
+        listDetailCategoryAdapter.submitList(dataBuilder) // Use submitList to set the data
     }
-
     private fun iconBackClicked() {
         binding.ibBack.setOnClickListener {
             requireActivity().onBackPressed()

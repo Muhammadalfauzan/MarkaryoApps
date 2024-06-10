@@ -14,10 +14,10 @@
         android:id="@+id/chatFragment"
         android:enabled="true"
         android:icon="@drawable/ic_chat"
-        android:title="Chat"/>
+        android:title="Pesan"/>
     <item
         android:id="@+id/profileFragment"
         android:enabled="true"
         android:icon="@drawable/ic_user_profile"
-        android:title="Chat"/>
+        android:title="Akun"/>
 </menu>

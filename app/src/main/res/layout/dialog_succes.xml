@@ -2,15 +2,15 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="300dp"
-    android:layout_height="300dp"
+    android:layout_width="250dp"
+    android:layout_height="250dp"
     app:cardCornerRadius="10dp"
     android:layout_gravity="center">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/cardview_dialog"
-        android:layout_width="300dp"
-        android:layout_height="300dp"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
         android:backgroundTint="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -18,27 +18,32 @@
 
         <com.airbnb.lottie.LottieAnimationView
             android:id="@+id/lottieAnimationView"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/textView4"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:lottie_autoPlay="true"
             app:lottie_loop="true"
-            app:lottie_rawRes="@raw/successs"
+            app:lottie_rawRes="@raw/coba"
             app:lottie_speed="1.25" />
 
         <TextView
             android:id="@+id/textView4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
             android:layout_gravity="center_horizontal"
             android:text="@string/proses_login_anda_berhasil"
             android:textColor="@color/black"
+
+
             android:textSize="16sp"
+            android:layout_marginTop="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/btn_sukses"
             app:layout_constraintEnd_toEndOf="@+id/lottieAnimationView"
-            app:layout_constraintStart_toStartOf="@+id/lottieAnimationView"
-            app:layout_constraintTop_toBottomOf="@+id/lottieAnimationView" />
+            app:layout_constraintStart_toStartOf="@+id/lottieAnimationView" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_sukses"
@@ -49,10 +54,11 @@
             android:contentDescription="btnsukses"
             android:text="@string/lanjutkan"
             app:cornerRadius="8dp"
-            android:layout_marginTop="12dp"
+            android:layout_marginBottom="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/textView4"
+            app:layout_constraintHorizontal_bias="0.506"
             app:layout_constraintStart_toStartOf="@+id/textView4"
-            app:layout_constraintTop_toBottomOf="@+id/textView4"
             app:tint="@color/black" />
 
 

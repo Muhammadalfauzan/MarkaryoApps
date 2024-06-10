@@ -66,8 +66,9 @@ class OtomotifFragment : Fragment(), DetailCategoryAdapter.OnItemClickListener {
     private fun showRecycler() {
         binding.rvOtomotif.layoutManager =
             LinearLayoutManager(requireActivity(), LinearLayoutManager.VERTICAL, false)
-        val listDetailCategoryAdapter = DetailCategoryAdapter(dataBuilder,this)
+        val listDetailCategoryAdapter = DetailCategoryAdapter(this) // Pass 'this' as the listener
         binding.rvOtomotif.adapter = listDetailCategoryAdapter
+        listDetailCategoryAdapter.submitList(dataBuilder) // Use submitList to set the data
     }
 
     private fun iconBackClicked() {

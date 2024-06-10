@@ -275,7 +275,7 @@
                 android:orientation="vertical">
 
                 <LinearLayout
-                    android:id="@+id/profilSaya"
+                    android:id="@+id/notification"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
@@ -304,7 +304,7 @@
                     android:visibility="visible" />
 
                 <LinearLayout
-                    android:id="@+id/ubahPassword"
+                    android:id="@+id/profilSaya"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
@@ -333,9 +333,10 @@
                     android:visibility="visible" />
 
                 <LinearLayout
-                    android:id="@+id/pengaturanAkun"
+                    android:id="@+id/location"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:background="@drawable/statelist_item_background"
                     android:orientation="horizontal"
                     android:padding="16dp">
 

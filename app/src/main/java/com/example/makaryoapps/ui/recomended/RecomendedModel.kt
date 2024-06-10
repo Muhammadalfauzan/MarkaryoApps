@@ -1,4 +1,8 @@
 package com.example.makaryoapps.ui.recomended
 
-class RecomendedModel (val imageRec: Int, val nameBuilder : String,
-    val skill: String, val nilaiRatting: Float, val icRatting: Int)
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+@Parcelize
+data class RecomendedModel (val imageRec: Int, val nameBuilder : String,
+    val skill: String, val nilaiRatting: Float, val icRatting: Int, val distance : Float) : Parcelable

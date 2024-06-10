@@ -2,19 +2,19 @@ package com.example.makaryoapps.ui.category
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.makaryoapps.databinding.ItemDetailCraftsBinding
 
-class DetailCategoryAdapter(
-    private val itemList: ArrayList<DetailCategoryModel>,
-    private val listener: OnItemClickListener
-) : RecyclerView.Adapter<DetailCategoryAdapter.MyViewHolder>() {
+
+class DetailCategoryAdapter(private val listener: OnItemClickListener) : ListAdapter<DetailCategoryModel, DetailCategoryAdapter.MyViewHolder>(DIFF_CALLBACK) {
+
     interface OnItemClickListener {
         fun onItemClick(data: DetailCategoryModel)
     }
 
-    // ViewHolder untuk item menggunakan View Binding
-   inner class MyViewHolder(val binding: ItemDetailCraftsBinding) :
+    inner class MyViewHolder(val binding: ItemDetailCraftsBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(category: DetailCategoryModel) {
@@ -32,16 +32,25 @@ class DetailCategoryAdapter(
         }
     }
 
-    // Inflate layout item dan buat ViewHolder
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val binding =
             ItemDetailCraftsBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return MyViewHolder(binding)
     }
 
-    // Bind data ke ViewHolder
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        holder.bind(itemList[position])
+        holder.bind(getItem(position))
     }
-    override fun getItemCount(): Int = itemList.size
+
+    companion object {
+        private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<DetailCategoryModel>() {
+            override fun areItemsTheSame(oldItem: DetailCategoryModel, newItem: DetailCategoryModel): Boolean {
+                return oldItem.imageCrafts == newItem.imageCrafts // Assuming there's a unique id for each item
+            }
+
+            override fun areContentsTheSame(oldItem: DetailCategoryModel, newItem: DetailCategoryModel): Boolean {
+                return oldItem == newItem
+            }
+        }
+    }
 }

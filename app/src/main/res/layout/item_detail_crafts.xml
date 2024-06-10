@@ -8,7 +8,7 @@
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/materialCardView2"
         android:layout_width="match_parent"
-        android:layout_height="90dp"
+        android:layout_height="0dp"
         android:backgroundTint="@color/white"
         android:layout_marginTop="5dp"
         app:cardCornerRadius="0dp"
@@ -21,7 +21,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="90dp">
+            android:layout_height="wrap_content">
 
             <ImageView
                 android:id="@+id/imageView3"

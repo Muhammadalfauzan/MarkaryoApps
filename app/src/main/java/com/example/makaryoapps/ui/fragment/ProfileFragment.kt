@@ -25,11 +25,11 @@ class ProfileFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.ubahPassword.setOnClickListener {
-            findNavController().navigate(R.id.action_profileFragment_to_updateProfileFragment)
-        }
         binding.profilSaya.setOnClickListener {
             findNavController().navigate(R.id.action_profileFragment_to_updateProfileFragment)
+        }
+        binding.location.setOnClickListener {
+            findNavController().navigate(R.id.action_profileFragment_to_adressListFragment)
         }
     }
 

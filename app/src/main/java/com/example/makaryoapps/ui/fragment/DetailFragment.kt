@@ -1,23 +1,21 @@
 package com.example.makaryoapps.ui.fragment
 
 import android.os.Bundle
+import android.os.Parcelable
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.bumptech.glide.Glide
 import com.example.makaryoapps.R
 import com.example.makaryoapps.databinding.FragmentDetailBinding
-import com.example.makaryoapps.databinding.FragmentHomeBinding
-import com.example.makaryoapps.ui.category.CategoryAdapter
-import com.example.makaryoapps.ui.category.CategoryModel
 import com.example.makaryoapps.ui.category.DetailCategoryModel
 import com.example.makaryoapps.ui.detail.PortofolioAdapter
 import com.example.makaryoapps.ui.detail.PortofolioModel
 import com.example.makaryoapps.ui.detail.ReviewAdapter
 import com.example.makaryoapps.ui.detail.ReviewModel
-import com.example.makaryoapps.ui.recomended.RecomendedAdapter
+import com.example.makaryoapps.ui.recomended.RecomendedModel
 
 
 class DetailFragment : Fragment() {
@@ -25,17 +23,16 @@ class DetailFragment : Fragment() {
     private val binding get() = _binding!!
     private lateinit var portofolioAdapter: PortofolioAdapter
     private lateinit var reviewAdapter: ReviewAdapter
-
     private var allReviews: List<ReviewModel> = listOf()
     private var limitedReviews: List<ReviewModel> = listOf()
     private var showingAllReviews: Boolean = false
-    private var item: DetailCategoryModel? = null
+    private var detailCategoryItem: DetailCategoryModel? = null
+    private var recommendedItem: RecomendedModel? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         _binding = FragmentDetailBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -50,6 +47,19 @@ class DetailFragment : Fragment() {
         binding.tvLihatSemua.setOnClickListener {
             toggleReviews()
         }
+
+        binding.btnOrderNow.setOnClickListener {
+            val bundle = Bundle()
+            recommendedItem?.let {
+                bundle.putString("craftsman_name", it.nameBuilder)
+                bundle.putInt("price", 19500)
+                findNavController().navigate(R.id.action_detailFragment_to_confirmationFragment, bundle)
+            } ?: detailCategoryItem?.let {
+                bundle.putString("craftsman_name", it.nameCrafts)
+                bundle.putInt("price", 19500)
+                findNavController().navigate(R.id.action_detailFragment_to_confirmationFragment, bundle)
+            }
+        }
     }
 
     private fun portofolioRecyclerView() {
@@ -61,9 +71,7 @@ class DetailFragment : Fragment() {
             PortofolioModel(R.drawable.cleaning),
             PortofolioModel(R.drawable.otomotif)
         )
-        // Initialize the adapter with the data
         portofolioAdapter = PortofolioAdapter(dataFirst)
-
         binding.rvPortofolio.adapter = portofolioAdapter
     }
 
@@ -76,24 +84,19 @@ class DetailFragment : Fragment() {
             ReviewModel(R.drawable.jihan, "Jihan Audy", "Cukup memuaskan, pelayananuya baik\n" + "abangnya ramah"),
             ReviewModel(R.drawable.jihan, "Jihan Audy", "Cukup memuaskan, pelayananuya baik\n" + "abangnya ramah"),
             ReviewModel(R.drawable.jihan, "Jihan Audy", "Cukup memuaskan, pelayananuya baik\n" + "abangnya ramah"),
-            ReviewModel(R.drawable.jihan, "Jihan Audy", "Cukup memuaskan, pelayananuya baik\n" + "abangnya ramah"),
+            ReviewModel(R.drawable.jihan, "Jihan Audy", "Cukup memuaskan, pelayananuya baik\n" + "abangnya ramah")
         )
 
-        // Show only the first 3 items initially
         limitedReviews = allReviews.take(2)
-
-        // Initialize the adapter with the limited data
         reviewAdapter = ReviewAdapter(limitedReviews)
         binding.rvReview.adapter = reviewAdapter
     }
 
     private fun toggleReviews() {
         if (showingAllReviews) {
-            // Show limited reviews
             reviewAdapter.updateData(limitedReviews)
             binding.tvLihatSemua.text = "Lihat Semua"
         } else {
-            // Show all reviews
             reviewAdapter.updateData(allReviews)
             binding.tvLihatSemua.text = "Tutup"
         }
@@ -101,14 +104,22 @@ class DetailFragment : Fragment() {
     }
 
     private fun setData() {
-        @Suppress("DEPRECATION")
-        item = arguments?.getParcelable("item")
-
-        item?.let {
-            binding.imgCraftsman.setImageResource(item!!.imageCrafts)
-            binding.tvCraftsName.text = item?.nameCrafts
-            binding.tvSkilled.text = item?.skill1
-            binding.tvRatting.text = item?.ratting.toString()
+        val data = arguments?.getParcelable<Parcelable>("item")
+        when (data) {
+            is RecomendedModel -> {
+                recommendedItem = data
+                binding.imgCraftsman.setImageResource(data.imageRec)
+                binding.tvCraftsName.text = data.nameBuilder
+                binding.tvSkilled.text = data.skill
+                binding.tvRatting.text = data.nilaiRatting.toString()
+            }
+            is DetailCategoryModel -> {
+                detailCategoryItem = data
+                binding.imgCraftsman.setImageResource(data.imageCrafts)
+                binding.tvCraftsName.text = data.nameCrafts
+                binding.tvSkilled.text = data.skill1
+                binding.tvRatting.text = data.ratting.toString()
+            }
         }
     }
 
@@ -123,4 +134,5 @@ class DetailFragment : Fragment() {
         _binding = null
     }
 }
+
 

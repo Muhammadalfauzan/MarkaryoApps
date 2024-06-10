@@ -207,6 +207,4 @@
         app:layout_constraintTop_toBottomOf="@+id/et_confirmPassword"
         tools:ignore="TextContrastCheck,VisualLintButtonSize,DuplicateSpeakableTextCheck" />
 
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>

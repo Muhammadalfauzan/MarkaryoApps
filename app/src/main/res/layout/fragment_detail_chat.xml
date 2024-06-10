@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true"
+    android:background="@color/white"
     tools:context=".ui.fragment.ChatFragment"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
@@ -24,18 +25,15 @@
 
         <ImageButton
             android:id="@+id/ib_back"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
             android:background="?android:attr/selectableItemBackgroundBorderless"
             android:contentDescription="back"
-            android:paddingStart="5dp"
-            android:paddingTop="5dp"
-            android:layout_marginStart="12dp"
-            android:scaleType="centerInside"
-            android:src="@drawable/ic_backk"
+            android:src="@drawable/round_arrow_back_24"
             app:layout_constraintBottom_toBottomOf="@+id/profile_image"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/profile_image"
             tools:ignore="TouchTargetSizeCheck" />
 
         <de.hdodenhof.circleimageview.CircleImageView
@@ -43,16 +41,23 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_marginTop="5dp"
+            android:layout_marginStart="8dp"
             android:src="@drawable/jihan"
-            android:layout_marginStart="12dp"
             app:layout_constraintStart_toEndOf="@+id/ib_back"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/expanded_image"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="invisible"
+            android:contentDescription="description_zoom_touch_close" />
 
         <TextView
             android:id="@+id/textView17"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
+            android:layout_marginStart="8dp"
             android:layout_marginTop="12dp"
             android:text="Gilga Scream"
             android:fontFamily="@font/poppins_bold"

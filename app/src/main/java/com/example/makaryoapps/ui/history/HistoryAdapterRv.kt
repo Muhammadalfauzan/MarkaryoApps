@@ -24,6 +24,10 @@ class HistoryAdapterRv (private val itemList : List<HistoryModel>) : RecyclerVie
         holder.binding.tvStatusHistory.text = item.statusOrder
         holder.binding.tvDateHistory.text = item.date
 
+        holder.binding.btnReceipt.setOnClickListener {
+
+        }
+
     } override fun getItemCount(): Int {
         return itemList.size
         }

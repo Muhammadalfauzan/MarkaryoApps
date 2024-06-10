@@ -12,7 +12,7 @@
         <item name="queryBackground">@color/white</item> <!-- Background color of the query text area -->
         <item name="backgroundTint">@color/white</item> <!-- Background color of the search bar -->
         <item name="iconTint">@color/grey_font</item> <!-- Tint color of the search icon -->
-        <item name="android:textColor">@color/black</item> <!-- Color of the search text -->
+        <item name="android:textColor">@color/dark_grey</item> <!-- Color of the search text -->
         <item name="hintTextColor">@color/grey_font</item> <!-- Color of the hint text -->
 
     </style>

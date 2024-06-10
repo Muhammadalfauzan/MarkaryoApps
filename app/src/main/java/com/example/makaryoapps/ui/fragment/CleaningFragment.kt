@@ -14,7 +14,7 @@ import com.example.makaryoapps.databinding.FragmentCleaningBinding
 import com.example.makaryoapps.ui.category.DetailCategoryAdapter
 import com.example.makaryoapps.ui.category.DetailCategoryModel
 
-class CleaningFragment : Fragment(),DetailCategoryAdapter.OnItemClickListener {
+class CleaningFragment : Fragment(), DetailCategoryAdapter.OnItemClickListener {
 
     private var _binding: FragmentCleaningBinding? = null
     private val binding get() = _binding!!
@@ -66,10 +66,10 @@ class CleaningFragment : Fragment(),DetailCategoryAdapter.OnItemClickListener {
     private fun showRecycler() {
         binding.rvCleaning.layoutManager =
             LinearLayoutManager(requireActivity(), LinearLayoutManager.VERTICAL, false)
-        val listDetailCategoryAdapter = DetailCategoryAdapter(dataBuilder,this)
+        val listDetailCategoryAdapter = DetailCategoryAdapter(this) // Pass 'this' as the listener
         binding.rvCleaning.adapter = listDetailCategoryAdapter
+        listDetailCategoryAdapter.submitList(dataBuilder) // Use submitList to set the data
     }
-
     private fun iconBackClicked() {
         binding.ibBack.setOnClickListener {
             requireActivity().onBackPressed()

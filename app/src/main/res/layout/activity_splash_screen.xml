@@ -25,27 +25,15 @@
 
             <ImageView
                 android:id="@+id/longLogo"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.501"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/logo_makaryo" />
+                app:srcCompat="@drawable/splash" />
 
-            <TextView
-                android:id="@+id/title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/poppins_semi_bold"
-                android:gravity="center_horizontal"
-                android:text="Makaryo"
-                android:textColor="@color/black"
-                android:textSize="40dp"
-                app:layout_constraintEnd_toEndOf="@+id/longLogo"
-                app:layout_constraintStart_toStartOf="@+id/longLogo"
-                app:layout_constraintTop_toBottomOf="@+id/longLogo" />
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

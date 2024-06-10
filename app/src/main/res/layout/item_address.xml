@@ -19,12 +19,12 @@
                 android:layout_height="24dp"
                 android:layout_marginStart="10dp"
                 android:src="@drawable/ic_location"
-                app:layout_constraintEnd_toStartOf="@+id/tv_alamatUtama"
+                app:layout_constraintEnd_toStartOf="@+id/tv_labelAlamat"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/tv_alamatUtama"
+                android:id="@+id/tv_labelAlamat"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="50dp"
@@ -35,37 +35,31 @@
                 app:layout_constraintTop_toTopOf="@+id/imgCraftsman" />
 
             <ImageButton
-                android:id="@+id/ib_back"
+                android:id="@+id/btn_check"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
                 android:background="?android:attr/selectableItemBackgroundBorderless"
                 android:contentDescription="check"
                 android:scaleType="centerInside"
                 android:layout_marginEnd="16dp"
-                android:src="@drawable/ic_check_done"
+
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:ignore="TouchTargetSizeCheck" />
-            <TextView
-                android:id="@+id/tv_nama"
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/poppins_regular"
-                android:text="Gang Kenangan No.70 "
-                android:textSize="12sp"
-                app:layout_constraintStart_toStartOf="@+id/tv_alamatUtama"
-                app:layout_constraintTop_toBottomOf="@+id/tv_labelAlamat" />
+
+
 
             <TextView
-                android:id="@+id/tv_labelAlamat"
+                android:id="@+id/tv_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
                 android:fontFamily="@font/poppins_regular"
                 android:text="Jeniver (0847723823)"
                 android:textSize="12sp"
-                app:layout_constraintStart_toStartOf="@+id/tv_alamatUtama"
-                app:layout_constraintTop_toBottomOf="@+id/tv_alamatUtama"
+                app:layout_constraintStart_toStartOf="@+id/tv_labelAlamat"
+                app:layout_constraintTop_toBottomOf="@+id/tv_labelAlamat"
                 tools:ignore="SpUsage,TextSizeCheck" />
 
             <TextView
@@ -73,13 +67,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins_regular"
-                android:text="Wedomartani, Ngemplak, Sleman, DI Yogyakarta "
+                android:paddingEnd="16dp"
+                android:text="Gang Kenangan No.70\nWedomartani,Ngemplak, Sleman, DI Yogyakarta "
                 android:textSize="12sp"
-                app:layout_constraintStart_toStartOf="@+id/tv_alamatUtama"
-                app:layout_constraintTop_toBottomOf="@+id/tv_nama"
-                tools:ignore="SpUsage,TextSizeCheck" />
+                app:layout_constraintStart_toStartOf="@+id/tv_name"
+                app:layout_constraintTop_toBottomOf="@+id/tv_name"
+                tools:ignore="RtlSymmetry,SpUsage,TextSizeCheck" />
 
             <TextView
+                android:id="@+id/tv_updateAddress"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"

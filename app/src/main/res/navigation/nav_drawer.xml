@@ -21,21 +21,41 @@
             app:destination="@id/chatFragment" />
         <action
             android:id="@+id/action_homeFragment_to_builderFragment"
-            app:destination="@id/builderFragment" />
+            app:destination="@id/builderFragment"
+            app:enterAnim="@anim/slide_in_from_right"
+            app:exitAnim="@anim/slide_out_to_left"
+            app:popEnterAnim="@anim/slide_in_from_left"
+            app:popExitAnim="@anim/slide_out_to_right"/>
         <action
             android:id="@+id/action_homeFragment_to_cleaningFragment"
-            app:destination="@id/cleaningFragment" />
+            app:destination="@id/cleaningFragment"
+            app:enterAnim="@anim/slide_in_from_right"
+            app:exitAnim="@anim/slide_out_to_left"
+            app:popEnterAnim="@anim/slide_in_from_left"
+            app:popExitAnim="@anim/slide_out_to_right"/>
         <action
             android:id="@+id/action_homeFragment_to_electronicFragment"
-            app:destination="@id/electronicFragment" />
+            app:destination="@id/electronicFragment"
+            app:enterAnim="@anim/slide_in_from_right"
+            app:exitAnim="@anim/slide_out_to_left"
+            app:popEnterAnim="@anim/slide_in_from_left"
+            app:popExitAnim="@anim/slide_out_to_right"/>
         <action
             android:id="@+id/action_homeFragment_to_otomotifFragment"
-            app:destination="@id/otomotifFragment" />
+            app:destination="@id/otomotifFragment"
+            app:enterAnim="@anim/slide_in_from_right"
+            app:exitAnim="@anim/slide_out_to_left"
+            app:popEnterAnim="@anim/slide_in_from_left"
+            app:popExitAnim="@anim/slide_out_to_right"/>
         <action
             android:id="@+id/action_homeFragment_to_detailFragment"
-            app:destination="@id/detailFragment" />
+            app:destination="@id/detailFragment"
+            app:enterAnim="@anim/slide_in_from_right"
+            app:exitAnim="@anim/slide_out_to_left"
+            app:popEnterAnim="@anim/slide_in_from_left"
+            app:popExitAnim="@anim/slide_out_to_right"/>
     </fragment>
-    <fragment
+   <!-- <fragment
         android:id="@+id/historyFragment"
         android:name="com.example.makaryoapps.ui.fragment.HistoryFragment"
         android:label="fragment_history"
@@ -46,7 +66,7 @@
         <action
             android:id="@+id/action_historyFragment_to_dalamProsesFragment"
             app:destination="@id/dalamProsesFragment" />
-    </fragment>
+    </fragment>-->
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.example.makaryoapps.ui.fragment.ProfileFragment"
@@ -54,13 +74,24 @@
         tools:layout="@layout/fragment_profile" >
         <action
             android:id="@+id/action_profileFragment_to_updateProfileFragment"
-            app:destination="@id/updateProfileFragment" />
+            app:destination="@id/updateProfileFragment"
+            app:enterAnim="@anim/slide_in_from_right"
+            app:exitAnim="@anim/slide_out_to_left"
+            app:popEnterAnim="@anim/slide_in_from_left"
+            app:popExitAnim="@anim/slide_out_to_right"/>
+        <action
+            android:id="@+id/action_profileFragment_to_adressListFragment"
+            app:destination="@id/adressListFragment" />
     </fragment>
     <fragment
         android:id="@+id/chatFragment"
         android:name="com.example.makaryoapps.ui.fragment.ChatFragment"
         android:label="fragment_chat"
-        tools:layout="@layout/fragment_chat" />
+        tools:layout="@layout/fragment_chat" >
+        <action
+            android:id="@+id/action_chatFragment_to_detailChatFragment"
+            app:destination="@id/detailChatFragment" />
+    </fragment>
     <activity
         android:id="@+id/activityLogin"
         android:name="com.example.makaryoapps.ui.activity.ActivityLogin"
@@ -83,7 +114,11 @@
         tools:layout="@layout/fragment_builder" >
         <action
             android:id="@+id/action_builderFragment_to_detailFragment"
-            app:destination="@id/detailFragment" />
+            app:destination="@id/detailFragment"
+            app:enterAnim="@anim/slide_in_from_right"
+            app:exitAnim="@anim/slide_out_to_left"
+            app:popEnterAnim="@anim/slide_in_from_left"
+            app:popExitAnim="@anim/slide_out_to_right"/>
     </fragment>
     <fragment
         android:id="@+id/cleaningFragment"
@@ -92,15 +127,24 @@
         tools:layout="@layout/fragment_cleaning" >
         <action
             android:id="@+id/action_cleaningFragment_to_detailFragment"
-            app:destination="@id/detailFragment" />
+            app:destination="@id/detailFragment"
+            app:enterAnim="@anim/slide_in_from_right"
+            app:exitAnim="@anim/slide_out_to_left"
+            app:popEnterAnim="@anim/slide_in_from_left"
+            app:popExitAnim="@anim/slide_out_to_right"/>
     </fragment>
     <fragment
         android:id="@+id/electronicFragment"
         android:name="com.example.makaryoapps.ui.fragment.ElectronicFragment"
-        android:label="ElectronicFragment" >
+        android:label="ElectronicFragment"
+        >
         <action
             android:id="@+id/action_electronicFragment_to_detailFragment"
-            app:destination="@id/detailFragment" />
+            app:destination="@id/detailFragment"
+            app:enterAnim="@anim/slide_in_from_right"
+            app:exitAnim="@anim/slide_out_to_left"
+            app:popEnterAnim="@anim/slide_in_from_left"
+            app:popExitAnim="@anim/slide_out_to_right"/>
     </fragment>
     <fragment
         android:id="@+id/otomotifFragment"
@@ -108,16 +152,75 @@
         android:label="OtomotifFragment" >
         <action
             android:id="@+id/action_otomotifFragment_to_detailFragment"
-            app:destination="@id/detailFragment" />
+            app:destination="@id/detailFragment"
+            app:enterAnim="@anim/slide_in_from_right"
+            app:exitAnim="@anim/slide_out_to_left"
+            app:popEnterAnim="@anim/slide_in_from_left"
+            app:popExitAnim="@anim/slide_out_to_right"/>
     </fragment>
     <fragment
         android:id="@+id/detailFragment"
         android:name="com.example.makaryoapps.ui.fragment.DetailFragment"
         android:label="fragment_detail"
-        tools:layout="@layout/fragment_detail" />
+        tools:layout="@layout/fragment_detail" >
+        <action
+            android:id="@+id/action_detailFragment_to_confirmationFragment"
+            app:destination="@id/confirmationFragment"
+            app:enterAnim="@anim/slide_in_from_right"
+            app:exitAnim="@anim/slide_out_to_left"
+            app:popEnterAnim="@anim/slide_in_from_left"
+            app:popExitAnim="@anim/slide_out_to_right"/>
+    </fragment>
     <fragment
         android:id="@+id/updateProfileFragment"
         android:name="com.example.makaryoapps.ui.fragment.UpdateProfileFragment"
         android:label="fragment_update_profile"
         tools:layout="@layout/fragment_update_profile" />
+    <fragment
+        android:id="@+id/detailChatFragment"
+        android:name="com.example.makaryoapps.ui.fragment.DetailChatFragment"
+        android:label="DetailChatFragment" />
+    <fragment
+        android:id="@+id/confirmationFragment"
+        android:name="com.example.makaryoapps.ui.fragment.ConfirmationFragment"
+        android:label="fragment_confirmation"
+        tools:layout="@layout/fragment_confirmation" >
+
+        <action
+            android:id="@+id/action_confirmationFragment_to_adressListFragment"
+            app:destination="@id/adressListFragment"
+            app:enterAnim="@anim/slide_in_from_right"
+            app:exitAnim="@anim/slide_out_to_left"
+            app:popEnterAnim="@anim/slide_in_from_left"
+            app:popExitAnim="@anim/slide_out_to_right"/>
+        <action
+            android:id="@+id/action_confirmationFragment_to_historyFragment"
+            app:destination="@id/historyFragment"
+            app:enterAnim="@anim/slide_in_from_right"
+            app:exitAnim="@anim/slide_out_to_left"/>
+    </fragment>
+    <fragment
+        android:id="@+id/receiptFragment"
+        android:name="com.example.makaryoapps.ui.fragment.ReceiptFragment"
+        android:label="ReceiptFragment">
+        <action
+            android:id="@+id/action_receiptFragment_to_historyFragment"
+            app:destination="@id/historyFragment">
+            <argument
+                android:name="tabIndex"
+                app:argType="integer"
+                android:defaultValue="0" />
+        </action>
+    </fragment>
+
+    <fragment
+        android:id="@+id/historyFragment"
+        android:name="com.example.makaryoapps.ui.fragment.HistoryFragment"
+        android:label="HistoryFragment" />
+
+    <fragment
+        android:id="@+id/adressListFragment"
+        android:name="com.example.makaryoapps.ui.fragment.AdressListFragment"
+        android:label="fragment_adress_list"
+        tools:layout="@layout/fragment_adress_list" />
 </navigation>

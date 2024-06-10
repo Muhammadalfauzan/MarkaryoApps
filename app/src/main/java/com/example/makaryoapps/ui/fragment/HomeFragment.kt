@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.content.ContextCompat
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -20,8 +21,9 @@ import com.example.makaryoapps.ui.category.CategoryModel
 import com.example.makaryoapps.ui.recomended.RecomendedAdapter
 import com.example.makaryoapps.ui.recomended.RecomendedModel
 import com.facebook.shimmer.ShimmerFrameLayout
+import com.google.android.material.tabs.TabLayout
 
-class HomeFragment : Fragment() {
+class HomeFragment : Fragment(),RecomendedAdapter.OnItemClickListener  {
 
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
@@ -49,19 +51,37 @@ class HomeFragment : Fragment() {
         setupFirstRecyclerView()
         setupSecondRecyclerView()
         startShimmerEffect()
+        showTab()
+        binding.tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
+            override fun onTabSelected(tab: TabLayout.Tab) {
+                when (tab.position) {
+                    0 -> sortByNearest()  // Terdekat
+                    1 -> sortByRating()   // Ratting
+                }
+            }
 
-        binding.tvNearest.setOnClickListener {
-            binding.tvNearest.setTextColor(ContextCompat.getColor(requireContext(), R.color.yellow))
-            binding.tvBtnRatting.setTextColor(ContextCompat.getColor(requireContext(), R.color.grey_font))
-        }
+            override fun onTabUnselected(tab: TabLayout.Tab) {
+                // ...
+            }
 
-        binding.tvBtnRatting.setOnClickListener {
-            sortByRating()
-            binding.tvBtnRatting.setTextColor(ContextCompat.getColor(requireContext(), R.color.yellow))
-            binding.tvNearest.setTextColor(ContextCompat.getColor(requireContext(), R.color.grey_font))
-        }
+            override fun onTabReselected(tab: TabLayout.Tab) {
+                // ...
+            }
+        })
     }
+    private fun showTab(){
+        val allTab = binding.tabLayout.newTab()
+        allTab.text = "Semua"
+        binding.tabLayout.addTab(allTab)
 
+        val premiumTab = binding.tabLayout.newTab()
+        premiumTab.text = "Terdekat"
+        binding.tabLayout.addTab(premiumTab)
+
+        val freeTab = binding.tabLayout.newTab()
+        freeTab.text = "Ratting"
+        binding.tabLayout.addTab(freeTab)
+    }
     private fun setupFirstRecyclerView() {
         binding.recyclerView.layoutManager =
             LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
@@ -99,25 +119,35 @@ class HomeFragment : Fragment() {
         val ratingsStringArray = resources.getStringArray(R.array.data_star)
         val ratingsFloatArray = ratingsStringArray.map { it.toFloat() }.toFloatArray()
 
+        // Placeholder distances, replace with actual data
+        val distances = listOf(1.2f, 3.5f, 0.8f, 2.1f)
+
         dataSecond = names.indices.map { index ->
             RecomendedModel(
                 photo.getResourceId(index, -1),
                 names[index],
                 skills[index],
                 ratingsFloatArray[index],
-                R.drawable.ic_ratting
+                R.drawable.ic_ratting,
+                distances.getOrElse(index) { 0f }  // Handle potential size mismatch
             )
         }.toMutableList()
 
         photo.recycle()
 
-        secondAdapter = RecomendedAdapter(dataSecond)
+        secondAdapter = RecomendedAdapter(this)
         binding.rvRekomendasi.adapter = secondAdapter
+        secondAdapter.submitList(dataSecond)
     }
 
     private fun sortByRating() {
         val sortedList = dataSecond.sortedByDescending { it.nilaiRatting }
-        secondAdapter.replaceData(sortedList)
+        secondAdapter.submitList(sortedList)
+    }
+
+    private fun sortByNearest() {
+        val sortedList = dataSecond.sortedBy { it.distance }  // Sorting by distance
+        secondAdapter.submitList(sortedList)
     }
 
     private fun startShimmerEffect() {
@@ -127,7 +157,7 @@ class HomeFragment : Fragment() {
         binding.shimmerRekomendasi.startShimmer()
         binding.shimmerBanner.visibility = View.VISIBLE
         binding.shimmerBanner.startShimmer()
-
+        binding.tabLayout.visibility = View.GONE
         binding.recyclerView.visibility = View.GONE
         binding.rvRekomendasi.visibility = View.GONE
 
@@ -144,6 +174,7 @@ class HomeFragment : Fragment() {
             it.shimmerBanner.visibility = View.GONE
             it.recyclerView.visibility = View.VISIBLE
             it.rvRekomendasi.visibility = View.VISIBLE
+            it.tabLayout.visibility = View.VISIBLE
             setupBanner()
             handler.postDelayed(bannerRunnable, 3000)
         }
@@ -167,4 +198,10 @@ class HomeFragment : Fragment() {
         handler.removeCallbacks(bannerRunnable)
         _binding = null
     }
+
+    override fun onItemClick(data: RecomendedModel) {
+        val bundle = bundleOf("item" to data)
+        findNavController().navigate(R.id.action_homeFragment_to_detailFragment, bundle)
+    }
+
 }

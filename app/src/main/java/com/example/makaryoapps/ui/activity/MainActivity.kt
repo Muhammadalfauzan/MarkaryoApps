@@ -18,8 +18,11 @@ class MainActivity : AppCompatActivity() {
         R.id.builderFragment,
         R.id.cleaningFragment,
         R.id.otomotifFragment,
-        R.id.electronicFragment
-
+        R.id.electronicFragment,
+        R.id.detailChatFragment,
+        R.id.confirmationFragment,
+        R.id.adressListFragment,
+        R.id.receiptFragment
         )
 
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -19,8 +19,8 @@ class BuilderFragment : Fragment(), DetailCategoryAdapter.OnItemClickListener {
 
     private var _binding: FragmentBuilderBinding? = null
     private val binding get() = _binding!!
-    private var dataBuilder: ArrayList<DetailCategoryModel> = ArrayList()
-
+    private val dataBuilder: ArrayList<DetailCategoryModel> = ArrayList()
+    private lateinit var listDetailCategoryAdapter: DetailCategoryAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,13 +32,14 @@ class BuilderFragment : Fragment(), DetailCategoryAdapter.OnItemClickListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        getDataBuilder() // Panggil fungsi untuk mendapatkan dataBuilder
-        showRecycler()
+        setupRecyclerView()
+        getDataBuilder()
         iconBackClicked()
     }
 
     @SuppressLint("Recycle")
     private fun getDataBuilder() {
+        dataBuilder.clear() // Clear the list to avoid duplication
         val photo = resources.obtainTypedArray(R.array.data_photo)
         val names = resources.getStringArray(R.array.data_craftsman)
         val ratingsStringArray = resources.getStringArray(R.array.data_star)
@@ -62,12 +63,14 @@ class BuilderFragment : Fragment(), DetailCategoryAdapter.OnItemClickListener {
 
         photo.recycle()
         imgStatus.recycle()
+
+        listDetailCategoryAdapter.submitList(dataBuilder) // Set the data to the adapter
     }
 
-    private fun showRecycler() {
+    private fun setupRecyclerView() {
         binding.rvBuilder.layoutManager =
             LinearLayoutManager(requireActivity(), LinearLayoutManager.VERTICAL, false)
-        val listDetailCategoryAdapter = DetailCategoryAdapter(dataBuilder, this)
+        listDetailCategoryAdapter = DetailCategoryAdapter(this) // Initialize the adapter
         binding.rvBuilder.adapter = listDetailCategoryAdapter
     }
 

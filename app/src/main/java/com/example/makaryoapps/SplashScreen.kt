@@ -11,7 +11,7 @@ import com.example.makaryoapps.ui.activity.ActivityLogin
 @SuppressLint("CustomSplashScreen")
 @Suppress("DEPRECATION")
 class SplashScreen : AppCompatActivity() {
-    private val splashTimeOut: Long = 3000
+    private val splashTimeOut: Long = 4500
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

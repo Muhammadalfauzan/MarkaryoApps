@@ -11,6 +11,7 @@
         android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingBottom="10dp"
         android:backgroundTint="@color/white"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
@@ -44,7 +45,7 @@
             <com.google.android.material.search.SearchBar
                 android:id="@+id/search_bar"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:backgroundTint="@color/grey"
                 android:hint="@string/searchbar_hint"
                 android:elevation="10dp"
@@ -63,6 +64,7 @@
         android:hint="@string/searchbar_hint"
         app:layout_anchor="@id/search_bar"
         app:layout_anchorGravity="bottom"
+        android:backgroundTint="@color/dark_grey"
         style="@style/CustomSearchView">
 
         <androidx.recyclerview.widget.RecyclerView
@@ -86,26 +88,38 @@
                 android:layout_width="match_parent"
                 android:layout_height="90dp"
                 android:backgroundTint="@color/white"
-                app:cardCornerRadius="0dp"
-                app:cardElevation="10dp"
+                android:layout_marginStart="12dp"
+                android:layout_marginEnd="12dp"
+                android:background="@drawable/myrect"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="5dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="90dp">
 
-                    <ImageView
-                        android:id="@+id/imageView3"
-                        android:layout_width="70dp"
-                        android:layout_height="70dp"
-                        android:layout_marginStart="10dp"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginBottom="10dp"
-                        android:src="@drawable/jeni"
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/cardView2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:cardCornerRadius="8dp"
+                        android:layout_margin="10dp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <ImageView
+                            android:id="@+id/imageView3"
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
+                            android:background="@drawable/bg_photo"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/jihan" />
+                    </androidx.cardview.widget.CardView>
+
 
                     <TextView
                         android:id="@+id/textView2"
@@ -115,15 +129,14 @@
                         android:text="Hai, Jeniver"
                         android:textSize="16sp"
                         android:textStyle="bold"
-                        app:layout_constraintStart_toEndOf="@+id/imageView3"
-                        app:layout_constraintTop_toTopOf="@+id/imageView3" />
+                        app:layout_constraintStart_toEndOf="@+id/cardView2"
+                        app:layout_constraintTop_toTopOf="@+id/cardView2" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="10dp"
                         android:text="Selamat Datang"
-                        app:layout_constraintStart_toEndOf="@+id/imageView3"
+                        app:layout_constraintStart_toStartOf="@+id/textView2"
                         app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
@@ -134,8 +147,7 @@
                 android:id="@+id/textView6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="12dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="15dp"
                 android:text="@string/kategori"
                 android:textSize="16dp"
                 android:textStyle="bold"
@@ -184,35 +196,33 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
-            <TextView
-                android:id="@+id/tv_nearest"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Terdekat"
-                android:textColor="#9FA8B7"
-                android:textSize="14sp"
-                android:layout_marginTop="16dp"
-                app:layout_constraintStart_toStartOf="@+id/textView7"
-                app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
-            <TextView
-                android:id="@+id/tv_btnRatting"
-                android:layout_width="wrap_content"
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tabLayout"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:text="Ratting"
-                android:textSize="14sp"
-                android:textColor="#9FA8B7"
-                app:layout_constraintStart_toEndOf="@+id/tv_nearest"
-                app:layout_constraintTop_toTopOf="@+id/tv_nearest" />
+                android:layout_marginHorizontal="12dp"
+                android:backgroundTint="@color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView7"
+                app:tabGravity="fill"
+                app:tabIndicator="@drawable/tab_indikator"
+                app:tabIndicatorColor="@color/yellow"
+                app:tabIndicatorFullWidth="true"
+                app:tabIndicatorGravity="stretch"
+                app:tabMode="fixed"
+                app:tabSelectedTextColor="@color/white"
+                app:tabTextColor="@color/black" />
+           <!-- android:backgroundTint="#EBF3FC"-->
 
             <com.facebook.shimmer.ShimmerFrameLayout
                 android:id="@+id/shimmerRekomendasi"
                 android:layout_width="match_parent"
                 android:layout_height="230dp"
-                android:layout_marginTop="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_nearest">
+                app:layout_constraintTop_toBottomOf="@+id/tabLayout">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -230,10 +240,10 @@
                 android:id="@+id/rvRekomendasi"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_btnRatting"
+                app:layout_constraintTop_toBottomOf="@+id/tabLayout"
                 tools:itemCount="1"
                 tools:listitem="@layout/item_rekomendasi" />
 

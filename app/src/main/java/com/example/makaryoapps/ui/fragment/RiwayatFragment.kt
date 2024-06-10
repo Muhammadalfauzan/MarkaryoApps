@@ -27,7 +27,6 @@ class RiwayatFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Data untuk RecyclerView
         val dataHistory = listOf(
             HistoryModel(
                 R.drawable.rec_1,
@@ -64,16 +63,8 @@ class RiwayatFragment : Fragment() {
                 "Service sudah selesai",
                 "2 May, 2024"
             ),
-            HistoryModel(
-                R.drawable.rec_1,
-                "Ibrahim",
-                "4.7",
-                "Service sudah selesai",
-                "2 May, 2024"
-            )
         )
 
-        // Set adapter ke RecyclerView
         val adapter = HistoryAdapterRv(dataHistory)
         binding.rvHistory.layoutManager = LinearLayoutManager(context)
         binding.rvHistory.adapter = adapter

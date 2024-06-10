@@ -15,6 +15,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
+
     <TextView
         android:id="@+id/textView17"
         android:layout_width="wrap_content"
@@ -34,22 +36,26 @@
         android:fontFamily="@font/poppins_regular"
         android:text="Ini isi chat terakhir"
         android:textSize="12sp"
+
         app:layout_constraintStart_toStartOf="@+id/textView17"
         app:layout_constraintTop_toBottomOf="@+id/textView17" />
 
     <TextView
+
+        android:id="@+id/tv_contoh"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:text="10:25 PM"
-        android:fontFamily="@font/poppins_regular"
-        android:textSize="10sp"
         android:layout_marginTop="2dp"
+        android:layout_marginEnd="16dp"
+        android:fontFamily="@font/poppins_regular"
+
+        android:text="10:25 PM"
+        android:textSize="10sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/textView17" />
 
     <View
-        android:id="@+id/view"
+
         android:layout_width="match_parent"
         android:layout_height="2dp"
         android:layout_marginTop="8dp"

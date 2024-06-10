@@ -13,6 +13,17 @@
         <item>5.0</item>
     </string-array>
 
+    <string-array name="data_distance">
+        <item>4</item>
+        <item>3</item>
+        <item>2</item>
+        <item>8</item>
+        <item>1</item>
+        <item>5</item>
+        <item>2</item>
+        <item>7</item>
+    </string-array>
+
 
     <string-array name="data_category">
         <item>Builder</item>
@@ -28,10 +39,10 @@
         <item>Ac</item>
         <item>Kipas</item>
         <item>Cat Atap Pipa</item>
-        <item>Dedi Saputra</item>
-        <item>Eko Susanto</item>
-        <item>Fajar Hidayat</item>
-        <item>Guntur Pradipta</item>
+        <item>Pipa Ac</item>
+        <item>Atap</item>
+        <item>Pipa</item>
+        <item>Ac </item>
 
     </string-array>
 
@@ -146,6 +157,52 @@
         <item>Off</item>
 
     </string-array>
+
+
+    <string-array name="data_lastChat">
+        <item>Oke</item>
+        <item>Oke</item>
+        <item>Baik</item>
+        <item>Baik</item>
+        <item>Iya</item>
+        <item>Iya</item>
+        <item>Iya</item>
+        <item>Terima Kasih</item>
+
+    </string-array>
+
+    <string-array name="data_jam">
+        <item>10:30 PM</item>
+        <item>09:19 PM</item>
+        <item>08:12 PM</item>
+        <item>11:19 PM</item>
+        <item>11:19 PM</item>
+        <item>11:19 PM</item>
+        <item>11:19 PM</item>
+        <item>11:19 PM</item>
+
+    </string-array>
+
+    <string-array name="data_labelAlamat">
+        <item>Alamat Pertama</item>
+        <item>Alamat Kedua</item>
+        <item>Alamat Ketiga</item>
+    </string-array>
+
+    <string-array name="data_nameAlamat">
+        <item>Jihan (0847723823)</item>
+        <item>Jenifer (0847723823)</item>
+        <item>Ibrahim (0847723823)</item>
+    </string-array>
+
+    <string-array name="data_complateAlamat">
+        <item>Gang Kenangan No.70\nWedomartani,Ngemplak, Sleman, DI Yogyakarta</item>
+        <item>Jln Nin Aja Dulu No.04\nManisrenggo, Klaten, Jawa Tengah</item>
+        <item>klaten</item>
+    </string-array>
+
+
+
 
     <!-- Login-->
     <string name="login_sekarang">Login Sekarang</string>
