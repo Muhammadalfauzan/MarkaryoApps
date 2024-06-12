@@ -12,15 +12,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-
-
         <ImageButton
             android:id="@+id/ib_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:contentDescription="back"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="16dp"
             android:background="?android:attr/selectableItemBackgroundBorderless"
             android:src="@drawable/round_arrow_back_24"
             app:layout_constraintStart_toStartOf="parent"
@@ -256,16 +254,18 @@
         <Button
             android:id="@+id/btn_orderNow"
             android:layout_width="wrap_content"
-            android:layout_height="0dp"
+            android:layout_height="wrap_content"
             android:layout_marginHorizontal="10dp"
-            android:layout_marginEnd="12dp"
             android:layout_marginTop="16dp"
+            android:layout_marginEnd="12dp"
+            android:layout_marginBottom="12dp"
             android:backgroundTint="@color/yellow"
             android:fontFamily="@font/poppins_bold"
             android:shadowColor="@android:color/transparent"
             android:text="@string/order_now"
             android:textSize="16sp"
             app:cornerRadius="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/rvReview"
             tools:ignore="TextContrastCheck,VisualLintButtonSize,DuplicateSpeakableTextCheck" />

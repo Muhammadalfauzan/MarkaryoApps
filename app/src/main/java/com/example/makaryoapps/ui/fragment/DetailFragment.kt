@@ -15,6 +15,7 @@ import com.example.makaryoapps.ui.detail.PortofolioAdapter
 import com.example.makaryoapps.ui.detail.PortofolioModel
 import com.example.makaryoapps.ui.detail.ReviewAdapter
 import com.example.makaryoapps.ui.detail.ReviewModel
+import com.example.makaryoapps.ui.history.HistoryModel
 import com.example.makaryoapps.ui.recomended.RecomendedModel
 
 
@@ -28,6 +29,7 @@ class DetailFragment : Fragment() {
     private var showingAllReviews: Boolean = false
     private var detailCategoryItem: DetailCategoryModel? = null
     private var recommendedItem: RecomendedModel? = null
+    private var historyItem: HistoryModel? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -58,7 +60,11 @@ class DetailFragment : Fragment() {
                 bundle.putString("craftsman_name", it.nameCrafts)
                 bundle.putInt("price", 19500)
                 findNavController().navigate(R.id.action_detailFragment_to_confirmationFragment, bundle)
-            }
+            } ?: historyItem?.let {
+            bundle.putString("craftsman_name", it.nameBuilder)
+            bundle.putInt("price", 19500)
+            findNavController().navigate(R.id.action_detailFragment_to_confirmationFragment, bundle)
+        }
         }
     }
 
@@ -119,6 +125,13 @@ class DetailFragment : Fragment() {
                 binding.tvCraftsName.text = data.nameCrafts
                 binding.tvSkilled.text = data.skill1
                 binding.tvRatting.text = data.ratting.toString()
+            }
+            is HistoryModel -> {
+                historyItem = data
+                binding.imgCraftsman.setImageResource(data.imageBuilder)
+                binding.tvCraftsName.text = data.nameBuilder
+                binding.tvRatting.text = data.ratting.toString()
+
             }
         }
     }

@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.makaryoapps.R
 import com.example.makaryoapps.databinding.FragmentAdressListBinding
@@ -18,6 +19,7 @@ class AdressListFragment : Fragment(), AddressAdapter.OnItemClickListener {
     private var _binding: FragmentAdressListBinding? = null
     private val binding get() = _binding!!
     private var dataAddress: ArrayList<AddressModel> = ArrayList()
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -28,19 +30,25 @@ class AdressListFragment : Fragment(), AddressAdapter.OnItemClickListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        getDataAddress()
         showRecycler()
         iconBackClicked()
 
+        binding.floatingActionButton.setOnClickListener {
+            findNavController().navigate(R.id.action_adressListFragment_to_addAddressFragment)
+        }
+    }
 
+    override fun onResume() {
+        super.onResume()
+        getDataAddress()
     }
 
     private fun getDataAddress() {
+        val label = resources.getStringArray(R.array.data_labelAlamat)
+        val name = resources.getStringArray(R.array.data_nameAlamat)
+        val alamat = resources.getStringArray(R.array.data_complateAlamat)
 
-        val label =  resources.getStringArray(R.array.data_labelAlamat)
-        val name =  resources.getStringArray(R.array.data_nameAlamat)
-        val alamat =  resources.getStringArray(R.array.data_complateAlamat)
-
+        dataAddress.clear() // Clear the existing data before adding new
         for (i in label.indices) {
             val address = AddressModel(
                 label[i],
@@ -54,16 +62,18 @@ class AdressListFragment : Fragment(), AddressAdapter.OnItemClickListener {
     private fun showRecycler() {
         binding.rvAddressList.layoutManager =
             LinearLayoutManager(requireActivity(), LinearLayoutManager.VERTICAL, false)
-        val listDetailCategoryAdapter = AddressAdapter(dataAddress, this,)
-        binding.rvAddressList.adapter = listDetailCategoryAdapter
+        val addressAdapter = AddressAdapter(this)
+        binding.rvAddressList.adapter = addressAdapter
+        addressAdapter.submitList(dataAddress)
     }
-    override fun onItemClickChat(address: AddressModel) {
 
+    override fun onItemClick(address: AddressModel) {
+        // Handle the item click here
     }
 
     private fun iconBackClicked() {
         binding.ibBack.setOnClickListener {
-            requireActivity().onBackPressed()
+            requireActivity().onBackPressedDispatcher.onBackPressed()
         }
     }
 

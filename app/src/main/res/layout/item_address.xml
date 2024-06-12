@@ -2,7 +2,7 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="140dp"
-    android:layout_marginTop="12dp"
+    android:layout_marginTop="1dp"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:elevation="10dp">
@@ -17,6 +17,7 @@
                 android:id="@+id/imgCraftsman"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
+                android:layout_marginTop="4dp"
                 android:layout_marginStart="10dp"
                 android:src="@drawable/ic_location"
                 app:layout_constraintEnd_toStartOf="@+id/tv_labelAlamat"

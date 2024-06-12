@@ -26,8 +26,7 @@ class HistoryFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        setupViewPager(binding.tabLayout)
+        setupViewPager()
 
         // Get the arguments and set the current tab
         arguments?.let {
@@ -36,13 +35,13 @@ class HistoryFragment : Fragment() {
         }
     }
 
-    private fun setupViewPager(tabLayout: TabLayout) {
+    private fun setupViewPager() {
         val adapter = HistoryPagerAdapter(childFragmentManager, viewLifecycleOwner.lifecycle)
         adapter.addFragment(DalamProsesFragment(), getString(R.string.dalam_proses))
         adapter.addFragment(RiwayatFragment(), getString(R.string.riwayat))
         binding.viewPager.adapter = adapter
 
-        TabLayoutMediator(tabLayout, binding.viewPager) { tab, position ->
+        TabLayoutMediator(binding.tabLayout, binding.viewPager) { tab, position ->
             tab.text = adapter.getPageTitle(position)
         }.attach()
     }

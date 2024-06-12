@@ -1,20 +1,24 @@
 package com.example.makaryoapps.ui.fragment
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.makaryoapps.R
 import com.example.makaryoapps.databinding.FragmentRiwayatBinding
 import com.example.makaryoapps.ui.history.HistoryAdapterRv
 import com.example.makaryoapps.ui.history.HistoryModel
 
-class RiwayatFragment : Fragment() {
+class RiwayatFragment : Fragment(), HistoryAdapterRv.OnItemClickListener {
 
     private var _binding: FragmentRiwayatBinding? = null
     private val binding get() = _binding!!
+    private lateinit var secondAdapter: HistoryAdapterRv
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -26,52 +30,41 @@ class RiwayatFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setupHistoryRecyclerView()
+    }
+
+    private fun setupHistoryRecyclerView() {
+        binding.rvHistory.layoutManager = LinearLayoutManager(requireContext())
+        secondAdapter = HistoryAdapterRv(this)
+        binding.rvHistory.adapter = secondAdapter
 
         val dataHistory = listOf(
             HistoryModel(
-                R.drawable.rec_1,
-                "Ibrahim",
+                R.drawable.jihan,
+                "Pusing asuw",
                 "4.7",
                 "Service sudah selesai",
-                "2 May, 2024"
-            ),
-            HistoryModel(
-                R.drawable.rec_1,
-                "Ibrahim",
-                "4.7",
-                "Service sudah selesai",
-                "2 May, 2024"
-            ),
-            HistoryModel(
-                R.drawable.rec_1,
-                "Ibrahim",
-                "4.7",
-                "Service sudah selesai",
-                "2 May, 2024"
-            ),
-            HistoryModel(
-                R.drawable.rec_1,
-                "Ibrahim",
-                "4.7",
-                "Service sudah selesai",
-                "2 May, 2024"
-            ),
-            HistoryModel(
-                R.drawable.rec_1,
-                "Ibrahim",
-                "4.7",
-                "Service sudah selesai",
-                "2 May, 2024"
-            ),
+                "2 May, 2024",
+            )
+            // Add more HistoryModel items as needed
         )
-
-        val adapter = HistoryAdapterRv(dataHistory)
-        binding.rvHistory.layoutManager = LinearLayoutManager(context)
-        binding.rvHistory.adapter = adapter
+        secondAdapter.submitList(dataHistory)
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    override fun onOrderAgainClick(data: HistoryModel) {
+        Log.d("RiwayatFragment", "Order Again clicked for: ${data.nameBuilder}, ${data.date}")
+        val bundle = bundleOf("item" to data)
+        findNavController().navigate(R.id.action_historyFragment_to_detailFragment, bundle)
+    }
+
+    override fun onPrintReceiptClick(data: HistoryModel) {
+        Log.d("RiwayatFragment", "Print Receipt clicked for: ${data.nameBuilder}, ${data.date}")
+        val bundle = bundleOf("item" to data)
+        findNavController().navigate(R.id.action_historyFragment_to_receiptFragment, bundle)
     }
 }

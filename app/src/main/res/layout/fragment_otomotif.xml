@@ -15,26 +15,23 @@
 
         <ImageButton
             android:id="@+id/ib_back"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:background="?android:attr/selectableItemBackgroundBorderless"
             android:contentDescription="back"
-            android:src="@drawable/ic_backk"
-            android:scaleType="centerInside"
-            android:paddingTop="5dp"
-            android:paddingStart="5dp"
+
+            android:src="@drawable/round_arrow_back_24"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="TouchTargetSizeCheck" />
-
         <!--  android:background="?android:attr/selectableItemBackground"-->
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/materialTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="12dp"
             android:text="Otomotif"
             android:textSize="16sp"
             android:fontFamily="@font/poppins_bold"

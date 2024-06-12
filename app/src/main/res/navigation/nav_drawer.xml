@@ -11,9 +11,6 @@
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
         <action
-            android:id="@+id/action_homeFragment_to_historyFragment2"
-            app:destination="@id/historyFragment" />
-        <action
             android:id="@+id/action_homeFragment_to_profileFragment"
             app:destination="@id/profileFragment" />
         <action
@@ -54,6 +51,12 @@
             app:exitAnim="@anim/slide_out_to_left"
             app:popEnterAnim="@anim/slide_in_from_left"
             app:popExitAnim="@anim/slide_out_to_right"/>
+        <action
+            android:id="@+id/action_homeFragment_to_historyFragment2"
+            app:destination="@id/historyFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_historyFragment"
+            app:destination="@id/historyFragment" />
     </fragment>
    <!-- <fragment
         android:id="@+id/historyFragment"
@@ -97,11 +100,20 @@
         android:name="com.example.makaryoapps.ui.activity.ActivityLogin"
         android:label="activity_login"
         tools:layout="@layout/activity_login" />
-    <fragment
+<!--    <fragment
         android:id="@+id/riwayatFragment"
         android:name="com.example.makaryoapps.ui.fragment.RiwayatFragment"
         android:label="fragment_riwayat"
-        tools:layout="@layout/fragment_riwayat" />
+        tools:layout="@layout/fragment_riwayat" >
+        <action
+            android:id="@+id/action_riwayatFragment_to_detailFragment"
+            app:destination="@id/detailFragment" />
+        <action
+            android:id="@+id/action_riwayatFragment_to_receiptFragment"
+            app:destination="@id/receiptFragment" />
+    </fragment>-->
+
+
     <fragment
         android:id="@+id/dalamProsesFragment"
         android:name="com.example.makaryoapps.ui.fragment.DalamProsesFragment"
@@ -170,6 +182,9 @@
             app:exitAnim="@anim/slide_out_to_left"
             app:popEnterAnim="@anim/slide_in_from_left"
             app:popExitAnim="@anim/slide_out_to_right"/>
+        <argument
+            android:name="historyModel"
+            app:argType="com.example.makaryoapps.ui.history.HistoryModel" />
     </fragment>
     <fragment
         android:id="@+id/updateProfileFragment"
@@ -194,33 +209,78 @@
             app:popEnterAnim="@anim/slide_in_from_left"
             app:popExitAnim="@anim/slide_out_to_right"/>
         <action
-            android:id="@+id/action_confirmationFragment_to_historyFragment"
-            app:destination="@id/historyFragment"
-            app:enterAnim="@anim/slide_in_from_right"
-            app:exitAnim="@anim/slide_out_to_left"/>
-    </fragment>
-    <fragment
-        android:id="@+id/receiptFragment"
-        android:name="com.example.makaryoapps.ui.fragment.ReceiptFragment"
-        android:label="ReceiptFragment">
+            android:id="@+id/action_confirmationFragment_to_receiptFragment"
+            app:destination="@id/receiptFragment" />
         <action
-            android:id="@+id/action_receiptFragment_to_historyFragment"
-            app:destination="@id/historyFragment">
-            <argument
-                android:name="tabIndex"
-                app:argType="integer"
-                android:defaultValue="0" />
-        </action>
+            android:id="@+id/action_confirmationFragment_to_historyFragment2"
+            app:destination="@id/historyFragment" />
+        <argument
+            android:name="historyModel"
+            app:argType="com.example.makaryoapps.ui.history.HistoryModel" />
     </fragment>
-
-    <fragment
-        android:id="@+id/historyFragment"
-        android:name="com.example.makaryoapps.ui.fragment.HistoryFragment"
-        android:label="HistoryFragment" />
 
     <fragment
         android:id="@+id/adressListFragment"
         android:name="com.example.makaryoapps.ui.fragment.AdressListFragment"
         android:label="fragment_adress_list"
-        tools:layout="@layout/fragment_adress_list" />
+        tools:layout="@layout/fragment_adress_list" >
+        <action
+            android:id="@+id/action_adressListFragment_to_addAddressFragment"
+            app:destination="@id/addAddressFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addAddressFragment"
+        android:name="com.example.makaryoapps.ui.fragment.AddAddressFragment"
+        android:label="fragment_add_address"
+        tools:layout="@layout/fragment_add_address" >
+        <action
+            android:id="@+id/action_addAddressFragment_to_adressListFragment"
+            app:destination="@id/adressListFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/riwayatFragment"
+        android:name="com.example.makaryoapps.ui.fragment.RiwayatFragment"
+        android:label="fragment_riwayat"
+        tools:layout="@layout/fragment_riwayat">
+        <action
+            android:id="@+id/action_riwayatFragment_to_detailFragment"
+            app:destination="@id/detailFragment" />
+        <action
+            android:id="@+id/action_riwayatFragment_to_receiptFragment"
+            app:destination="@id/receiptFragment" />
+        <action
+            android:id="@+id/action_riwayatFragment_to_confirmationFragment"
+            app:destination="@id/confirmationFragment" />
+        <action
+            android:id="@+id/action_riwayatFragment_to_updateProfileFragment"
+            app:destination="@id/updateProfileFragment" />
+
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/receiptFragment"
+        android:name="com.example.makaryoapps.ui.fragment.ReceiptFragment"
+        android:label="fragment_receipt"
+        tools:layout="@layout/fragment_receipt" >
+        <argument
+            android:name="historyModel"
+            app:argType="com.example.makaryoapps.ui.history.HistoryModel" />
+    </fragment>
+    <fragment
+        android:id="@+id/historyFragment"
+        android:name="com.example.makaryoapps.ui.fragment.HistoryFragment"
+        android:label="fragment_history"
+        tools:layout="@layout/fragment_history" >
+        <action
+            android:id="@+id/action_historyFragment_to_updateProfileFragment"
+            app:destination="@id/updateProfileFragment" />
+        <action
+            android:id="@+id/action_historyFragment_to_receiptFragment"
+            app:destination="@id/receiptFragment" />
+        <action
+            android:id="@+id/action_historyFragment_to_detailFragment"
+            app:destination="@id/detailFragment" />
+    </fragment>
 </navigation>

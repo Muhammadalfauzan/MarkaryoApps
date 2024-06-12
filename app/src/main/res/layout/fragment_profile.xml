@@ -11,20 +11,12 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <View
-            android:id="@+id/view1"
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:background="@color/dark_white"
-            android:outlineSpotShadowColor="@color/black"
-            app:layout_constraintBottom_toTopOf="@+id/appBarLayout"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+
         <com.google.android.material.appbar.AppBarLayout
             android:id="@+id/appBarLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
+
             android:background="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -32,7 +24,7 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="48dp">
+                android:layout_height="60dp">
 
                 <ImageButton
                     android:id="@+id/exitButton"
@@ -51,10 +43,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
+                    android:layout_marginTop="10dp"
                     android:text="Profile"
                     android:textSize="25sp"
                     android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     tools:ignore="RtlSymmetry" />
@@ -67,6 +59,7 @@
             android:id="@+id/view"
             android:layout_width="match_parent"
             android:layout_height="2dp"
+
             android:outlineSpotShadowColor="@color/black"
             android:background="@color/dark_white"
             app:layout_constraintEnd_toEndOf="parent"
@@ -163,6 +156,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
+                    android:background="@drawable/statelist_item_background"
                     android:padding="16dp">
 
                     <ImageView
@@ -191,6 +185,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
+                    android:background="@drawable/statelist_item_background"
                     android:padding="16dp">
 
                     <ImageView
@@ -215,22 +210,32 @@
                     android:visibility="visible" />
 
                 <LinearLayout
-                    android:id="@+id/riwayatPembayaran"
+                    android:id="@+id/beriRating"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
+                    android:background="@drawable/statelist_item_background"
                     android:padding="16dp">
 
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/ic_phone" />
+                        android:src="@drawable/baseline_star_outline_24" />
 
                     <TextView
-                        android:layout_width="match_parent"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                       android:layout_marginStart="5dp"
+                        android:layout_weight="1"
+                        android:text="Beri nilai"
+                         />
+
+                    <TextView
+                        android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_marginStart="10dp"
-                        android:text="@string/versi_app"
+                        android:text="v 1.0"
+                        android:drawablePadding="10dp"
                         app:drawableEndCompat="@drawable/ic_chevron_right" />
                 </LinearLayout>
 

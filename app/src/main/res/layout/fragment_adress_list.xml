@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:contentDescription="back"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="12dp"
         android:background="?android:attr/selectableItemBackgroundBorderless"
         android:src="@drawable/round_arrow_back_24"
         app:layout_constraintStart_toStartOf="parent"
@@ -65,7 +65,6 @@
         android:backgroundTint="@color/yellow"
         app:rippleColor="@color/white"
         app:tint ="@color/white"
-
         android:contentDescription="fab_content_desc"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

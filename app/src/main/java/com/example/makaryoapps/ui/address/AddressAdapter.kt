@@ -4,20 +4,24 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.makaryoapps.R
 import com.example.makaryoapps.databinding.ItemAddressBinding
+import com.example.makaryoapps.ui.chat.ChatAdapter
+import com.example.makaryoapps.ui.chat.ChatModel
 
 
 class AddressAdapter(
-    private val itemList: ArrayList<AddressModel>,
-    private val clickListener: OnItemClickListener
-) : RecyclerView.Adapter<AddressAdapter.MyViewHolder>() {
+    private val onItemClickListener: AddressAdapter.OnItemClickListener
+) :
+    ListAdapter<AddressModel, AddressAdapter.MyViewHolder>(DIFF_CALLBACK){
 
     private var selectedPosition = 0
 
     interface OnItemClickListener {
-        fun onItemClickChat(address: AddressModel)
+        fun onItemClick(address: AddressModel)
     }
 
     inner class MyViewHolder(val binding: ItemAddressBinding) : RecyclerView.ViewHolder(binding.root) {
@@ -32,7 +36,7 @@ class AddressAdapter(
             )
 
             binding.btnCheck.setOnClickListener {
-                clickListener.onItemClickChat(address)
+                onItemClickListener.onItemClick(address)
                 selectedPosition = adapterPosition
                 notifyDataSetChanged()
                 showAddressSelectedNotification(binding.root.context, address.complateAddress)
@@ -46,12 +50,25 @@ class AddressAdapter(
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        holder.bind(itemList[position], position == selectedPosition)
+        val isSelected = position == selectedPosition
+        holder.bind(getItem(position), isSelected)
     }
 
-    override fun getItemCount(): Int = itemList.size
+
 
     private fun showAddressSelectedNotification(context: Context, address: String) {
         Toast.makeText(context, "Alamat '$address' berhasil dipilih", Toast.LENGTH_SHORT).show()
+    }
+
+    companion object {
+        private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<AddressModel>() {
+            override fun areItemsTheSame(oldItem: AddressModel, newItem: AddressModel): Boolean {
+                return oldItem.name == newItem.name && oldItem.labelAlamat == newItem.labelAlamat
+            }
+
+            override fun areContentsTheSame(oldItem: AddressModel, newItem: AddressModel): Boolean {
+                return oldItem == newItem
+            }
+        }
     }
 }

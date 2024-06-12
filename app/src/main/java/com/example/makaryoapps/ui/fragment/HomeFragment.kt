@@ -18,6 +18,7 @@ import com.example.makaryoapps.R
 import com.example.makaryoapps.databinding.FragmentHomeBinding
 import com.example.makaryoapps.ui.category.CategoryAdapter
 import com.example.makaryoapps.ui.category.CategoryModel
+import com.example.makaryoapps.ui.costumdialogfragment.LocationPermissionDialogFragment
 import com.example.makaryoapps.ui.recomended.RecomendedAdapter
 import com.example.makaryoapps.ui.recomended.RecomendedModel
 import com.facebook.shimmer.ShimmerFrameLayout
@@ -52,6 +53,7 @@ class HomeFragment : Fragment(),RecomendedAdapter.OnItemClickListener  {
         setupSecondRecyclerView()
         startShimmerEffect()
         showTab()
+
         binding.tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab) {
                 when (tab.position) {
@@ -177,6 +179,8 @@ class HomeFragment : Fragment(),RecomendedAdapter.OnItemClickListener  {
             it.tabLayout.visibility = View.VISIBLE
             setupBanner()
             handler.postDelayed(bannerRunnable, 3000)
+
+
         }
     }
 

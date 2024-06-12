@@ -1,34 +1,55 @@
 package com.example.makaryoapps.ui.history
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.makaryoapps.databinding.ItemHistoryBinding
 
-class HistoryAdapterRv (private val itemList : List<HistoryModel>) : RecyclerView.Adapter<HistoryAdapterRv.MyViewHolder>() {
+class HistoryAdapterRv(private val listener: OnItemClickListener) : RecyclerView.Adapter<HistoryAdapterRv.HistoryViewHolder>() {
 
-    class MyViewHolder ( val binding:ItemHistoryBinding): RecyclerView.ViewHolder(binding.root)
+    private val data = mutableListOf<HistoryModel>()
 
-    override fun onCreateViewHolder(
-        parent: ViewGroup,
-        viewType: Int
-    ): HistoryAdapterRv.MyViewHolder {
-        val binding = ItemHistoryBinding.inflate(LayoutInflater.from(parent.context), parent,false)
-        return MyViewHolder(binding)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HistoryViewHolder {
+        val binding = ItemHistoryBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return HistoryViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder:MyViewHolder, position: Int) {
-        val item = itemList[position]
-        holder.binding.ivBuilderHistory.setImageResource(item.imageBuilder)
-        holder.binding.tvNameBuilderHistory.text= item.nameBuilder
-        holder.binding.tvStatusHistory.text = item.statusOrder
-        holder.binding.tvDateHistory.text = item.date
+    override fun onBindViewHolder(holder: HistoryViewHolder, position: Int) {
+        holder.bind(data[position])
+    }
 
-        holder.binding.btnReceipt.setOnClickListener {
+    override fun getItemCount(): Int = data.size
 
+    fun submitList(list: List<HistoryModel>) {
+        data.clear()
+        data.addAll(list)
+        notifyDataSetChanged()
+    }
+
+    inner class HistoryViewHolder(private val binding: ItemHistoryBinding) : RecyclerView.ViewHolder(binding.root) {
+
+        fun bind(history: HistoryModel) {
+            binding.apply {
+                ivBuilderHistory.setImageResource(history.imageBuilder)
+                tvNameBuilderHistory.text = history.nameBuilder
+                tvRatting.text = history.ratting
+                tvStatusHistory.text = history.statusOrder
+                tvDateHistory.text = history.date
+
+                btnPesanLagi.setOnClickListener {
+                    listener.onOrderAgainClick(history)
+                }
+
+                btnReceipt.setOnClickListener {
+                    listener.onPrintReceiptClick(history)
+                }
+            }
         }
+    }
 
-    } override fun getItemCount(): Int {
-        return itemList.size
-        }
+    interface OnItemClickListener {
+        fun onOrderAgainClick(data: HistoryModel)
+        fun onPrintReceiptClick(data: HistoryModel)
+    }
 }

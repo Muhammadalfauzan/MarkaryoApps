@@ -37,14 +37,14 @@ class RegisterActivity : AppCompatActivity() {
         val dialog = Dialog(this)
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
         dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-        dialog.setContentView(R.layout.dialog_succes_register)
+        dialog.setContentView(R.layout.dialog_sucess_add_address )
 
-        val next = dialog.findViewById<Button>(R.id.btn_suksesRegister)
+      /*  val next = dialog.findViewById<Button>(R.id.btn_suksesRegister)
         next.setOnClickListener {
             val i = Intent(this@RegisterActivity, ActivityLogin::class.java)
-            /*      i.putExtra(HomeFragment.EXTRA_NAME, email)*/
+            *//*      i.putExtra(HomeFragment.EXTRA_NAME, email)*//*
             startActivity(i)
-        }
+        }*/
 
         dialog.show()
     }

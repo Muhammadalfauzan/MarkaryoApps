@@ -47,7 +47,7 @@ class ConfirmationFragment : Fragment() {
         }
 
         binding.btnOrderNow.setOnClickListener {
-            findNavController().navigate(R.id.action_confirmationFragment_to_historyFragment)
+            findNavController().navigate(R.id.action_confirmationFragment_to_historyFragment2)
         }
     }
     private fun getCurrentDate(): String {

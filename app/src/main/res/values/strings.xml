@@ -202,8 +202,6 @@
     </string-array>
 
 
-
-
     <!-- Login-->
     <string name="login_sekarang">Login Sekarang</string>
     <string name="berhasil">Berhasil</string>
@@ -220,7 +218,14 @@
     <string name="invalid_password">invalid password </string>
     <string name="proses_login_anda_berhasil">Proses login anda berhasil! </string>
     <string name="proses_register_anda_berhasil">Proses Register anda berhasil! </string>
+    <string name="success_add_address">Berhasil menambahkan alamat! </string>
+    <string name="permission_location">Kami butuh akses lokasi untuk layanan \t yang lebih baik bagi anda! </string>
     <string name="lanjutkan">Lanjutkan</string>
+    <string name="izinkan">Izinkan</string>
+    <string name="keluar_dialog">Apakah anda yakin
+untuk keluar?</string>
+    <string name="keluar">Keluar</string>
+    <string name="batal">Batal</string>
 
 
     <!-- Profile-->
@@ -264,7 +269,11 @@
     <string name="example_deskripsi">Tukang bangunan terlibat dalam konstruksi dan renovasi bangunan. Mereka memiliki keterampilan dalam membaca gambar teknis, mengukur, memotong, dan memasang material seperti kayu, batu, beton, dan logam. </string>
 
 
-    <string name="field_can_not_be_empty">username tidak boleh kosong</string>
+    <string name="username_can_not_be_empty">username tidak boleh kosong</string>
+    <string name="field_can_not_be_empty">kolom ini tidak boleh kosong</string>
+
+
+    <string name="add_address">Tambah Alamat</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

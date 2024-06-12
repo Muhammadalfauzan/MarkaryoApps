@@ -8,6 +8,7 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.example.makaryoapps.R
 import com.example.makaryoapps.databinding.ActivityMainBinding
+import com.example.makaryoapps.ui.costumdialogfragment.LocationPermissionDialogFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
@@ -22,7 +23,8 @@ class MainActivity : AppCompatActivity() {
         R.id.detailChatFragment,
         R.id.confirmationFragment,
         R.id.adressListFragment,
-        R.id.receiptFragment
+        R.id.receiptFragment,
+        R.id.addAddressFragment
         )
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,6 +37,7 @@ class MainActivity : AppCompatActivity() {
         val navController = navHostFragment.navController
         binding.bottomNavigationView.setupWithNavController(navController)
         setupBottomNavVisibility(navController)
+        showLocationPermissionDialog()
 
     }
 
@@ -47,6 +50,11 @@ class MainActivity : AppCompatActivity() {
                     BottomNavigationView.VISIBLE
                 }
         }
+    }
+
+    private fun showLocationPermissionDialog() {
+        val dialog = LocationPermissionDialogFragment()
+        dialog.show(supportFragmentManager, "LocationPermissionDialog")
     }
 }
 

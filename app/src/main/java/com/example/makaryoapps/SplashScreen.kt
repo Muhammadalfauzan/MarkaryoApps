@@ -24,4 +24,5 @@ class SplashScreen : AppCompatActivity() {
             finish()
         }, splashTimeOut)
     }
+
 }
