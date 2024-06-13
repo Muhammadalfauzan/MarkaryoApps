@@ -14,7 +14,7 @@ import com.example.makaryoapps.databinding.FragmentAdressListBinding
 import com.example.makaryoapps.ui.address.AddressModel
 
 
-class AdressListFragment : Fragment(), AddressAdapter.OnItemClickListener {
+class AdressListFragment : Fragment(), AddressAdapter.AddressClickListener {
 
     private var _binding: FragmentAdressListBinding? = null
     private val binding get() = _binding!!
@@ -47,13 +47,15 @@ class AdressListFragment : Fragment(), AddressAdapter.OnItemClickListener {
         val label = resources.getStringArray(R.array.data_labelAlamat)
         val name = resources.getStringArray(R.array.data_nameAlamat)
         val alamat = resources.getStringArray(R.array.data_complateAlamat)
+        val noHp = resources.getStringArray(R.array.data_noHpAlamat)
 
         dataAddress.clear() // Clear the existing data before adding new
         for (i in label.indices) {
             val address = AddressModel(
                 label[i],
                 name[i],
-                alamat[i]
+                alamat[i],
+                noHp[i]
             )
             dataAddress.add(address)
         }
@@ -69,6 +71,16 @@ class AdressListFragment : Fragment(), AddressAdapter.OnItemClickListener {
 
     override fun onItemClick(address: AddressModel) {
         // Handle the item click here
+    }
+
+    override fun onEditClick(address: AddressModel) {
+        val bundle = Bundle().apply {
+            putString("labelAlamat", address.labelAlamat)
+            putString("name", address.name)
+            putString("alamatLengkap", address.complateAddress)
+            putString("nomorHp", address.noHp)
+        }
+        findNavController().navigate(R.id.action_adressListFragment_to_updateAddressFragment, bundle)
     }
 
     private fun iconBackClicked() {

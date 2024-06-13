@@ -57,10 +57,22 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
                 android:fontFamily="@font/poppins_regular"
-                android:text="Jeniver (0847723823)"
+                android:text="Jeniver"
                 android:textSize="12sp"
                 app:layout_constraintStart_toStartOf="@+id/tv_labelAlamat"
                 app:layout_constraintTop_toBottomOf="@+id/tv_labelAlamat"
+                tools:ignore="SpUsage,TextSizeCheck" />
+
+            <TextView
+                android:id="@+id/tv_noHp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_regular"
+                android:text="(0847723823)"
+                android:textSize="12sp"
+                android:layout_marginStart="2dp"
+                app:layout_constraintStart_toEndOf="@+id/tv_name"
+                app:layout_constraintTop_toTopOf="@+id/tv_name"
                 tools:ignore="SpUsage,TextSizeCheck" />
 
             <TextView

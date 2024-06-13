@@ -5,4 +5,4 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class RecomendedModel (val imageRec: Int, val nameBuilder : String,
-    val skill: String, val nilaiRatting: Float, val icRatting: Int, val distance : Float) : Parcelable
+    val skill: String, val nilaiRatting: Float, val icRatting: Int, val distance : Float, val address: String) : Parcelable

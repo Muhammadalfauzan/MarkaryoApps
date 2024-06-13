@@ -3,15 +3,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="320dp"
-    android:layout_height="200dp"
+    android:layout_height="250dp"
     android:layout_gravity="center"
     app:cardCornerRadius="10dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/cardview_dialog"
         android:layout_width="wrap_content"
-        android:layout_height="200dp"
-        android:padding="16dp"
+        android:layout_height="250dp"
+       android:padding="10dp"
         android:background="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -52,5 +52,19 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/textView4"
             app:layout_constraintWidth_percent="0.7" />
+
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_lewatkan"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/yellow_second"
+            android:textColor="@color/yellow"
+            android:layout_marginTop="8dp"
+            android:text="@string/lewatkan"
+            app:cornerRadius="8dp"
+            app:layout_constraintEnd_toEndOf="@+id/btn_izinkan"
+            app:layout_constraintStart_toStartOf="@+id/btn_izinkan"
+            app:layout_constraintTop_toBottomOf="@+id/btn_izinkan" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

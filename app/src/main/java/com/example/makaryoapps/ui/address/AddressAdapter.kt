@@ -14,14 +14,14 @@ import com.example.makaryoapps.ui.chat.ChatModel
 
 
 class AddressAdapter(
-    private val onItemClickListener: AddressAdapter.OnItemClickListener
-) :
-    ListAdapter<AddressModel, AddressAdapter.MyViewHolder>(DIFF_CALLBACK){
+    private val listener: AddressClickListener
+) : ListAdapter<AddressModel, AddressAdapter.MyViewHolder>(DIFF_CALLBACK) {
 
     private var selectedPosition = 0
 
-    interface OnItemClickListener {
+    interface AddressClickListener {
         fun onItemClick(address: AddressModel)
+        fun onEditClick(address: AddressModel)
     }
 
     inner class MyViewHolder(val binding: ItemAddressBinding) : RecyclerView.ViewHolder(binding.root) {
@@ -36,10 +36,14 @@ class AddressAdapter(
             )
 
             binding.btnCheck.setOnClickListener {
-                onItemClickListener.onItemClick(address)
+                listener.onItemClick(address)
                 selectedPosition = adapterPosition
                 notifyDataSetChanged()
                 showAddressSelectedNotification(binding.root.context, address.complateAddress)
+            }
+
+            binding.tvUpdateAddress.setOnClickListener {
+                listener.onEditClick(address)
             }
         }
     }
@@ -53,8 +57,6 @@ class AddressAdapter(
         val isSelected = position == selectedPosition
         holder.bind(getItem(position), isSelected)
     }
-
-
 
     private fun showAddressSelectedNotification(context: Context, address: String) {
         Toast.makeText(context, "Alamat '$address' berhasil dipilih", Toast.LENGTH_SHORT).show()

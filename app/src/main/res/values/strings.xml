@@ -2,16 +2,7 @@
     <string name="app_name">MakaryoApps</string>
 
     <!--data dummy-->
-    <string-array name="data_star">
-        <item>4.8</item>
-        <item>4.7</item>
-        <item>4.9</item>
-        <item>4.4</item>
-        <item>4.5</item>
-        <item>4.8</item>
-        <item>4.6</item>
-        <item>5.0</item>
-    </string-array>
+
 
     <string-array name="data_distance">
         <item>4</item>
@@ -33,18 +24,55 @@
 
     </string-array>
 
+    <string-array name="data_star">
+        <item>4.0</item>
+        <item>4.1</item>
+        <item>4.3</item>
+        <item>4.4</item>
+        <item>4.5</item>
+        <item>4.8</item>
+        <item>4.6</item>
+        <item>5.0</item>
+    </string-array>
 
     <string-array name="data_skill">
         <item>Karpet</item>
-        <item>Ac</item>
-        <item>Kipas</item>
+        <item>Modifikasi TurnUp</item>
+        <item>Kipas Ac</item>
         <item>Cat Atap Pipa</item>
-        <item>Pipa Ac</item>
+        <item>Karpet </item>
         <item>Atap</item>
         <item>Pipa</item>
         <item>Ac </item>
 
     </string-array>
+
+    <string-array name="data_alamat">
+        <item>Bantul, DI.Yoyakarta TurnUp</item>
+        <item>Klaten, Jawa tengah</item>
+        <item>Gunung Kidul, DI. Yogyakarta</item>
+        <item>Bantul, DI. Yogyakarta </item>
+        <item>Sleman, DI. Yogyakarta</item>
+        <item>Sleman, DI. Yogyakarta</item>
+        <item>Kulon Progo, DI. Yogyakarta</item>
+        <item>Kota Yogyakarta</item>
+
+    </string-array>
+
+
+    <!-- builder-->
+
+    <integer-array name="data_photo">
+        <item>@drawable/rec_1</item>
+        <item>@drawable/dede</item>
+        <item>@drawable/rec_1</item>
+        <item>@drawable/dede</item>
+        <item>@drawable/rec_1</item>
+        <item>@drawable/rec_1</item>
+        <item>@drawable/rec_1</item>
+        <item>@drawable/dede</item>
+
+    </integer-array>
 
     <string-array name="data_dalam_proses">
         <item>sedang dalam perjalanan</item>
@@ -84,23 +112,10 @@
 
     </string-array>
 
-    <!-- builder-->
-
-    <integer-array name="data_photo">
-        <item>@drawable/rec_1</item>
-        <item>@drawable/rec_1</item>
-        <item>@drawable/rec_1</item>
-        <item>@drawable/rec_1</item>
-        <item>@drawable/rec_1</item>
-        <item>@drawable/rec_1</item>
-        <item>@drawable/rec_1</item>
-        <item>@drawable/rec_1</item>
-
-    </integer-array>
 
     <string-array name="data_craftsman">
         <item>Ibrahim</item>
-        <item>Andi Pratama</item>
+        <item>Dede Inoen </item>
         <item>Budi Santoso</item>
         <item>Chandra Wijaya</item>
         <item>Dedi Saputra</item>
@@ -190,9 +205,15 @@
     </string-array>
 
     <string-array name="data_nameAlamat">
-        <item>Jihan (0847723823)</item>
-        <item>Jenifer (0847723823)</item>
-        <item>Ibrahim (0847723823)</item>
+        <item>Jihan </item>
+        <item>Jenifer </item>
+        <item>Ibrahim </item>
+    </string-array>
+
+    <string-array name="data_noHpAlamat">
+        <item>(0847723823)</item>
+        <item>(0847723823)</item>
+        <item>(0847723823)</item>
     </string-array>
 
     <string-array name="data_complateAlamat">
@@ -217,11 +238,14 @@
     <string name="atau_masuk_dengan_menggunakan">atau masuk dengan menggunakan  :</string>
     <string name="invalid_password">invalid password </string>
     <string name="proses_login_anda_berhasil">Proses login anda berhasil! </string>
+    <string name="succes_order">Tukang berhasil di pesan!</string>
     <string name="proses_register_anda_berhasil">Proses Register anda berhasil! </string>
     <string name="success_add_address">Berhasil menambahkan alamat! </string>
+    <string name="success_update_address">Berhasil mengubah alamat! </string>
     <string name="permission_location">Kami butuh akses lokasi untuk layanan \t yang lebih baik bagi anda! </string>
     <string name="lanjutkan">Lanjutkan</string>
     <string name="izinkan">Izinkan</string>
+    <string name="lewatkan">Lewatkan</string>
     <string name="keluar_dialog">Apakah anda yakin
 untuk keluar?</string>
     <string name="keluar">Keluar</string>
@@ -274,6 +298,7 @@ untuk keluar?</string>
 
 
     <string name="add_address">Tambah Alamat</string>
+    <string name="update_address">Ubah Alamat</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

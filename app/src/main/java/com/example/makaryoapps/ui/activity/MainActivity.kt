@@ -1,14 +1,14 @@
 package com.example.makaryoapps.ui.activity
 
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
-import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.example.makaryoapps.R
 import com.example.makaryoapps.databinding.ActivityMainBinding
-import com.example.makaryoapps.ui.costumdialogfragment.LocationPermissionDialogFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
@@ -24,22 +24,53 @@ class MainActivity : AppCompatActivity() {
         R.id.confirmationFragment,
         R.id.adressListFragment,
         R.id.receiptFragment,
-        R.id.addAddressFragment
-        )
+        R.id.addAddressFragment,
+        R.id.updateAddressFragment,
+        R.id.updateProfileFragment
+    )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        val isLoggedIn = isLoggedIn()
+        if (!isLoggedIn) {
+            // Redirect to login activity if not logged in
+            redirectToLogin()
+            return
+        }
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
         val navController = navHostFragment.navController
         binding.bottomNavigationView.setupWithNavController(navController)
         setupBottomNavVisibility(navController)
-        showLocationPermissionDialog()
 
+        // Handle bottom navigation item clicks to ensure correct navigation
+        binding.bottomNavigationView.setOnItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.homeFragment -> {
+                    navController.navigate(R.id.homeFragment)
+                    true
+                }
+                R.id.historyFragment -> {
+                    navController.navigate(R.id.historyFragment)
+                    true
+                }
+                R.id.chatFragment -> {
+                    navController.navigate(R.id.chatFragment)
+                    true
+                }
+                R.id.profileFragment -> {
+                    navController.navigate(R.id.profileFragment)
+                    true
+                }
+                // Add other navigation items here
+                else -> false
+            }
+        }
     }
+
 
     private fun setupBottomNavVisibility(navController: NavController) {
         navController.addOnDestinationChangedListener { _, destination, _ ->
@@ -51,10 +82,15 @@ class MainActivity : AppCompatActivity() {
                 }
         }
     }
+    private fun isLoggedIn(): Boolean {
+        val sharedPreferences = getSharedPreferences("LoginPrefs", Context.MODE_PRIVATE)
+        return sharedPreferences.getBoolean("isLoggedIn", false)
+    }
 
-    private fun showLocationPermissionDialog() {
-        val dialog = LocationPermissionDialogFragment()
-        dialog.show(supportFragmentManager, "LocationPermissionDialog")
+    private fun redirectToLogin() {
+        val intent = Intent(this, ActivityLogin::class.java)
+        startActivity(intent)
+        finish()
     }
 }
 

@@ -3,16 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
-    android:layout_height="230dp"
+    android:layout_height="250dp"
     android:layout_marginTop="5dp"
     android:layout_marginBottom="5dp"
     android:layout_marginStart="12dp"
+    android:layout_marginEnd="4dp"
     app:cardCornerRadius="10dp">
 
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
         <ImageView
             android:id="@+id/img_rec"
@@ -30,7 +31,7 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" >
+                android:layout_height="wrap_content">
 
                 <TextView
                     android:id="@+id/tvName"
@@ -43,6 +44,7 @@
                     android:fontFamily="@font/poppins_semi_bold"
                     android:textSize="12sp"
                     android:gravity="center"
+                    android:layout_marginEnd="4dp"
                     android:height="24dp" />
 
                 <ImageView
@@ -52,7 +54,8 @@
                     android:src="@drawable/ic_ratting"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@id/tvNilaiRatting"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_marginEnd="4dp"/>
 
                 <TextView
                     android:id="@+id/tvNilaiRatting"
@@ -95,7 +98,25 @@
                 android:layout_marginStart="5dp"
                 android:text="Tv Ac Kulkas"
                 tools:ignore="SmallSp" />
+        </LinearLayout>
 
+        <LinearLayout
+            android:paddingHorizontal="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_loc"/>
+
+            <TextView
+                android:id="@+id/tvLokasi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_regular"
+                android:text="Sleman, Di Yogyakarta"
+                android:textSize="8sp" />
         </LinearLayout>
 
     </LinearLayout>

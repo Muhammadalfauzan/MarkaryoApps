@@ -27,7 +27,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="14dp"
         android:paddingTop="2dp"
-        android:text="@string/add_address"
+        android:text="@string/update_address"
         android:textSize="16sp"
         android:fontFamily="@font/poppins_bold"
         app:layout_constraintBottom_toBottomOf="@+id/ib_back"
@@ -56,7 +56,7 @@
         app:layout_constraintTop_toBottomOf="@+id/view" />
 
     <com.example.makaryoapps.ui.costumview.GeneralEditText
-        android:id="@+id/emailLog_lay"
+        android:id="@+id/labelLay"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:background="@drawable/rounded"
@@ -84,7 +84,7 @@
         android:textSize="16sp"
         android:layout_marginTop="8dp"
         app:layout_constraintStart_toStartOf="@+id/materialTextView2"
-        app:layout_constraintTop_toBottomOf="@+id/emailLog_lay" />
+        app:layout_constraintTop_toBottomOf="@+id/labelLay" />
 
     <com.example.makaryoapps.ui.costumview.GeneralEditText
         android:id="@+id/name_lay"

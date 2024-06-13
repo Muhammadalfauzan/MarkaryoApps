@@ -32,6 +32,7 @@ class RecomendedAdapter(private val listener: OnItemClickListener) :
             binding.tvRatting.setImageResource(recommendedModel.icRatting)
             binding.tvNilaiRatting.text = recommendedModel.nilaiRatting.toString()
             binding.tvSkill.text = recommendedModel.skill
+            binding.tvLokasi.text = recommendedModel.address
 
             itemView.setOnClickListener {
                 listener.onItemClick(recommendedModel)

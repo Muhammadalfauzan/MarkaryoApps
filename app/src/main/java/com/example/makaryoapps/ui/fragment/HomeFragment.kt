@@ -1,5 +1,9 @@
 package com.example.makaryoapps.ui.fragment
 
+import com.example.makaryoapps.ui.costumdialogfragment.LocationPermissionDialogFragment
+import android.content.Context
+import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -7,8 +11,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.core.content.ContextCompat
 import androidx.core.os.bundleOf
+import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -18,13 +22,13 @@ import com.example.makaryoapps.R
 import com.example.makaryoapps.databinding.FragmentHomeBinding
 import com.example.makaryoapps.ui.category.CategoryAdapter
 import com.example.makaryoapps.ui.category.CategoryModel
-import com.example.makaryoapps.ui.costumdialogfragment.LocationPermissionDialogFragment
+
 import com.example.makaryoapps.ui.recomended.RecomendedAdapter
 import com.example.makaryoapps.ui.recomended.RecomendedModel
-import com.facebook.shimmer.ShimmerFrameLayout
 import com.google.android.material.tabs.TabLayout
 
-class HomeFragment : Fragment(),RecomendedAdapter.OnItemClickListener  {
+@Suppress("DEPRECATION")
+class HomeFragment : Fragment(), RecomendedAdapter.OnItemClickListener {
 
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
@@ -32,6 +36,7 @@ class HomeFragment : Fragment(),RecomendedAdapter.OnItemClickListener  {
     private lateinit var secondAdapter: RecomendedAdapter
     private var dataSecond: MutableList<RecomendedModel> = mutableListOf()
     private val handler = Handler(Looper.getMainLooper())
+    private var isLocationPermissionGranted: Boolean = false
     private val shimmerRunnable = Runnable {
         stopShimmerEffect()
     }
@@ -39,11 +44,21 @@ class HomeFragment : Fragment(),RecomendedAdapter.OnItemClickListener  {
         setupBanner()
     }
 
+    private lateinit var sharedPreferences: SharedPreferences
+
+    companion object {
+        private const val REQUEST_CODE_LOCATION_PERMISSION = 100
+        const val PREFS_NAME = "prefs"
+        const val KEY_LOCATION_PERMISSION_GRANTED = "isLocationPermissionGranted"
+        const val KEY_LOCATION_PERMISSION_DIALOG_SHOWN = "isLocationPermissionDialogShown"
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
+        sharedPreferences = requireContext().getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
         return binding.root
     }
 
@@ -52,38 +67,103 @@ class HomeFragment : Fragment(),RecomendedAdapter.OnItemClickListener  {
         setupFirstRecyclerView()
         setupSecondRecyclerView()
         startShimmerEffect()
-        showTab()
+        refreshViewsBasedOnPermission()
+
+        // Check if location permission dialog has been shown before and permission is not granted
+        if (!isLocationPermissionDialogShown() && !isLocationPermissionGranted) {
+            showLocationPermissionDialog()
+        }
 
         binding.tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab) {
                 when (tab.position) {
-                    0 -> sortByNearest()  // Terdekat
-                    1 -> sortByRating()   // Ratting
+                    0 -> sortAll()
+                    1 -> sortByNearest()
+                    2 -> sortByRating()
                 }
             }
 
-            override fun onTabUnselected(tab: TabLayout.Tab) {
-                // ...
-            }
-
-            override fun onTabReselected(tab: TabLayout.Tab) {
-                // ...
-            }
+            override fun onTabUnselected(tab: TabLayout.Tab) {}
+            override fun onTabReselected(tab: TabLayout.Tab) {}
         })
     }
-    private fun showTab(){
+
+    private fun showLocationPermissionDialog() {
+        val dialog = LocationPermissionDialogFragment()
+        dialog.setTargetFragment(this, REQUEST_CODE_LOCATION_PERMISSION)
+        dialog.show(parentFragmentManager, "com.example.makaryoapps.ui.costumdialogfragment.LocationPermissionDialogFragment")
+    }
+
+    private fun dismissLocationPermissionDialog() {
+        val dialogFragment =
+            parentFragmentManager.findFragmentByTag("com.example.makaryoapps.ui.costumdialogfragment.LocationPermissionDialogFragment") as? DialogFragment
+        dialogFragment?.dismiss()
+    }
+
+    private fun refreshViewsBasedOnPermission() {
+        isLocationPermissionGranted = sharedPreferences.getBoolean(KEY_LOCATION_PERMISSION_GRANTED, false)
+        if (isLocationPermissionGranted) {
+            binding.tabLayout.visibility = View.VISIBLE
+            binding.imgLocation.visibility = View.VISIBLE
+            binding.tvLocation.visibility = View.VISIBLE
+            showTab()
+            sortByNearest()
+        } else {
+            binding.tabLayout.visibility = View.GONE
+            binding.imgLocation.visibility = View.GONE
+            binding.tvLocation.visibility = View.GONE
+            sortByRating()
+        }
+    }
+
+    private fun isLocationPermissionDialogShown(): Boolean {
+        return sharedPreferences.getBoolean(KEY_LOCATION_PERMISSION_DIALOG_SHOWN, false)
+    }
+
+    private fun saveLocationPermissionChoice(isGranted: Boolean) {
+        sharedPreferences.edit().putBoolean(KEY_LOCATION_PERMISSION_GRANTED, isGranted).apply()
+    }
+
+    fun setLocationPermission(isGranted: Boolean) {
+        saveLocationPermissionChoice(isGranted)
+        refreshViewsBasedOnPermission()
+        if (!isGranted) {
+            Toast.makeText(
+                requireContext(),
+                "Izin lokasi tidak diberikan, data terdekat tidak tersedia",
+                Toast.LENGTH_SHORT
+            ).show()
+        }
+    }
+
+    @Deprecated("Deprecated in Java")
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == REQUEST_CODE_LOCATION_PERMISSION) {
+            val isGranted = data?.getBooleanExtra("isGranted", false) ?: false
+            setLocationPermission(isGranted)
+            if (isGranted) {
+                setLocationPermission(true)
+            }
+        }
+    }
+
+    private fun showTab() {
+        binding.tabLayout.removeAllTabs()
+
         val allTab = binding.tabLayout.newTab()
         allTab.text = "Semua"
         binding.tabLayout.addTab(allTab)
 
-        val premiumTab = binding.tabLayout.newTab()
-        premiumTab.text = "Terdekat"
-        binding.tabLayout.addTab(premiumTab)
+        val nearestTab = binding.tabLayout.newTab()
+        nearestTab.text = "Terdekat"
+        binding.tabLayout.addTab(nearestTab)
 
-        val freeTab = binding.tabLayout.newTab()
-        freeTab.text = "Ratting"
-        binding.tabLayout.addTab(freeTab)
+        val ratingTab = binding.tabLayout.newTab()
+        ratingTab.text = "Rating"
+        binding.tabLayout.addTab(ratingTab)
     }
+
     private fun setupFirstRecyclerView() {
         binding.recyclerView.layoutManager =
             LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
@@ -93,11 +173,13 @@ class HomeFragment : Fragment(),RecomendedAdapter.OnItemClickListener  {
             CategoryModel(R.drawable.cleaning, "Cleaning"),
             CategoryModel(R.drawable.otomotif, "Otomotif")
         )
-        val firstAdapter = CategoryAdapter(dataFirst, object : CategoryAdapter.OnCategoryClickListener {
-            override fun onCategoryClick(category: CategoryModel) {
-                navigateToCategory(category)
-            }
-        })
+        val firstAdapter = CategoryAdapter(
+            dataFirst,
+            object : CategoryAdapter.OnCategoryClickListener {
+                override fun onCategoryClick(category: CategoryModel) {
+                    navigateToCategory(category)
+                }
+            })
         binding.recyclerView.adapter = firstAdapter
     }
 
@@ -120,6 +202,7 @@ class HomeFragment : Fragment(),RecomendedAdapter.OnItemClickListener  {
         val skills = resources.getStringArray(R.array.data_skill)
         val ratingsStringArray = resources.getStringArray(R.array.data_star)
         val ratingsFloatArray = ratingsStringArray.map { it.toFloat() }.toFloatArray()
+        val address = resources.getStringArray(R.array.data_alamat)
 
         // Placeholder distances, replace with actual data
         val distances = listOf(1.2f, 3.5f, 0.8f, 2.1f)
@@ -131,7 +214,8 @@ class HomeFragment : Fragment(),RecomendedAdapter.OnItemClickListener  {
                 skills[index],
                 ratingsFloatArray[index],
                 R.drawable.ic_ratting,
-                distances.getOrElse(index) { 0f }  // Handle potential size mismatch
+                distances.getOrElse(index) { 0f }, // Handle potential size mismatch
+                address[index]
             )
         }.toMutableList()
 
@@ -139,17 +223,30 @@ class HomeFragment : Fragment(),RecomendedAdapter.OnItemClickListener  {
 
         secondAdapter = RecomendedAdapter(this)
         binding.rvRekomendasi.adapter = secondAdapter
-        secondAdapter.submitList(dataSecond)
+        secondAdapter.submitList(dataSecond.toList()) // Ensure you submit a new list
     }
 
     private fun sortByRating() {
         val sortedList = dataSecond.sortedByDescending { it.nilaiRatting }
-        secondAdapter.submitList(sortedList)
+        secondAdapter.submitList(sortedList.toList()) // Ensure you submit a new list
     }
 
     private fun sortByNearest() {
-        val sortedList = dataSecond.sortedBy { it.distance }  // Sorting by distance
-        secondAdapter.submitList(sortedList)
+        if (isLocationPermissionGranted) {
+            val sortedList = dataSecond.sortedBy { it.distance }
+            secondAdapter.submitList(sortedList.toList()) // Ensure you submit a new list
+        } else {
+            Toast.makeText(requireContext(), "Izin lokasi tidak diberikan", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private fun sortAll() {
+        val sortedList = if (isLocationPermissionGranted) {
+            dataSecond.sortedWith(compareBy({ it.distance }, { -it.nilaiRatting }))
+        } else {
+            dataSecond.sortedByDescending { it.nilaiRatting }
+        }
+        secondAdapter.submitList(sortedList.toList()) // Ensure you submit a new list
     }
 
     private fun startShimmerEffect() {
@@ -160,6 +257,8 @@ class HomeFragment : Fragment(),RecomendedAdapter.OnItemClickListener  {
         binding.shimmerBanner.visibility = View.VISIBLE
         binding.shimmerBanner.startShimmer()
         binding.tabLayout.visibility = View.GONE
+        binding.imgLocation.visibility = View.GONE
+        binding.tvLocation.visibility = View.GONE
         binding.recyclerView.visibility = View.GONE
         binding.rvRekomendasi.visibility = View.GONE
 
@@ -176,11 +275,9 @@ class HomeFragment : Fragment(),RecomendedAdapter.OnItemClickListener  {
             it.shimmerBanner.visibility = View.GONE
             it.recyclerView.visibility = View.VISIBLE
             it.rvRekomendasi.visibility = View.VISIBLE
-            it.tabLayout.visibility = View.VISIBLE
+            it.tabLayout.visibility = if (isLocationPermissionGranted) View.VISIBLE else View.GONE
             setupBanner()
             handler.postDelayed(bannerRunnable, 3000)
-
-
         }
     }
 
@@ -207,5 +304,4 @@ class HomeFragment : Fragment(),RecomendedAdapter.OnItemClickListener  {
         val bundle = bundleOf("item" to data)
         findNavController().navigate(R.id.action_homeFragment_to_detailFragment, bundle)
     }
-
 }

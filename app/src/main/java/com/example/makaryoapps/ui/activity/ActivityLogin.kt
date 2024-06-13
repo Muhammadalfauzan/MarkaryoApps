@@ -1,7 +1,9 @@
 package com.example.makaryoapps.ui.activity
 
 import android.app.Dialog
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
@@ -14,32 +16,38 @@ import android.widget.Button
 import android.widget.Toast
 import com.example.makaryoapps.R
 import com.example.makaryoapps.databinding.ActivityLoginBinding
-import com.example.makaryoapps.databinding.ActivityMainBinding
 
 class ActivityLogin : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
- /*   private val dummyEmail = "fauzan2024@gmail.com"
-    private val dummyPassword = "12345678"*/
+    private lateinit var sharedPreferences: SharedPreferences
+    private val dummyEmail = "fauzan2024@gmail.com"
+    private val dummyPassword = "12345678"
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        if (isLoggedIn()) {
+            redirectToMain()
+            return
+        }
+        sharedPreferences = getSharedPreferences("LoginPrefs", Context.MODE_PRIVATE)
+
         binding.btnLogin.setOnClickListener {
-            hideProgressBar()
-            dialogSukses()
-           /* val email = binding.emailLogLay.text.toString()
+            val email = binding.emailLogLay.text.toString()
             val password = binding.etPassword.text.toString()
             if (validateLogin(email, password)) {
                 showProgressBar()
-                // Simulate login delay
                 Handler(Looper.getMainLooper()).postDelayed({
-
-                }, 2000) // 2 seconds delay
+                    saveLoginStatus(true)
+                    hideProgressBar()
+                    dialogSukses()
+                }, 2000)
             } else {
                 Toast.makeText(this, "Email or Password is incorrect", Toast.LENGTH_SHORT).show()
-            }*/
+            }
         }
 
         binding.tvRegister.setOnClickListener {
@@ -47,9 +55,11 @@ class ActivityLogin : AppCompatActivity() {
             startActivity(i)
         }
     }
- /*   private fun validateLogin(email: String, password: String): Boolean {
+
+    private fun validateLogin(email: String, password: String): Boolean {
         return email == dummyEmail && password == dummyPassword
-    }*/
+    }
+
     private fun showProgressBar() {
         binding.progressBar.visibility = View.VISIBLE
         binding.btnLogin.isEnabled = false
@@ -59,8 +69,14 @@ class ActivityLogin : AppCompatActivity() {
         binding.progressBar.visibility = View.GONE
         binding.btnLogin.isEnabled = true
     }
-    //dialog
-    private fun dialogSukses(){
+
+    private fun saveLoginStatus(isLoggedIn: Boolean) {
+        val editor = sharedPreferences.edit()
+        editor.putBoolean("isLoggedIn", isLoggedIn)
+        editor.apply()
+    }
+
+    private fun dialogSukses() {
         val dialog = Dialog(this)
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
         dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
@@ -70,8 +86,19 @@ class ActivityLogin : AppCompatActivity() {
         next.setOnClickListener {
             val i = Intent(this@ActivityLogin, MainActivity::class.java)
             startActivity(i)
+            finish()
         }
 
         dialog.show()
+    }
+    private fun isLoggedIn(): Boolean {
+        val sharedPreferences = getSharedPreferences("LoginPrefs", Context.MODE_PRIVATE)
+        return sharedPreferences.getBoolean("isLoggedIn", false)
+    }
+
+    private fun redirectToMain() {
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
+        finish()
     }
 }
