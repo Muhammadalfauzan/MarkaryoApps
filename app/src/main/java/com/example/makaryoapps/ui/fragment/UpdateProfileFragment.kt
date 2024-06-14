@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
 import com.example.makaryoapps.R
 import com.example.makaryoapps.databinding.FragmentUpdateProfileBinding
@@ -34,7 +35,13 @@ class UpdateProfileFragment : Fragment() {
             openGallery()
         }
         binding.btnSave.setOnClickListener {
-            findNavController().navigate(R.id.action_updateProfileFragment_to_profileFragment)
+            findNavController().navigate(
+                R.id.action_updateProfileFragment_to_profileFragment,
+                null,
+                NavOptions.Builder()
+                    .setPopUpTo(R.id.updateProfileFragment, true)
+                    .build()
+            )
         }
     }
 

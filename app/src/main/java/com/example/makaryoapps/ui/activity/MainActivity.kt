@@ -26,7 +26,8 @@ class MainActivity : AppCompatActivity() {
         R.id.receiptFragment,
         R.id.addAddressFragment,
         R.id.updateAddressFragment,
-        R.id.updateProfileFragment
+        R.id.updateProfileFragment,
+        R.id.notificationFragment,
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {

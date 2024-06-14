@@ -19,7 +19,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="79dp">
+            android:layout_height="wrap_content">
 
             <ImageView
                 android:id="@+id/imageView3"
@@ -69,16 +69,26 @@
                 app:layout_constraintStart_toEndOf="@+id/imageView3"
                 app:layout_constraintTop_toTopOf="@+id/imageView3" />
 
+            <ImageView
+                android:id="@+id/imageViewProses"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_proses"
+                android:layout_marginStart="10dp"
+                app:layout_constraintStart_toEndOf="@+id/imageView3"
+                app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
             <TextView
                 android:id="@+id/tv_status"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
                 android:fontFamily="@font/poppins_light"
-                android:textSize="12sp"
-                android:drawableStart="@drawable/ic_proses"
                 android:text=" Sedang Dalam Perjalanan"
-                app:layout_constraintStart_toEndOf="@+id/imageView3"
+                android:paddingTop="2dp"
+                android:layout_marginStart="4dp"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="@+id/imageViewProses"
+                app:layout_constraintStart_toEndOf="@+id/imageViewProses"
                 app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
             <TextView
@@ -86,9 +96,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
+                android:fontFamily="@font/poppins_regular"
                 android:text=" 14 May, 2024"
                 android:textSize="10sp"
-                android:fontFamily="@font/poppins_regular"
+                android:layout_marginBottom="6dp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/textView2"
                 app:layout_constraintTop_toBottomOf="@+id/tv_status" />
         </androidx.constraintlayout.widget.ConstraintLayout>

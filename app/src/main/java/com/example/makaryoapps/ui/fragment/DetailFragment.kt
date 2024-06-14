@@ -54,15 +54,15 @@ class DetailFragment : Fragment() {
             val bundle = Bundle()
             recommendedItem?.let {
                 bundle.putString("craftsman_name", it.nameBuilder)
-                bundle.putInt("price", 19500)
+                bundle.putString("price", "19.500")
                 findNavController().navigate(R.id.action_detailFragment_to_confirmationFragment, bundle)
             } ?: detailCategoryItem?.let {
                 bundle.putString("craftsman_name", it.nameCrafts)
-                bundle.putInt("price", 19500)
+                bundle.putString("price", "19.500")
                 findNavController().navigate(R.id.action_detailFragment_to_confirmationFragment, bundle)
             } ?: historyItem?.let {
             bundle.putString("craftsman_name", it.nameBuilder)
-            bundle.putInt("price", 19500)
+            bundle.putString("price", "19.500")
             findNavController().navigate(R.id.action_detailFragment_to_confirmationFragment, bundle)
         }
         }

@@ -47,6 +47,9 @@ class ProfileFragment : Fragment() {
         binding.location.setOnClickListener {
             findNavController().navigate(R.id.action_profileFragment_to_adressListFragment)
         }
+        binding.notification.setOnClickListener {
+            findNavController().navigate(R.id.action_profileFragment_to_notificationFragment)
+        }
 
         binding.tvPusatBantuan.setOnClickListener {
             val url = "https://makaryo-web.vercel.app/"
@@ -55,7 +58,7 @@ class ProfileFragment : Fragment() {
         }
 
         binding.beriRating.setOnClickListener {
-            val url = "https://play.google.com/store/"
+            val url = "https://makaryo-web.vercel.app/download"
             val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
             startActivity(intent)
         }

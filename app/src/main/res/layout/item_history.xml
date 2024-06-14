@@ -19,7 +19,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp">
+            >
 
             <ImageView
                 android:id="@+id/ivBuilderHistory"
@@ -84,9 +84,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dp"
+                android:fontFamily="@font/poppins_regular"
                 android:text=" 14 May, 2024"
                 android:textSize="10sp"
-                android:fontFamily="@font/poppins_regular"
+                android:layout_marginBottom="6dp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/tvNameBuilderHistory"
                 app:layout_constraintTop_toBottomOf="@+id/tv_statusHistory" />
 

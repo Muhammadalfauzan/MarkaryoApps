@@ -73,6 +73,9 @@
         <action
             android:id="@+id/action_profileFragment_to_adressListFragment"
             app:destination="@id/adressListFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_notificationFragment"
+            app:destination="@id/notificationFragment" />
     </fragment>
     <fragment
         android:id="@+id/chatFragment"
@@ -181,7 +184,9 @@
         tools:layout="@layout/fragment_update_profile" >
         <action
             android:id="@+id/action_updateProfileFragment_to_profileFragment"
-            app:destination="@id/profileFragment" />
+            app:destination="@id/profileFragment"
+            app:popUpTo="@id/updateProfileFragment"
+            app:popUpToInclusive="true"/>
     </fragment>
     <fragment
         android:id="@+id/detailChatFragment"
@@ -285,5 +290,13 @@
         <action
             android:id="@+id/action_updateAddressFragment_to_adressListFragment"
             app:destination="@id/adressListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/notificationFragment"
+        android:name="com.example.makaryoapps.ui.fragment.NotificationFragment"
+        android:label="NotificationFragment" >
+        <action
+            android:id="@+id/action_notificationFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
     </fragment>
 </navigation>

@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
 import com.example.makaryoapps.R
 import com.example.makaryoapps.databinding.FragmentUpdateAddressBinding
@@ -37,7 +38,13 @@ class UpdateAddressFragment : Fragment() {
 
         binding.btnSaveAddress.setOnClickListener {
             showCustomToast()
-            findNavController().navigate(R.id.action_updateAddressFragment_to_adressListFragment)
+            findNavController().navigate(
+                R.id.action_updateAddressFragment_to_adressListFragment,
+                null,
+                NavOptions.Builder()
+                    .setPopUpTo(R.id.adressListFragment, true)
+                    .build()
+            )
         }
     }
     private fun iconBackClicked() {

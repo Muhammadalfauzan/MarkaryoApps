@@ -37,30 +37,34 @@ class DalamProsesFragment : Fragment() {
             ProsesModel(
                 R.drawable.rec_1,
                 "Ibrahim",
-                "Service sudah selesai",
-                "2 May, 2024",
-                "4.7"
+                "Sedang dikerjakan ",
+                "2 Juni, 2024",
+                "4.0",
+                R.drawable.ic_dikerjakan
             ),
             ProsesModel(
                 R.drawable.rec_1,
                 "Ibrahim",
-                "Service sudah selesai",
-                "2 May, 2024",
-                "4.7"
+                "Sedang dikerjakan ",
+                "17 Juni, 2024",
+                "4.1",
+                R.drawable.ic_dikerjakan
             ),
             ProsesModel(
                 R.drawable.rec_1,
                 "Ibrahim",
-                "Service sudah selesai",
-                "2 May, 2024",
-                "4.7"
+                "sedang dalam perjalanani",
+                "14 Juni, 2024",
+                "4.5",
+                R.drawable.ic_proses
             ),
             ProsesModel(
                 R.drawable.rec_1,
                 "Ibrahim",
-                "Service sudah selesai",
-                "2 May, 2024",
-                "4.7"
+                "sedang dalam perjalanan",
+                "15 Juni, 2024",
+                "4.8",
+                R.drawable.ic_proses
             ),
 
         )

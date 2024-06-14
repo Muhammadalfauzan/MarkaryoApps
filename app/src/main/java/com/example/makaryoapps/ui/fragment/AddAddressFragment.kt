@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
 import com.example.makaryoapps.R
 import com.example.makaryoapps.databinding.FragmentAddAddressBinding
@@ -32,7 +33,13 @@ class AddAddressFragment : Fragment() {
         iconBackClicked()
         binding.btnSaveAddress.setOnClickListener {
             showCustomToast()
-            findNavController().navigate(R.id.action_addAddressFragment_to_adressListFragment)
+            findNavController().navigate(
+                R.id.action_addAddressFragment_to_adressListFragment,
+                null,
+                NavOptions.Builder()
+                    .setPopUpTo(R.id.adressListFragment, true)
+                    .build()
+            )
         }
     }
     private fun iconBackClicked() {

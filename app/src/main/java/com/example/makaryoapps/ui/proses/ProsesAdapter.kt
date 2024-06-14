@@ -31,6 +31,7 @@ class ProsesAdapter (private val itemList : List<ProsesModel>) : RecyclerView.Ad
         holder.binding.tvNilaiRatting.text = item.ratting
         holder.binding.tvStatus.text = item.proses
         holder.binding.tvDate.text = item.date
+        holder.binding.imageViewProses.setImageResource(item.imgProses)
 
 
     } override fun getItemCount(): Int {

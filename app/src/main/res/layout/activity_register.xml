@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,217 +8,215 @@
     android:padding="20dp"
     tools:context=".ui.activity.ActivityLogin">
 
-
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="180dp"
-        android:layout_marginStart="70dp"
-        android:layout_marginEnd="70dp"
-        android:src="@drawable/logo"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:layout_marginStart="4dp"
-        android:text="Email"
-        android:textSize="14sp"
-        android:fontFamily="@font/poppins_medium"
-        app:layout_constraintStart_toStartOf="@+id/emailLog_lay"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
-
-
-    <com.example.makaryoapps.ui.costumview.EmailEditText
-        android:id="@+id/emailLog_lay"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:hint="Masukan email anda"
-        android:imeOptions="actionNext"
-        android:inputType="textEmailAddress"
-        android:layout_marginTop="5dp"
-        android:paddingStart="10dp"
-        android:paddingEnd="10dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:textSize="12sp"
-        android:fontFamily="@font/poppins_regular"
-        android:textColorHint="@color/light_grey"
-        android:background="@drawable/rounded"
-        app:errorEnabled="true"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        tools:ignore="HardcodedText">
+        android:layout_height="wrap_content">
 
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="180dp"
+            android:layout_marginStart="70dp"
+            android:layout_marginEnd="70dp"
+            android:src="@drawable/logo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    </com.example.makaryoapps.ui.costumview.EmailEditText>
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:layout_marginStart="4dp"
+            android:text="Email"
+            android:textSize="14sp"
+            android:fontFamily="@font/poppins_medium"
+            app:layout_constraintStart_toStartOf="@+id/emailLog_lay"
+            app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
+        <com.example.makaryoapps.ui.costumview.EmailEditText
+            android:id="@+id/emailLog_lay"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:hint="Masukan email anda"
+            android:imeOptions="actionNext"
+            android:inputType="textEmailAddress"
+            android:layout_marginTop="5dp"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:textSize="12sp"
+            android:fontFamily="@font/poppins_regular"
+            android:textColorHint="@color/light_grey"
+            android:background="@drawable/rounded"
+            app:errorEnabled="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView"
+            tools:ignore="HardcodedText" />
 
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Kata Sandi"
-        android:textSize="14sp"
-        android:fontFamily="@font/poppins_medium"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="10dp"
-        app:layout_constraintStart_toStartOf="@+id/et_password"
-        app:layout_constraintTop_toBottomOf="@+id/emailLog_lay" />
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Kata Sandi"
+            android:textSize="14sp"
+            android:fontFamily="@font/poppins_medium"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="10dp"
+            app:layout_constraintStart_toStartOf="@+id/et_password"
+            app:layout_constraintTop_toBottomOf="@+id/emailLog_lay" />
 
+        <com.example.makaryoapps.ui.costumview.PasswordEditText
+            android:id="@+id/et_password"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="5dp"
+            android:hint="Masukan sandi anda"
+            android:imeOptions="actionDone"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:textSize="12sp"
+            android:fontFamily="@font/poppins_regular"
+            android:textColorHint="@color/light_grey"
+            android:background="@drawable/rounded"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView1"
+            tools:ignore="TextContrastCheck" />
 
-    <com.example.makaryoapps.ui.costumview.PasswordEditText
-        android:id="@+id/et_password"
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:layout_marginTop="5dp"
-        android:hint="Masukan sandi anda"
-        android:imeOptions="actionDone"
-        android:paddingStart="10dp"
-        android:paddingEnd="10dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:textSize="12sp"
-        android:fontFamily="@font/poppins_regular"
-        android:textColorHint="@color/light_grey"
-        android:background="@drawable/rounded"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView1"
-        tools:ignore="TextContrastCheck" />
+        <TextView
+            android:id="@+id/textViewConfirm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Konfirmasi Kata Sandi"
+            android:layout_marginTop="12dp"
+            android:layout_marginStart="4dp"
+            android:textSize="14sp"
+            android:fontFamily="@font/poppins_medium"
+            app:layout_constraintStart_toStartOf="@+id/et_password"
+            app:layout_constraintTop_toBottomOf="@+id/et_password" />
 
-    <TextView
-        android:id="@+id/textViewConfirm"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Konfirmasi Kata Sandi"
-        android:layout_marginTop="12dp"
-        android:layout_marginStart="4dp"
-        android:textSize="14sp"
-        android:fontFamily="@font/poppins_medium"
-        app:layout_constraintStart_toStartOf="@+id/et_password"
-        app:layout_constraintTop_toBottomOf="@+id/et_password" />
+        <com.example.makaryoapps.ui.costumview.PasswordEditText
+            android:id="@+id/et_confirmPassword"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/rounded"
+            android:hint="@string/konfirmasi_kata_sandi"
+            android:imeOptions="actionDone"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:textSize="12sp"
+            android:fontFamily="@font/poppins_regular"
+            android:textColorHint="@color/light_grey"
+            app:layout_constraintStart_toStartOf="@+id/textViewConfirm"
+            app:layout_constraintTop_toBottomOf="@+id/textViewConfirm"
+            tools:ignore="TextContrastCheck" />
 
+        <Button
+            android:id="@+id/btn_register"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="30dp"
+            android:backgroundTint="@color/yellow"
+            android:shadowColor="@android:color/transparent"
+            android:text="@string/daftar"
+            android:fontFamily="@font/poppins_medium"
+            app:cornerRadius="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.54"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/et_confirmPassword"
+            tools:ignore="TextContrastCheck,VisualLintButtonSize,DuplicateSpeakableTextCheck" />
 
-    <com.example.makaryoapps.ui.costumview.PasswordEditText
-        android:id="@+id/et_confirmPassword"
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:layout_marginTop="5dp"
-        android:background="@drawable/rounded"
-        android:hint="@string/konfirmasi_kata_sandi"
-        android:imeOptions="actionDone"
-        android:paddingStart="10dp"
-        android:paddingEnd="10dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:textSize="12sp"
-        android:fontFamily="@font/poppins_regular"
-        android:textColorHint="@color/light_grey"
-        app:layout_constraintStart_toStartOf="@+id/textViewConfirm"
-        app:layout_constraintTop_toBottomOf="@+id/textViewConfirm"
-        tools:ignore="TextContrastCheck" />
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/materialTextView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="85dp"
+            android:layout_marginEnd="126dp"
+            android:text="@string/sudah_mempunyai_akun"
+            android:fontFamily="@font/poppins_regular"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_register" />
 
-    <Button
-        android:id="@+id/btn_register"
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:layout_marginHorizontal="10dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginTop="30dp"
-        android:backgroundTint="@color/yellow"
-        android:shadowColor="@android:color/transparent"
-        android:text="@string/daftar"
-        android:fontFamily="@font/poppins_medium"
-        app:cornerRadius="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.54"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_confirmPassword"
-        tools:ignore="TextContrastCheck,VisualLintButtonSize,DuplicateSpeakableTextCheck" />
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvLogin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:text="@string/masuk"
+            android:fontFamily="@font/poppins_medium"
+            android:textColor="@color/yellow"
+            app:layout_constraintBaseline_toBaselineOf="@id/materialTextView3"
+            app:layout_constraintStart_toEndOf="@id/materialTextView3"
+            app:layout_constraintTop_toBottomOf="@+id/btn_register" />
 
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/materialTextView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginStart="85dp"
-        android:layout_marginEnd="126dp"
-        android:text="@string/sudah_mempunyai_akun"
-        android:fontFamily="@font/poppins_regular"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_register" />
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvMasukTanpaLogin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="70dp"
+            android:layout_marginLeft="70dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/atau_masuk_dengan_menggunakan"
+            android:fontFamily="@font/poppins_regular"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/materialTextView3"
+            tools:ignore="TextContrastCheck" />
 
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/tvLogin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:text="@string/masuk"
-        android:fontFamily="@font/poppins_medium"
-        android:textColor="@color/yellow"
-        app:layout_constraintBaseline_toBaselineOf="@id/materialTextView3"
-        app:layout_constraintStart_toEndOf="@id/materialTextView3"
-        app:layout_constraintTop_toBottomOf="@+id/btn_register" />
+        <ImageButton
+            android:id="@+id/imageView"
+            android:layout_width="153dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="24dp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/logo_google"
+            android:contentDescription="google"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvMasukTanpaLogin" />
 
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/tvMasukTanpaLogin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginRight="70dp"
-        android:layout_marginLeft="70dp"
-        android:layout_marginTop="8dp"
-        android:text="@string/atau_masuk_dengan_menggunakan"
-        android:fontFamily="@font/poppins_regular"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/materialTextView3"
-        tools:ignore="TextContrastCheck" />
+        <ImageButton
+            android:layout_width="153dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="16dp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/logo_fb"
+            android:contentDescription="facebook"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageView"
+            app:layout_constraintTop_toBottomOf="@+id/tvMasukTanpaLogin" />
 
-    <ImageButton
-        android:id="@+id/imageView"
-        android:layout_width="153dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="24dp"
-        android:background="@android:color/transparent"
-        android:src="@drawable/logo_google"
-        android:contentDescription="google"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvMasukTanpaLogin" />
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:indeterminateTint="@color/yellow"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.505"
+            tools:visibility="visible" />
 
-    <ImageButton
-        android:layout_width="153dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="16dp"
-        android:background="@android:color/transparent"
-        android:src="@drawable/logo_fb"
-        android:contentDescription="facebook"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageView"
-        app:layout_constraintTop_toBottomOf="@+id/tvMasukTanpaLogin" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <ProgressBar
-        android:id="@+id/progressBar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:indeterminateTint="@color/yellow"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.586"
-        tools:visibility="visible" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

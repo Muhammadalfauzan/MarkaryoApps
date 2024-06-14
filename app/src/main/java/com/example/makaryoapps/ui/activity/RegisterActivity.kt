@@ -11,6 +11,7 @@ import android.widget.Button
 import com.example.makaryoapps.R
 import com.example.makaryoapps.databinding.ActivityLoginBinding
 import com.example.makaryoapps.databinding.ActivityRegisterBinding
+import com.example.makaryoapps.ui.fragment.HomeFragment
 
 class RegisterActivity : AppCompatActivity() {
     private lateinit var binding: ActivityRegisterBinding
@@ -37,14 +38,13 @@ class RegisterActivity : AppCompatActivity() {
         val dialog = Dialog(this)
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
         dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-        dialog.setContentView(R.layout.dialog_sucess_add_address )
+        dialog.setContentView(R.layout.dialog_succes_register )
 
-      /*  val next = dialog.findViewById<Button>(R.id.btn_suksesRegister)
+        val next = dialog.findViewById<Button>(R.id.btn_suksesRegister)
         next.setOnClickListener {
             val i = Intent(this@RegisterActivity, ActivityLogin::class.java)
-            *//*      i.putExtra(HomeFragment.EXTRA_NAME, email)*//*
             startActivity(i)
-        }*/
+        }
 
         dialog.show()
     }

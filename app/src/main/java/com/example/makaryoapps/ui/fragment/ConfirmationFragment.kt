@@ -36,11 +36,11 @@ class ConfirmationFragment : Fragment() {
         iconBackClicked()
 
         val craftsmanName = arguments?.getString("craftsman_name")
-        val price = arguments?.getInt("price")
+        val price = arguments?.getString("price")
 
         // Gunakan data sesuai kebutuhan, misalnya menampilkan nama tukang dan harga di TextView
         binding.tvNameCrafts.text = craftsmanName
-        binding.textView12.text = price?.toString()
+        binding.textView12.text = price
 
         Log.d("ConfirmationFragment", "String Value: $craftsmanName, Int Value: $price")
 

@@ -276,8 +276,8 @@ untuk keluar?</string>
     <string name="deskripsi">Deskripsi</string>
     <string name="portofolio">Portofolio</string>
     <string name="ulasan">Ulasan</string>
-    <string name="rp">Rp.</string>
-    <string name="price">Rp.19500</string>
+    <string name="rp">Rp</string>
+    <string name="price">Rp 19.500</string>
     <string name="order_now">Pesan Sekarang</string>
     <string name="selesai">Selesai</string>
 
@@ -287,6 +287,7 @@ untuk keluar?</string>
     <string name="confirmation">Konfirmasi</string>
     <string name="adress_list">Daftar Alamat</string>
     <string name="update_account">Ubah Akun</string>
+    <string name="notification">Notifikasi</string>
     <string name="searchbar_hint">Search</string>
 
     <string name="cat">Cat Atap Pipa</string>

@@ -40,23 +40,37 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/view" />
 
-    <TextView
-        android:id="@+id/textView15"
+    <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:drawableStart="@drawable/outline_monetization_on_24"
-        android:text="Struk Pembayaran"
+        android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="@+id/imageView2"
         app:layout_constraintStart_toStartOf="@+id/imageView2"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView2">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="Icon"
+            android:src="@drawable/outline_monetization_on_24" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="8dp"
+            android:text="Struk Pembayaran" />
+    </LinearLayout>
 
     <androidx.cardview.widget.CardView
         android:id="@+id/materialCardView3"
         android:layout_width="match_parent"
         android:layout_height="130dp"
 
-        app:layout_constraintTop_toBottomOf="@+id/textView15">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -130,14 +144,14 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/materialCardView4"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="wrap_content"
 
         android:layout_marginTop="28dp"
         app:layout_constraintTop_toBottomOf="@+id/materialCardView3">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="150dp"
+            android:layout_height="wrap_content"
             android:background="@color/white"
             tools:ignore="TextSizeCheck">
 
@@ -148,7 +162,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:fontFamily="@font/poppins_regular"
-                android:text="Biaya Service"
+                android:text="Biaya Service /Hari"
                 android:textSize="14sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -191,7 +205,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
                 android:fontFamily="@font/poppins_regular"
-                android:text="Rp. 19000"
+                android:text="Rp 19.000"
                 android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/tv_service"
@@ -203,7 +217,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
                 android:fontFamily="@font/poppins_regular"
-                android:text="Rp. 2500"
+                android:text="Rp 2.500"
                 android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_Service"
@@ -215,7 +229,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
                 android:fontFamily="@font/poppins_regular"
-                android:text="Rp. 12500"
+                android:text="Rp 12.500"
                 android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_biayaAplikasi"
@@ -227,7 +241,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
                 android:fontFamily="@font/poppins_regular"
-                android:text="Rp. 0"
+                android:text="Rp 0"
                 android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_biayaTransportasi"
@@ -249,10 +263,12 @@
                 android:id="@+id/tv_Ltotal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:fontFamily="@font/poppins_semi_bold"
                 android:text="Total"
-                android:layout_marginTop="10dp"
+                android:layout_marginBottom="16dp"
                 android:textSize="15sp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/tv_Lpromo"
                 app:layout_constraintTop_toBottomOf="@+id/view4"
                 tools:ignore="SpUsage,TextSizeCheck" />
@@ -263,8 +279,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
                 android:fontFamily="@font/poppins_semi_bold"
-                android:text="Rp.34000"
+                android:text="Rp 34.000"
                 android:textSize="15sp"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_Ltotal"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/tv_Ltotal"
                 tools:ignore="SpUsage,TextSizeCheck" />
@@ -286,7 +303,7 @@
         android:id="@+id/btn_selesai"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="24dp"
+        android:layout_marginHorizontal="28dp"
         android:layout_marginBottom="24dp"
         android:backgroundTint="@color/yellow"
         android:fontFamily="@font/poppins_bold"
@@ -296,8 +313,8 @@
         app:cornerRadius="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.842"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView6"
         tools:ignore="TextContrastCheck,VisualLintButtonSize,DuplicateSpeakableTextCheck" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

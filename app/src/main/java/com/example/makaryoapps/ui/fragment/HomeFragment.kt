@@ -1,6 +1,5 @@
 package com.example.makaryoapps.ui.fragment
 
-import com.example.makaryoapps.ui.costumdialogfragment.LocationPermissionDialogFragment
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
@@ -14,6 +13,7 @@ import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.denzcoskun.imageslider.constants.ScaleTypes
@@ -22,10 +22,13 @@ import com.example.makaryoapps.R
 import com.example.makaryoapps.databinding.FragmentHomeBinding
 import com.example.makaryoapps.ui.category.CategoryAdapter
 import com.example.makaryoapps.ui.category.CategoryModel
-
+import com.example.makaryoapps.ui.costumdialogfragment.LocationPermissionDialogFragment
 import com.example.makaryoapps.ui.recomended.RecomendedAdapter
 import com.example.makaryoapps.ui.recomended.RecomendedModel
 import com.google.android.material.tabs.TabLayout
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 @Suppress("DEPRECATION")
 class HomeFragment : Fragment(), RecomendedAdapter.OnItemClickListener {
@@ -53,6 +56,9 @@ class HomeFragment : Fragment(), RecomendedAdapter.OnItemClickListener {
         const val KEY_LOCATION_PERMISSION_DIALOG_SHOWN = "isLocationPermissionDialogShown"
     }
 
+    private var lastTabSelectedJob: Job? = null
+    private val debounceTime = 300L
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -76,10 +82,14 @@ class HomeFragment : Fragment(), RecomendedAdapter.OnItemClickListener {
 
         binding.tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab) {
-                when (tab.position) {
-                    0 -> sortAll()
-                    1 -> sortByNearest()
-                    2 -> sortByRating()
+                lastTabSelectedJob?.cancel()
+                lastTabSelectedJob = lifecycleScope.launch {
+                    delay(debounceTime)
+                    when (tab.position) {
+                        0 -> sortAll()
+                        1 -> sortByNearest()
+                        2 -> sortByRating()
+                    }
                 }
             }
 
@@ -102,17 +112,19 @@ class HomeFragment : Fragment(), RecomendedAdapter.OnItemClickListener {
 
     private fun refreshViewsBasedOnPermission() {
         isLocationPermissionGranted = sharedPreferences.getBoolean(KEY_LOCATION_PERMISSION_GRANTED, false)
-        if (isLocationPermissionGranted) {
-            binding.tabLayout.visibility = View.VISIBLE
-            binding.imgLocation.visibility = View.VISIBLE
-            binding.tvLocation.visibility = View.VISIBLE
-            showTab()
-            sortByNearest()
-        } else {
-            binding.tabLayout.visibility = View.GONE
-            binding.imgLocation.visibility = View.GONE
-            binding.tvLocation.visibility = View.GONE
-            sortByRating()
+        _binding?.let {
+            if (isLocationPermissionGranted) {
+                it.tabLayout.visibility = View.VISIBLE
+                it.imgLocation.visibility = View.VISIBLE
+                it.tvLocation.visibility = View.VISIBLE
+                showTab()
+                sortByNearest()
+            } else {
+                it.tabLayout.visibility = View.GONE
+                it.imgLocation.visibility = View.GONE
+                it.tvLocation.visibility = View.GONE
+                sortByRating()
+            }
         }
     }
 
@@ -227,42 +239,42 @@ class HomeFragment : Fragment(), RecomendedAdapter.OnItemClickListener {
     }
 
     private fun sortByRating() {
-        val sortedList = dataSecond.sortedByDescending { it.nilaiRatting }
-        secondAdapter.submitList(sortedList.toList()) // Ensure you submit a new list
+        val sortedList = dataSecond.sortedByDescending { it.nilaiRatting }.toList()
+        secondAdapter.submitList(sortedList)
     }
 
     private fun sortByNearest() {
-        if (isLocationPermissionGranted) {
-            val sortedList = dataSecond.sortedBy { it.distance }
-            secondAdapter.submitList(sortedList.toList()) // Ensure you submit a new list
-        } else {
-            Toast.makeText(requireContext(), "Izin lokasi tidak diberikan", Toast.LENGTH_SHORT).show()
-        }
+        val sortedList = dataSecond.sortedBy { it.distance }.toList()
+        secondAdapter.submitList(sortedList)
     }
 
     private fun sortAll() {
-        val sortedList = if (isLocationPermissionGranted) {
-            dataSecond.sortedWith(compareBy({ it.distance }, { -it.nilaiRatting }))
-        } else {
-            dataSecond.sortedByDescending { it.nilaiRatting }
-        }
-        secondAdapter.submitList(sortedList.toList()) // Ensure you submit a new list
+        val initialList = getInitialData()
+        secondAdapter.submitList(initialList)
+    }
+
+    private fun getInitialData(): List<RecomendedModel> {
+        // Return the initial unsorted list or define your initial data fetching logic here.
+        return dataSecond.toList()
     }
 
     private fun startShimmerEffect() {
-        binding.shimmerCategory.visibility = View.VISIBLE
-        binding.shimmerCategory.startShimmer()
-        binding.shimmerRekomendasi.visibility = View.VISIBLE
-        binding.shimmerRekomendasi.startShimmer()
-        binding.shimmerBanner.visibility = View.VISIBLE
-        binding.shimmerBanner.startShimmer()
-        binding.tabLayout.visibility = View.GONE
-        binding.imgLocation.visibility = View.GONE
-        binding.tvLocation.visibility = View.GONE
-        binding.recyclerView.visibility = View.GONE
-        binding.rvRekomendasi.visibility = View.GONE
+        _binding?.let {
+            it.shimmerCategory.visibility = View.VISIBLE
+            it.shimmerCategory.startShimmer()
+            it.shimmerRekomendasi.visibility = View.VISIBLE
+            it.shimmerRekomendasi.startShimmer()
+            it.shimmerBanner.visibility = View.VISIBLE
+            it.shimmerBanner.startShimmer()
+            it.tabLayout.visibility = View.GONE
+            it.imgLocation.visibility = View.GONE
+            it.tvLocation.visibility = View.GONE
+            it.recyclerView.visibility = View.GONE
+            it.rvRekomendasi.visibility = View.GONE
+            it.materialCardView2.visibility=View.GONE
 
-        handler.postDelayed(shimmerRunnable, 3000)
+            handler.postDelayed(shimmerRunnable, 3000)
+        }
     }
 
     private fun stopShimmerEffect() {
@@ -275,6 +287,7 @@ class HomeFragment : Fragment(), RecomendedAdapter.OnItemClickListener {
             it.shimmerBanner.visibility = View.GONE
             it.recyclerView.visibility = View.VISIBLE
             it.rvRekomendasi.visibility = View.VISIBLE
+            it.materialCardView2.visibility = View.VISIBLE
             it.tabLayout.visibility = if (isLocationPermissionGranted) View.VISIBLE else View.GONE
             setupBanner()
             handler.postDelayed(bannerRunnable, 3000)
@@ -283,13 +296,17 @@ class HomeFragment : Fragment(), RecomendedAdapter.OnItemClickListener {
 
     private fun setupBanner() {
         Handler(Looper.getMainLooper()).postDelayed({
-            val imgSlider = binding.imageSlider
-            val slides = ArrayList<SlideModel>()
-            slides.add(SlideModel("https://img.freepik.com/free-vector/design-courses-sale-banner-template_23-2149044442.jpg?w=1060&t=st=1716639679~exp=1716640279~hmac=507d30108d3819929ec73ff4310a39dbb124f8d742f7a8eee0f0426336823655"))
-            slides.add(SlideModel("https://i.pinimg.com/564x/52/be/ae/52beae20d30c524cc382a32086005823.jpg"))
-            slides.add(SlideModel("https://fastly.picsum.photos/id/320/500/500.jpg?hmac=2iE7TIF9kIqQOHrIUPOJx2wP1CJewQIZBeMLIRrm74s"))
-            imgSlider.setImageList(slides, ScaleTypes.CENTER_CROP)
-            binding.imageSlider.visibility = View.VISIBLE
+            val imgSlider = _binding?.imageSlider
+            imgSlider?.let {
+                val slides = ArrayList<SlideModel>()
+                slides.add(SlideModel("https://ik.imagekit.io/pashouses/pandu/pages/wp-content/uploads/2023/01/pexels-tima-miroshnichenko-6474471-2048x1365.jpg"))
+                slides.add(SlideModel("https://img.freepik.com/free-vector/design-courses-sale-banner-template_23-2149044442.jpg?w=1060&t=st=1716639679~exp=1716640279~hmac=507d30108d3819929ec73ff4310a39dbb124f8d742f7a8eee0f0426336823655"))
+                slides.add(SlideModel("https://i.pinimg.com/564x/52/be/ae/52beae20d30c524cc382a32086005823.jpg"))
+
+                it.setImageList(slides, ScaleTypes.CENTER_CROP)
+                it.visibility = View.VISIBLE
+
+            }
         }, 0)
     }
 

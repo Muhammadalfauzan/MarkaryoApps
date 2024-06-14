@@ -149,7 +149,7 @@
         android:layout_marginTop="8dp"
         android:text="@string/atau_masuk_dengan_menggunakan"
         android:fontFamily="@font/poppins_regular"
-        android:textSize="12sp"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/materialTextView3"
@@ -187,10 +187,12 @@
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
+
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.586"
+        app:layout_constraintVertical_bias="0.527"
         tools:visibility="visible" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
