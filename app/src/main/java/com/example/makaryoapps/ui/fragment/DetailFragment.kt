@@ -55,14 +55,17 @@ class DetailFragment : Fragment() {
             recommendedItem?.let {
                 bundle.putString("craftsman_name", it.nameBuilder)
                 bundle.putString("price", "19.500")
+                bundle.putInt("photo_id", it.imageRec)
                 findNavController().navigate(R.id.action_detailFragment_to_confirmationFragment, bundle)
             } ?: detailCategoryItem?.let {
                 bundle.putString("craftsman_name", it.nameCrafts)
                 bundle.putString("price", "19.500")
+                bundle.putInt("photo_id", it.imageCrafts)
                 findNavController().navigate(R.id.action_detailFragment_to_confirmationFragment, bundle)
             } ?: historyItem?.let {
             bundle.putString("craftsman_name", it.nameBuilder)
             bundle.putString("price", "19.500")
+                bundle.putInt("photo_id", it.imageBuilder)
             findNavController().navigate(R.id.action_detailFragment_to_confirmationFragment, bundle)
         }
         }

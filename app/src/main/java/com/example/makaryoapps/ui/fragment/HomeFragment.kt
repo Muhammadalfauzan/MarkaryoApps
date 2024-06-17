@@ -1,14 +1,19 @@
 package com.example.makaryoapps.ui.fragment
 
+import android.app.Dialog
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.Window
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.fragment.app.DialogFragment
@@ -74,7 +79,7 @@ class HomeFragment : Fragment(), RecomendedAdapter.OnItemClickListener {
         setupSecondRecyclerView()
         startShimmerEffect()
         refreshViewsBasedOnPermission()
-
+        dialogAds()
         // Check if location permission dialog has been shown before and permission is not granted
         if (!isLocationPermissionDialogShown() && !isLocationPermissionGranted) {
             showLocationPermissionDialog()
@@ -96,6 +101,10 @@ class HomeFragment : Fragment(), RecomendedAdapter.OnItemClickListener {
             override fun onTabUnselected(tab: TabLayout.Tab) {}
             override fun onTabReselected(tab: TabLayout.Tab) {}
         })
+
+        binding.cardViewProfile.setOnClickListener {
+            findNavController().navigate(R.id.action_homeFragment_to_profileFragment)
+        }
     }
 
     private fun showLocationPermissionDialog() {
@@ -271,7 +280,7 @@ class HomeFragment : Fragment(), RecomendedAdapter.OnItemClickListener {
             it.tvLocation.visibility = View.GONE
             it.recyclerView.visibility = View.GONE
             it.rvRekomendasi.visibility = View.GONE
-            it.materialCardView2.visibility=View.GONE
+            it.cardViewProfile.visibility=View.GONE
 
             handler.postDelayed(shimmerRunnable, 3000)
         }
@@ -287,7 +296,7 @@ class HomeFragment : Fragment(), RecomendedAdapter.OnItemClickListener {
             it.shimmerBanner.visibility = View.GONE
             it.recyclerView.visibility = View.VISIBLE
             it.rvRekomendasi.visibility = View.VISIBLE
-            it.materialCardView2.visibility = View.VISIBLE
+            it.cardViewProfile.visibility = View.VISIBLE
             it.tabLayout.visibility = if (isLocationPermissionGranted) View.VISIBLE else View.GONE
             setupBanner()
             handler.postDelayed(bannerRunnable, 3000)
@@ -299,15 +308,30 @@ class HomeFragment : Fragment(), RecomendedAdapter.OnItemClickListener {
             val imgSlider = _binding?.imageSlider
             imgSlider?.let {
                 val slides = ArrayList<SlideModel>()
-                slides.add(SlideModel("https://ik.imagekit.io/pashouses/pandu/pages/wp-content/uploads/2023/01/pexels-tima-miroshnichenko-6474471-2048x1365.jpg"))
-                slides.add(SlideModel("https://img.freepik.com/free-vector/design-courses-sale-banner-template_23-2149044442.jpg?w=1060&t=st=1716639679~exp=1716640279~hmac=507d30108d3819929ec73ff4310a39dbb124f8d742f7a8eee0f0426336823655"))
-                slides.add(SlideModel("https://i.pinimg.com/564x/52/be/ae/52beae20d30c524cc382a32086005823.jpg"))
-
-                it.setImageList(slides, ScaleTypes.CENTER_CROP)
+                slides.add(SlideModel(R.drawable.ad_slide1))
+                slides.add(SlideModel(R.drawable.ad_slide22))
+                slides.add(SlideModel(R.drawable.ad_slide33))
+                slides.add(SlideModel(R.drawable.ad_slide4))
+                it.setImageList(slides, ScaleTypes.FIT)
                 it.visibility = View.VISIBLE
 
             }
-        }, 0)
+        }, 1000)
+    }
+    private fun dialogAds(){
+        val dialog = Dialog(requireContext())
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        dialog.setContentView(R.layout.dialog_home)
+
+        val close = dialog.findViewById<ImageView>(R.id.btn_close)
+
+        close.setOnClickListener {
+            dialog.dismiss()
+        }
+
+        dialog.show()
+
     }
 
     override fun onDestroyView() {

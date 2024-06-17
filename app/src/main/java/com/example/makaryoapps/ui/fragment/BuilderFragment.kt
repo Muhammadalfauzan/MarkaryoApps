@@ -40,11 +40,11 @@ class BuilderFragment : Fragment(), DetailCategoryAdapter.OnItemClickListener {
     @SuppressLint("Recycle")
     private fun getDataBuilder() {
         dataBuilder.clear() // Clear the list to avoid duplication
-        val photo = resources.obtainTypedArray(R.array.data_photo)
-        val names = resources.getStringArray(R.array.data_craftsman)
-        val ratingsStringArray = resources.getStringArray(R.array.data_star)
+        val photo = resources.obtainTypedArray(R.array.data_photo_builder)
+        val names = resources.getStringArray(R.array.data_builder)
+        val ratingsStringArray = resources.getStringArray(R.array.data_star_builder)
         val ratingsFloatArray = ratingsStringArray.map { it.toFloat() }.toFloatArray()
-        val skill1 = resources.getStringArray(R.array.data_skill1)
+        val skill1 = resources.getStringArray(R.array.data_skill_builder)
         val skillTextWithDoubleSpace = skill1.map { it.replace(" ", "  ") }.toTypedArray()
         val imgStatus = resources.obtainTypedArray(R.array.data_img_status)
         val status = resources.getStringArray(R.array.data_statusCrafts)

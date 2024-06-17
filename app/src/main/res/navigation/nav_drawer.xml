@@ -214,6 +214,14 @@
         <argument
             android:name="historyModel"
             app:argType="com.example.makaryoapps.ui.history.HistoryModel" />
+
+        <action
+            android:id="@+id/action_confirmationFragment_self"
+            app:destination="@id/confirmationFragment">
+        <argument
+            android:name="selectedPaymentMethod"
+            app:argType="string" />
+        </action>
     </fragment>
 
     <fragment
@@ -298,5 +306,15 @@
         <action
             android:id="@+id/action_notificationFragment_to_profileFragment"
             app:destination="@id/profileFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/paymentMethodFragment"
+        android:name="com.example.makaryoapps.PaymentMethodFragment"
+        android:label="fragment_payment_method"
+        tools:layout="@layout/fragment_payment_method" >
+
+        <action
+            android:id="@+id/action_paymentMethodFragment_to_confirmationFragment"
+            app:destination="@id/confirmationFragment" />
     </fragment>
 </navigation>

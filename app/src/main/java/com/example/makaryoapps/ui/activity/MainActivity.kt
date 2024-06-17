@@ -71,6 +71,9 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
+    interface PaymentMethodListener {
+        fun onPaymentMethodSelected(paymentMethod: String, data: Bundle)
+    }
 
 
     private fun setupBottomNavVisibility(navController: NavController) {

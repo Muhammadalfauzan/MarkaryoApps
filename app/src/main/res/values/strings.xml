@@ -1,7 +1,155 @@
 <resources>
-    <string name="app_name">MakaryoApps</string>
+    <string name="app_name">Makaryo</string>
 
-    <!--data dummy-->
+    <!--data dummy builder-->
+
+    <string-array name="data_builder">
+
+        <item>Alex</item>
+        <item>Ahmad</item>
+        <item>Agus</item>
+        <item>Feni</item>
+        <item>Bambang</item>
+        <item>Muthu</item>
+        <item>Baharudin</item>
+        <item>Jokooo</item>
+
+    </string-array>
+
+    <integer-array name="data_photo_builder">
+        <item>@drawable/alex</item>
+        <item>@drawable/ahmad</item>
+        <item>@drawable/agus</item>
+        <item>@drawable/feni</item>
+        <item>@drawable/bambang</item>
+        <item>@drawable/muthu</item>
+        <item>@drawable/baharudin</item>
+        <item>@drawable/joko</item>
+
+    </integer-array>
+    <string-array name="data_skill_builder">
+        <item>Cat Atap </item>
+        <item>Plafon Cat</item>
+        <item>Cat Atap Pipa</item>
+        <item>Kaca Atap </item>
+        <item>Atap</item>
+        <item>Cat</item>
+        <item>Atap Plafon</item>
+        <item>Atap Cat</item>
+
+    </string-array>
+    <string-array name="data_star_builder">
+        <item>4.0</item>
+        <item>4.1</item>
+        <item>4.2</item>
+        <item>4.3</item>
+        <item>4.7</item>
+        <item>4.8</item>
+        <item>4.6</item>
+        <item>5.0</item>
+    </string-array>
+
+
+    <!--data dummy electronic-->
+    <string-array name="data_electronic">
+
+        <item>Juanda</item>
+        <item>Gylga</item>
+        <item>Hasyan</item>
+        <item>Dendy Syahputra</item>
+        <item>Dafa Kuda</item>
+        <item>Dede Inoen</item>
+
+    </string-array>
+
+    <integer-array name="data_photo_electronic">
+        <item>@drawable/juanda</item>
+        <item>@drawable/gylga</item>
+        <item>@drawable/hasyan</item>
+        <item>@drawable/dendy_syahputra</item>
+        <item>@drawable/dafaa_kuda</item>
+        <item>@drawable/dede</item>
+
+    </integer-array>
+    <string-array name="data_skill_electronic">
+        <item>Kipas Ac</item>
+        <item>Mesin cuci Kulkas</item>
+        <item>TV Radio</item>
+        <item>Ac Lampu</item>
+        <item>Kipas TV Komputer</item>
+        <item>Kipas Kulkas</item>
+
+    </string-array>
+    <string-array name="data_star_electronic">
+        <item>4.0</item>
+        <item>4.1</item>
+        <item>4.2</item>
+        <item>4.3</item>
+        <item>4.7</item>
+        <item>4.9</item>
+
+    </string-array>
+
+
+    <!--data dummy cleaning-->
+    <string-array name="data_cleaning">
+
+        <item>Boyy</item>
+        <item>Gentaaa</item>
+        <item>Pascol</item>
+        <item>Sumanto</item>
+        <item>Ari Blekk</item>
+
+
+    </string-array>
+
+    <integer-array name="data_photo_cleaning">
+        <item>@drawable/boy</item>
+        <item>@drawable/genta</item>
+        <item>@drawable/pascol_miya</item>
+        <item>@drawable/sumanto</item>
+        <item>@drawable/ari_blek</item>
+
+    </integer-array>
+
+    <string-array name="data_skill_cleaning">
+        <item>Karpet</item>
+        <item>Rumah</item>
+        <item>Kantor</item>
+        <item>Sofa Karpet</item>
+        <item>Rumah Kantor</item>
+
+    </string-array>
+
+    <!--data dummy otomotif-->
+    <string-array name="data_otomotif">
+
+        <item>Syamsudin</item>
+        <item>Yonoo</item>
+        <item>Memett</item>
+        <item>Sonny</item>
+        <item>Miekum</item>
+
+    </string-array>
+
+    <integer-array name="data_photo_otomotif">
+        <item>@drawable/syamsudin</item>
+        <item>@drawable/yono</item>
+        <item>@drawable/memet</item>
+        <item>@drawable/sony</item>
+        <item>@drawable/miekum</item>
+
+
+    </integer-array>
+
+    <string-array name="data_skill_otomotif">
+        <item>Modifikasi Tuneup</item>
+        <item>Tuneup Modifukasi</item>
+        <item>Mesindiesel </item>
+        <item>Ban Roda Bodyrepair</item>
+        <item>Motor Tuneup</item>
+
+    </string-array>
 
 
     <string-array name="data_distance">
@@ -25,30 +173,19 @@
     </string-array>
 
     <string-array name="data_star">
-        <item>4.0</item>
-        <item>4.1</item>
-        <item>4.3</item>
-        <item>4.4</item>
-        <item>4.5</item>
-        <item>4.8</item>
-        <item>4.6</item>
         <item>5.0</item>
+        <item>4.1</item>
+        <item>4.1</item>
+        <item>4.7</item>
+        <item>4.3</item>
+        <item>4.8</item>
+        <item>5.0</item>
+        <item>4.2</item>
     </string-array>
 
-    <string-array name="data_skill">
-        <item>Karpet</item>
-        <item>Modifikasi TurnUp</item>
-        <item>Kipas Ac</item>
-        <item>Cat Atap Pipa</item>
-        <item>Karpet </item>
-        <item>Atap</item>
-        <item>Pipa</item>
-        <item>Ac </item>
-
-    </string-array>
 
     <string-array name="data_alamat">
-        <item>Bantul, DI.Yoyakarta TurnUp</item>
+        <item>Bantul, DI.Yoyakarta</item>
         <item>Klaten, Jawa tengah</item>
         <item>Gunung Kidul, DI. Yogyakarta</item>
         <item>Bantul, DI. Yogyakarta </item>
@@ -61,19 +198,41 @@
 
 
     <!-- builder-->
+    <string-array name="data_craftsman">
+        <item>Joko</item>
+        <item>Dede Inoen </item>
+        <item>Gylga</item>
+        <item>Dafaa Kuda</item>
+        <item>Pascol Miya</item>
+        <item>Bambang</item>
+        <item>Ari Blek</item>
+        <item>Agus</item>
+
+    </string-array>
 
     <integer-array name="data_photo">
-        <item>@drawable/rec_1</item>
+        <item>@drawable/joko</item>
         <item>@drawable/dede</item>
-        <item>@drawable/rec_1</item>
-        <item>@drawable/dede</item>
-        <item>@drawable/rec_1</item>
-        <item>@drawable/rec_1</item>
-        <item>@drawable/rec_1</item>
-        <item>@drawable/dede</item>
+        <item>@drawable/gylga</item>
+        <item>@drawable/dafaa_kuda</item>
+        <item>@drawable/pascol_miya</item>
+        <item>@drawable/bambang</item>
+        <item>@drawable/ari_blek</item>
+        <item>@drawable/agus</item>
 
     </integer-array>
 
+    <string-array name="data_skill">
+        <item>Atap Cat</item>
+        <item>Kipas Kulkas</item>
+        <item>Mesin cuci  Kulkas</item>
+        <item>Kipas TV Komputer</item>
+        <item>Kantor </item>
+        <item>Atap</item>
+        <item>Rumah Kantor</item>
+        <item>Cat Atap Pipa </item>
+
+    </string-array>
     <string-array name="data_dalam_proses">
         <item>sedang dalam perjalanan</item>
         <item>sedang di kerjakan</item>
@@ -87,6 +246,22 @@
 
     <string-array name="data_riwayat">
         <item>service sudah selesai</item>
+
+    </string-array>
+
+    <integer-array name="data_photo_chat">
+
+        <item>@drawable/joko</item>
+        <item>@drawable/dede</item>
+        <item>@drawable/gylga</item>
+
+    </integer-array>
+
+    <string-array name="data_craftsman_chat">
+
+        <item>Joko</item>
+        <item>Dede Inoen </item>
+        <item>Gylga</item>
 
     </string-array>
 
@@ -113,17 +288,6 @@
     </string-array>
 
 
-    <string-array name="data_craftsman">
-        <item>Ibrahim</item>
-        <item>Dede Inoen </item>
-        <item>Budi Santoso</item>
-        <item>Chandra Wijaya</item>
-        <item>Dedi Saputra</item>
-        <item>Eko Susanto</item>
-        <item>Fajar Hidayat</item>
-        <item>Guntur Pradipta</item>
-
-    </string-array>
     <string-array name="data_skill1">
         <item>Cat Pipa</item>
         <item>Pipa Atap Cat</item>
@@ -175,13 +339,8 @@
 
 
     <string-array name="data_lastChat">
-        <item>Oke</item>
-        <item>Oke</item>
-        <item>Baik</item>
-        <item>Baik</item>
-        <item>Iya</item>
-        <item>Iya</item>
-        <item>Iya</item>
+        <item>Okee</item>
+        <item>Baikk</item>
         <item>Terima Kasih</item>
 
     </string-array>
@@ -189,11 +348,6 @@
     <string-array name="data_jam">
         <item>10:30 PM</item>
         <item>09:19 PM</item>
-        <item>08:12 PM</item>
-        <item>11:19 PM</item>
-        <item>11:19 PM</item>
-        <item>11:19 PM</item>
-        <item>11:19 PM</item>
         <item>11:19 PM</item>
 
     </string-array>
@@ -205,21 +359,21 @@
     </string-array>
 
     <string-array name="data_nameAlamat">
-        <item>Jihan </item>
+        <item>Ticha </item>
         <item>Jenifer </item>
-        <item>Ibrahim </item>
+        <item>Fauzan </item>
     </string-array>
 
     <string-array name="data_noHpAlamat">
-        <item>(0847723823)</item>
-        <item>(0847723823)</item>
-        <item>(0847723823)</item>
+        <item>(084772382390)</item>
+        <item>(085274626507)</item>
+        <item>(085748749796)</item>
     </string-array>
 
     <string-array name="data_complateAlamat">
         <item>Gang Kenangan No.70\nWedomartani,Ngemplak, Sleman, DI Yogyakarta</item>
         <item>Jln Nin Aja Dulu No.04\nManisrenggo, Klaten, Jawa Tengah</item>
-        <item>klaten</item>
+        <item>Ngringin, Condongcatur,Kec. Depok, Kabupaten Sleman, Di Yogyakarta</item>
     </string-array>
 
 
@@ -238,14 +392,17 @@
     <string name="atau_masuk_dengan_menggunakan">atau masuk dengan menggunakan  :</string>
     <string name="invalid_password">invalid password </string>
     <string name="proses_login_anda_berhasil">Proses login anda berhasil! </string>
+    <string name="proses_login_anda_gagal">Proses login anda gagal!</string>
     <string name="succes_order">Tukang berhasil di pesan!</string>
     <string name="proses_register_anda_berhasil">Proses Register anda berhasil! </string>
     <string name="success_add_address">Berhasil menambahkan alamat! </string>
     <string name="success_update_address">Berhasil mengubah alamat! </string>
+    <string name="success_update_profile">Berhasil mengubah data akun! </string>
     <string name="permission_location">Kami butuh akses lokasi untuk layanan \t yang lebih baik bagi anda! </string>
     <string name="lanjutkan">Lanjutkan</string>
+    <string name="kembali">Kembali</string>
     <string name="izinkan">Izinkan</string>
-    <string name="lewatkan">Lewatkan</string>
+    <string name="lewatkan">Lewati</string>
     <string name="keluar_dialog">Apakah anda yakin
 untuk keluar?</string>
     <string name="keluar">Keluar</string>
@@ -277,7 +434,7 @@ untuk keluar?</string>
     <string name="portofolio">Portofolio</string>
     <string name="ulasan">Ulasan</string>
     <string name="rp">Rp</string>
-    <string name="price">Rp 19.500</string>
+    <string name="price">Rp 34.500</string>
     <string name="order_now">Pesan Sekarang</string>
     <string name="selesai">Selesai</string>
 

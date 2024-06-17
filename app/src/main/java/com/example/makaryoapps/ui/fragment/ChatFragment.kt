@@ -49,8 +49,8 @@ class ChatFragment : Fragment(), ChatAdapter.OnItemClickListener {
     }
 
     private fun getDataChat() {
-        val photo = resources.obtainTypedArray(R.array.data_photo)
-        val names = resources.getStringArray(R.array.data_craftsman)
+        val photo = resources.obtainTypedArray(R.array.data_photo_chat)
+        val names = resources.getStringArray(R.array.data_craftsman_chat)
         val lastChat = resources.getStringArray(R.array.data_lastChat)
         val jam = resources.getStringArray(R.array.data_jam)
 

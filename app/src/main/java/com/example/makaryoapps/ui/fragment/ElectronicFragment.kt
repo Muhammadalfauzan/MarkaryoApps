@@ -20,8 +20,8 @@ class ElectronicFragment : Fragment(), DetailCategoryAdapter.OnItemClickListener
 
     private var _binding: FragmentElectronicBinding? = null
     private val binding get() = _binding!!
-
     private var dataBuilder: ArrayList<DetailCategoryModel> = ArrayList()
+    private lateinit var listDetailCategoryAdapter: DetailCategoryAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,18 +33,19 @@ class ElectronicFragment : Fragment(), DetailCategoryAdapter.OnItemClickListener
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setupRecyclerView()
         getDataBuilder() // Panggil fungsi untuk mendapatkan dataBuilder
-        showRecycler()
         iconBackClicked()
     }
 
     @SuppressLint("Recycle")
     private fun getDataBuilder() {
-        val photo = resources.obtainTypedArray(R.array.data_photo)
-        val names = resources.getStringArray(R.array.data_craftsman)
-        val ratingsStringArray = resources.getStringArray(R.array.data_star)
+        dataBuilder.clear() // Clear the list to avoid duplication
+        val photo = resources.obtainTypedArray(R.array.data_photo_electronic)
+        val names = resources.getStringArray(R.array.data_electronic)
+        val ratingsStringArray = resources.getStringArray(R.array.data_star_builder)
         val ratingsFloatArray = ratingsStringArray.map { it.toFloat() }.toFloatArray()
-        val skill1 = resources.getStringArray(R.array.data_skill1)
+        val skill1 = resources.getStringArray(R.array.data_skill_electronic)
         val skillTextWithDoubleSpace = skill1.map { it.replace(" ", "  ") }.toTypedArray()
         val imgStatus = resources.obtainTypedArray(R.array.data_img_status)
         val status = resources.getStringArray(R.array.data_statusCrafts)
@@ -63,15 +64,17 @@ class ElectronicFragment : Fragment(), DetailCategoryAdapter.OnItemClickListener
 
         photo.recycle()
         imgStatus.recycle()
+
+        listDetailCategoryAdapter.submitList(dataBuilder) // Set the data to the adapter
     }
 
-    private fun showRecycler() {
+    private fun setupRecyclerView() {
         binding.rvElectronic.layoutManager =
             LinearLayoutManager(requireActivity(), LinearLayoutManager.VERTICAL, false)
-        val listDetailCategoryAdapter = DetailCategoryAdapter(this) // Pass 'this' as the listener
+        listDetailCategoryAdapter = DetailCategoryAdapter(this) // Initialize the adapter
         binding.rvElectronic.adapter = listDetailCategoryAdapter
-        listDetailCategoryAdapter.submitList(dataBuilder) // Use submitList to set the data
     }
+
     private fun iconBackClicked() {
         binding.ibBack.setOnClickListener {
             requireActivity().onBackPressed()

@@ -12,6 +12,8 @@ import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
 import com.example.makaryoapps.R
 import com.example.makaryoapps.databinding.FragmentUpdateProfileBinding
+import com.example.makaryoapps.ui.costumdialogfragment.DialogSuccessUpdate
+import com.example.makaryoapps.ui.costumdialogfragment.DialogSuccessUpdateProfile
 import java.io.IOException
 
 class UpdateProfileFragment : Fragment() {
@@ -35,6 +37,7 @@ class UpdateProfileFragment : Fragment() {
             openGallery()
         }
         binding.btnSave.setOnClickListener {
+            showCustomToast()
             findNavController().navigate(
                 R.id.action_updateProfileFragment_to_profileFragment,
                 null,
@@ -63,10 +66,15 @@ class UpdateProfileFragment : Fragment() {
             }
         }
     }
+    private fun showCustomToast() {
+        val dialog = DialogSuccessUpdateProfile()
+        dialog.show(parentFragmentManager, "CustomToastDialog")
+    }
     private fun iconBackClicked() {
         binding.ibBack.setOnClickListener {
             requireActivity().onBackPressed()
         }
     }
+
 
 }

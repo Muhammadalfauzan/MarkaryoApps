@@ -40,18 +40,40 @@ class RiwayatFragment : Fragment(), HistoryAdapterRv.OnItemClickListener {
 
         val dataHistory = listOf(
             HistoryModel(
-                R.drawable.sumanto,
-                "Sumanto",
-                "4.5",
-                "Service sudah selesai",
-                "14 Juni, 2024",
+                R.drawable.joko,
+                "Jokoo",
+                "5.0",
+                "service sudah selesai",
+                "15 Juni, 2024",
             ),
             HistoryModel(
-                R.drawable.dede,
-                "Dede Inoen",
+                R.drawable.bambang,
+                "Bambang",
                 "4.5",
-                "Service sudah selesai",
-                "15 Juni, 2024",
+                "service sudah selesai",
+                "16 Juni, 2024",
+            ),
+
+            HistoryModel(
+                R.drawable.miekum,
+                "Miekum",
+                "4.7",
+                "service sudah selesai",
+                "17 Juni, 2024",
+            ),
+            HistoryModel(
+                R.drawable.dendy_syahputra,
+                "Dendy Syahputra",
+                "4.3",
+                "service sudah selesai",
+                "18 Juni, 2024",
+            ),
+            HistoryModel(
+                R.drawable.ari_blek,
+                "Ari Blek",
+                "5.0",
+                "service sudah selesai",
+                "16 Juni, 2024",
             )
             // Add more HistoryModel items as needed
         )

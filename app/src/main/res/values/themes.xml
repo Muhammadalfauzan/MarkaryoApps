@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Base.Theme.MakaryoApps" parent="Theme.Material3.DayNight.NoActionBar">
+    <style name="Base.Theme.MakaryoApps" parent="Theme.Material3.Light.NoActionBar">
         <item name="android:statusBarColor">@color/yellow</item>
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
@@ -14,7 +14,6 @@
         <item name="iconTint">@color/grey_font</item> <!-- Tint color of the search icon -->
         <item name="android:textColor">@color/dark_grey</item> <!-- Color of the search text -->
         <item name="hintTextColor">@color/grey_font</item> <!-- Color of the hint text -->
-
     </style>
 
     <style name="DialogAnimation">

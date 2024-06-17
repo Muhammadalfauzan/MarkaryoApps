@@ -35,35 +35,43 @@ class DalamProsesFragment : Fragment() {
 
         val dataProses = listOf(
             ProsesModel(
-                R.drawable.rec_1,
-                "Ibrahim",
-                "Sedang dikerjakan ",
+                R.drawable.sumanto,
+                "Sumanto",
+                "sedang dikerjakan ",
                 "2 Juni, 2024",
-                "4.0",
+                "4.3",
                 R.drawable.ic_dikerjakan
             ),
             ProsesModel(
-                R.drawable.rec_1,
-                "Ibrahim",
-                "Sedang dikerjakan ",
+                R.drawable.baharudin,
+                "Baharudin",
+                "sedang dikerjakan ",
                 "17 Juni, 2024",
-                "4.1",
+                "4.6",
                 R.drawable.ic_dikerjakan
             ),
             ProsesModel(
-                R.drawable.rec_1,
-                "Ibrahim",
-                "sedang dalam perjalanani",
+                R.drawable.memet,
+                "Memett",
+                "sedang dalam perjalanan",
                 "14 Juni, 2024",
-                "4.5",
+                "4.2",
                 R.drawable.ic_proses
             ),
             ProsesModel(
-                R.drawable.rec_1,
-                "Ibrahim",
+                R.drawable.ari_blek,
+                "Ari Blek",
+                "sedang dikerjakan",
+                "15 Juni, 2024",
+                "4.7",
+                R.drawable.ic_dikerjakan
+            ),
+            ProsesModel(
+                R.drawable.juanda,
+                "Juanda",
                 "sedang dalam perjalanan",
                 "15 Juni, 2024",
-                "4.8",
+                "4.7",
                 R.drawable.ic_proses
             ),
 

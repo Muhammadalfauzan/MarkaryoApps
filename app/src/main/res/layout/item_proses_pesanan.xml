@@ -27,12 +27,12 @@
                 android:layout_height="75dp"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:src="@drawable/jeni"
+                android:layout_marginBottom="16dp"
+                android:src="@drawable/ari_blek"
+                android:scaleType="fitXY"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
-
 
             <ImageView
                 android:id="@+id/tvRatting"
@@ -57,16 +57,19 @@
                 android:fontFamily="@font/poppins_semi_bold"
                 android:gravity="center"
                 android:height="24dp" />
+
             <TextView
                 android:id="@+id/textView2"
-                android:layout_width="88dp"
-                android:layout_height="30dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:fontFamily="@font/poppins_semi_bold"
                 android:textSize="15sp"
-                android:text="Hai, Jeniver"
-
+                android:singleLine="true"
+                android:ellipsize="end"
+                android:text="Hai,  Jeniver"
                 app:layout_constraintStart_toEndOf="@+id/imageView3"
+                app:layout_constraintEnd_toStartOf="@+id/tvRatting"
                 app:layout_constraintTop_toTopOf="@+id/imageView3" />
 
             <ImageView
@@ -75,36 +78,42 @@
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_proses"
                 android:layout_marginStart="10dp"
+                android:layout_marginTop="4dp"
                 app:layout_constraintStart_toEndOf="@+id/imageView3"
                 app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
             <TextView
                 android:id="@+id/tv_status"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins_light"
                 android:text=" Sedang Dalam Perjalanan"
                 android:paddingTop="2dp"
+                android:singleLine="true"
+                android:ellipsize="end"
+                android:layout_marginTop="4dp"
                 android:layout_marginStart="4dp"
                 android:textSize="12sp"
                 app:layout_constraintBottom_toBottomOf="@+id/imageViewProses"
                 app:layout_constraintStart_toEndOf="@+id/imageViewProses"
+                app:layout_constraintEnd_toStartOf="@+id/tvRatting"
                 app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
             <TextView
                 android:id="@+id/tvDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="6dp"
                 android:fontFamily="@font/poppins_regular"
                 android:text=" 14 May, 2024"
                 android:textSize="10sp"
+                android:singleLine="true"
+                android:ellipsize="end"
                 android:layout_marginBottom="6dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/textView2"
                 app:layout_constraintTop_toBottomOf="@+id/tv_status" />
         </androidx.constraintlayout.widget.ConstraintLayout>
-
 
     </com.google.android.material.card.MaterialCardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

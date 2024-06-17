@@ -103,13 +103,12 @@
             </com.facebook.shimmer.ShimmerFrameLayout>
 
             <com.google.android.material.card.MaterialCardView
-                android:id="@+id/materialCardView2"
+                android:id="@+id/cardViewProfile"
                 android:layout_width="match_parent"
                 android:layout_height="90dp"
                 android:background="@drawable/myrect"
                 android:backgroundTint="@color/white"
                 app:cardCornerRadius="8dp"
-                app:cardElevation="5dp"
                 android:layout_marginStart="12dp"
                 android:layout_marginEnd="12dp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -146,7 +145,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10dp"
-                        android:text="Hai, Jeniver"
+                        android:text="Hai, Ticha"
                         android:textSize="16sp"
                         android:textStyle="bold"
                         app:layout_constraintStart_toEndOf="@+id/cardView2"
@@ -295,7 +294,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:layout_marginTop="4dp"
-                 android:layout_marginHorizontal="12dp"
+                android:layout_marginHorizontal="9dp"
+                android:src = "@drawable/banner2"
                 app:iss_auto_cycle="true"
                 app:iss_delay="1000"
                 app:iss_period="1000"
