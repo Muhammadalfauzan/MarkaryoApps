@@ -88,12 +88,12 @@ class DetailFragment : Fragment() {
         binding.rvReview.layoutManager =
             LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
         allReviews = listOf(
-            ReviewModel(R.drawable.jihan, "Jihan Audy", "Cukup memuaskan, pelayananuya baik\n" + "abangnya ramah"),
-            ReviewModel(R.drawable.jihan, "Jihan Audy", "Cukup memuaskan, pelayananuya baik\n" + "abangnya ramah"),
-            ReviewModel(R.drawable.jihan, "Jihan Audy", "Cukup memuaskan, pelayananuya baik\n" + "abangnya ramah"),
-            ReviewModel(R.drawable.jihan, "Jihan Audy", "Cukup memuaskan, pelayananuya baik\n" + "abangnya ramah"),
-            ReviewModel(R.drawable.jihan, "Jihan Audy", "Cukup memuaskan, pelayananuya baik\n" + "abangnya ramah"),
-            ReviewModel(R.drawable.jihan, "Jihan Audy", "Cukup memuaskan, pelayananuya baik\n" + "abangnya ramah")
+            ReviewModel(R.drawable.rifda, "Ticha", "Respon tukang nya cepat dan sampe dirumah cepat pengerjaan baik","4.7"),
+            ReviewModel(R.drawable.chindo1, "Clarissa", "Sangat bagus dan teliti","4.8"),
+            ReviewModel(R.drawable.jihan, "Jihan Audy", "Cukup memuaskan, pelayananuya baik\n" + "abangnya ramah","4.6"),
+            ReviewModel(R.drawable.ashana, "Ashana Bela", "Pengerjaan nya bagus","4.9"),
+            ReviewModel(R.drawable.alexa, "Alexa", "Responnya cepat pengerjaan bagus","5.0"),
+            ReviewModel(R.drawable.cantika, "Cantika Olivia", "Pengerjaan nya sat set dan rapi","5.0")
         )
 
         limitedReviews = allReviews.take(2)

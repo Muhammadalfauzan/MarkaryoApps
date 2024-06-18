@@ -99,17 +99,18 @@ class ConfirmationFragment : Fragment(), MainActivity.PaymentMethodListener {
                 // Update TextView directly
                 binding.textView13.text = selectedPaymentMethod
 
+                // Make tv_pilih_pembayaran GONE
+                binding.tvPilihPembayaran.visibility = View.GONE
+
                 Toast.makeText(requireContext(), "Option $selectedPaymentMethod is selected", Toast.LENGTH_SHORT).show()
             }
         }
     }
-
     private fun showPaymentMethodFragment() {
         val bottomSheet = PaymentMethodFragment()
         bottomSheet.setListener(this) // Set listener untuk menerima hasil pilihan metode pembayaran
         bottomSheet.show(childFragmentManager, PaymentMethodFragment::class.java.simpleName)
     }
-
     private fun dialogSukses() {
         val dialog = Dialog(requireContext())
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)

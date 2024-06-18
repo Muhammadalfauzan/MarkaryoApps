@@ -22,6 +22,7 @@ class ReviewAdapter  (private var itemList : List<ReviewModel>) : RecyclerView.A
         holder.binding.ivReview.setImageResource(item.imgReview)
         holder.binding.tvReviewName.text = item.nameReview
         holder.binding.tvKetReview.text = item.ketReview
+        holder.binding.tvRatting.text = item.rating
 
     } override fun getItemCount(): Int {
         return itemList.size

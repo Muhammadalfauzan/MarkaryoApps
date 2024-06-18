@@ -13,8 +13,8 @@
 
         <View
             android:layout_width="40dp"
-            android:layout_height="2dp"
-            android:layout_marginTop="6dp"
+            android:layout_height="4dp"
+            android:layout_marginTop="8dp"
             android:background="#E5E5E5"
             android:layout_gravity="center_horizontal"
             android:visibility="visible" />
@@ -92,7 +92,7 @@
                         android:layout_width="40dp"
                         android:layout_height="30dp"
                         android:layout_marginTop="8dp"
-                        android:src="@drawable/mandiri" />
+                        android:src="@drawable/bri" />
 
                     <TextView
                         android:layout_width="0dp"
@@ -100,10 +100,37 @@
                         android:layout_marginStart="10dp"
                         android:layout_weight="1"
                         android:gravity="center_vertical"
-                        android:text="VA Bank BTN" />
+                        android:text="VA Bank BRI" />
 
                     <com.google.android.material.radiobutton.MaterialRadioButton
                         android:id="@+id/radio_va_btn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="2dp">
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="30dp"
+                        android:layout_marginTop="8dp"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/mandirii" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:text="Va Bank Mandiri" />
+
+                    <com.google.android.material.radiobutton.MaterialRadioButton
+                        android:id="@+id/radio_Va_bank_mandiri"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
                 </LinearLayout>
@@ -144,8 +171,35 @@
                         android:gravity="center_vertical"
                         android:text="Dana" />
 
+
                     <com.google.android.material.radiobutton.MaterialRadioButton
                         android:id="@+id/radio_dana"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="2dp">
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="30dp"
+                        android:layout_marginTop="8dp"
+                        android:src="@drawable/link_aja" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:text="Link Aja" />
+
+
+                    <com.google.android.material.radiobutton.MaterialRadioButton
+                        android:id="@+id/radio_link_aja"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
                 </LinearLayout>
@@ -160,7 +214,7 @@
                         android:layout_width="40dp"
                         android:layout_height="30dp"
                         android:layout_marginTop="8dp"
-                        android:src="@drawable/dana" />
+                        android:src="@drawable/shopepay" />
 
                     <TextView
                         android:layout_width="0dp"
@@ -185,8 +239,9 @@
                     <ImageView
                         android:layout_width="40dp"
                         android:layout_height="30dp"
+                        android:scaleType="fitXY"
                         android:layout_marginTop="8dp"
-                        android:src="@drawable/dana" />
+                        android:src="@drawable/gopay" />
 
                     <TextView
                         android:layout_width="0dp"
@@ -254,7 +309,8 @@
                         android:layout_width="40dp"
                         android:layout_height="30dp"
                         android:layout_marginTop="8dp"
-                        android:src="@drawable/bca" />
+                        android:scaleType="fitXY"
+                        android:src="@drawable/bri" />
 
                     <TextView
                         android:layout_width="0dp"
@@ -280,7 +336,8 @@
                         android:layout_width="40dp"
                         android:layout_height="30dp"
                         android:layout_marginTop="8dp"
-                        android:src="@drawable/mandiri" />
+                        android:scaleType="fitXY"
+                        android:src="@drawable/mandirii" />
 
                     <TextView
                         android:layout_width="0dp"
@@ -296,65 +353,7 @@
                         android:layout_height="wrap_content" />
                 </LinearLayout>
 
-                <!-- Paylater -->
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Paylater"
-                    android:textStyle="bold"
-                    android:padding="8dp" />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:padding="2dp">
-
-                    <ImageView
-                        android:layout_width="40dp"
-                        android:layout_height="30dp"
-                        android:layout_marginTop="8dp"
-                        android:src="@drawable/bca" />
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="10dp"
-                        android:layout_weight="1"
-                        android:gravity="center_vertical"
-                        android:text="Kredivo" />
-
-                    <com.google.android.material.radiobutton.MaterialRadioButton
-                        android:id="@+id/radio_kredivo"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:padding="2dp">
-
-                    <ImageView
-                        android:layout_width="40dp"
-                        android:layout_height="30dp"
-                        android:layout_marginTop="8dp"
-                        android:src="@drawable/bca" />
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="10dp"
-                        android:layout_weight="1"
-                        android:gravity="center_vertical"
-                        android:text="AkuLaku" />
-
-                    <com.google.android.material.radiobutton.MaterialRadioButton
-                        android:id="@+id/radio_aku_laku"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-                </LinearLayout>
 
             </worker8.com.github.radiogroupplus.RadioGroupPlus>
 

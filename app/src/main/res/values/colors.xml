@@ -17,6 +17,6 @@
     <color name="icon">#98A2B3</color>
 
     <color name="send_button_disabled">#D3D3D3</color> <!-- Grey color for disabled state -->
-    <color name="send_button_enabled">#FF4081</color> <!-- Example color for enabled state -->
+    <color name="send_button_enabled">#F32121</color> <!-- Example color for enabled state -->
 
 </resources>

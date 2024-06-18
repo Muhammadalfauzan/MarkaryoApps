@@ -318,11 +318,15 @@ class HomeFragment : Fragment(), RecomendedAdapter.OnItemClickListener {
             }
         }, 1000)
     }
-    private fun dialogAds(){
+    private fun dialogAds() {
         val dialog = Dialog(requireContext())
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
         dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         dialog.setContentView(R.layout.dialog_home)
+
+        // Mengatur agar dialog tidak bisa ditutup dengan menekan tombol kembali atau di luar dialog
+        dialog.setCancelable(false)
+        dialog.setCanceledOnTouchOutside(false)
 
         val close = dialog.findViewById<ImageView>(R.id.btn_close)
 
@@ -331,7 +335,6 @@ class HomeFragment : Fragment(), RecomendedAdapter.OnItemClickListener {
         }
 
         dialog.show()
-
     }
 
     override fun onDestroyView() {

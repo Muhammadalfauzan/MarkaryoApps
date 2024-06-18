@@ -294,7 +294,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:layout_marginTop="4dp"
-                android:layout_marginHorizontal="9dp"
                 android:src = "@drawable/banner2"
                 app:iss_auto_cycle="true"
                 app:iss_delay="1000"

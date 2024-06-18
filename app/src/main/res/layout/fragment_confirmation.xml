@@ -427,7 +427,7 @@
                             android:layout_height="30dp"
                             android:layout_marginTop="8dp"
                             android:layout_marginStart="4dp"
-                            android:src="@drawable/mandiri" />
+                            android:src="@drawable/mandirii" />
 
                         <TextView
                             android:layout_width="0dp"
@@ -519,6 +519,24 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/card2"
             app:layout_constraintVertical_bias="1.0" />
+
+        <TextView
+            android:id="@+id/tv_pilih_pembayaran"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="10dp"
+            android:drawableStart="@drawable/exclamationn"
+            android:drawablePadding="10dp"
+            android:fontFamily="@font/poppins_regular"
+            android:paddingTop="4dp"
+            android:text="Pilih Metode Pemayaran"
+            android:textColor="#f44336"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@+id/textView16"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/card2"
+            app:layout_constraintVertical_bias="0.926" />
 
         <TextView
             android:id="@+id/textView16"
