@@ -5,14 +5,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <com.google.android.material.card.MaterialCardView
+    <androidx.cardview.widget.CardView
         android:id="@+id/materialCardView2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="12dp"
         android:backgroundTint="@color/white"
-        android:layout_marginTop="0dp"
-
-        app:cardCornerRadius="0dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp"
+        app:cardElevation="2dp"
+        app:cardCornerRadius="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -28,8 +31,8 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
-                android:src="@drawable/sumanto"
                 android:scaleType="fitXY"
+                android:src="@drawable/sumanto"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -64,9 +67,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="6dp"
+                android:ellipsize="end"
                 android:fontFamily="@font/poppins_semi_bold"
                 android:singleLine="true"
-                android:ellipsize="end"
                 android:text="Hai, Jeniver  aaaa"
                 android:textSize="15sp"
                 app:layout_constraintEnd_toStartOf="@+id/imageView7"
@@ -78,9 +81,9 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:drawableStart="@drawable/ic_done"
+                android:ellipsize="end"
                 android:fontFamily="@font/poppins_light"
                 android:singleLine="true"
-                android:ellipsize="end"
                 android:text=" Sedang Dalam Perjalanan"
                 android:textSize="12sp"
                 app:layout_constraintEnd_toStartOf="@+id/btn_pesanLagi"
@@ -95,9 +98,9 @@
                 android:layout_marginTop="4dp"
                 android:layout_marginBottom="6dp"
                 android:fontFamily="@font/poppins_regular"
+                android:singleLine="true"
                 android:text=" 14 May, 2024"
                 android:textSize="10sp"
-                android:singleLine="true"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/tvNameBuilderHistory"
                 app:layout_constraintTop_toBottomOf="@+id/tv_statusHistory" />
@@ -108,8 +111,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="5dp"
-                android:singleLine="true"
                 android:background="?android:attr/selectableItemBackgroundBorderless"
+                android:singleLine="true"
                 android:src="@drawable/ic_print"
                 app:layout_constraintBottom_toBottomOf="@+id/tvDateHistory"
                 app:layout_constraintStart_toEndOf="@+id/tvDateHistory"
@@ -120,10 +123,10 @@
                 style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
                 android:fontFamily="@font/poppins_regular"
                 android:text="@string/pesan_lagi"
                 android:textAllCaps="false"
-                android:layout_marginEnd="10dp"
                 android:textColor="@color/white"
                 android:textSize="12sp"
                 app:backgroundTint="@color/green"
@@ -138,5 +141,5 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-    </com.google.android.material.card.MaterialCardView>
+    </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

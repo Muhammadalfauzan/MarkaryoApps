@@ -10,24 +10,18 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.Window
 import android.widget.Button
-import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
-import com.example.makaryoapps.ConfirmationViewModel
-import com.example.makaryoapps.PaymentMethodFragment
 import com.example.makaryoapps.R
 import com.example.makaryoapps.databinding.FragmentConfirmationBinding
-import com.example.makaryoapps.ui.activity.MainActivity
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
 
-class ConfirmationFragment : Fragment(), MainActivity.PaymentMethodListener {
+class ConfirmationFragment : Fragment()/*, MainActivity.PaymentMethodListener*/ {
     private var _binding: FragmentConfirmationBinding? = null
     private val binding get() = _binding!!
-    private val viewModel: ConfirmationViewModel by viewModels()
+/*    private val viewModel: ConfirmationViewModel by viewModels()*/
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -63,10 +57,10 @@ class ConfirmationFragment : Fragment(), MainActivity.PaymentMethodListener {
         binding.btnOrderNow.setOnClickListener {
             dialogSukses()
         }
+/*
+        setupRadioGroup()*/
 
-        setupRadioGroup()
-
-        binding.tvLihatSemua.setOnClickListener {
+     /*   binding.tvLihatSemua.setOnClickListener {
             showPaymentMethodFragment()
         }
 
@@ -74,14 +68,14 @@ class ConfirmationFragment : Fragment(), MainActivity.PaymentMethodListener {
         viewModel.selectedPaymentMethod.observe(viewLifecycleOwner, Observer { paymentMethod ->
             binding.textView13.text = paymentMethod
         })
-
+*/
         // Retrieve and use the selected payment method from arguments, if available
-        arguments?.getString("selectedPaymentMethod")?.let { paymentMethod ->
+      /*  arguments?.getString("selectedPaymentMethod")?.let { paymentMethod ->
             viewModel.selectPaymentMethod(paymentMethod)
-        }
+        }*/
     }
 
-    private fun setupRadioGroup() {
+/*    private fun setupRadioGroup() {
         binding.radioGroupPayment.setOnCheckedChangeListener { group, checkedId ->
             val selectedPaymentMethod = when (checkedId) {
                 R.id.radio_bca -> "BCA"
@@ -105,12 +99,12 @@ class ConfirmationFragment : Fragment(), MainActivity.PaymentMethodListener {
                 Toast.makeText(requireContext(), "Option $selectedPaymentMethod is selected", Toast.LENGTH_SHORT).show()
             }
         }
-    }
-    private fun showPaymentMethodFragment() {
+    }*/
+/*    private fun showPaymentMethodFragment() {
         val bottomSheet = PaymentMethodFragment()
         bottomSheet.setListener(this) // Set listener untuk menerima hasil pilihan metode pembayaran
         bottomSheet.show(childFragmentManager, PaymentMethodFragment::class.java.simpleName)
-    }
+    }*/
     private fun dialogSukses() {
         val dialog = Dialog(requireContext())
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
@@ -142,8 +136,8 @@ class ConfirmationFragment : Fragment(), MainActivity.PaymentMethodListener {
         _binding = null
     }
 
-    override fun onPaymentMethodSelected(paymentMethod: String, data: Bundle) {
+  /*  override fun onPaymentMethodSelected(paymentMethod: String, data: Bundle) {
         // Update the LiveData in ViewModel
         viewModel.selectPaymentMethod(paymentMethod)
-    }
+    }*/
 }

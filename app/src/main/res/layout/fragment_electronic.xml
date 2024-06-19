@@ -34,7 +34,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="14dp"
             android:text="Electronic"
-            android:textSize="16sp"
+            android:textSize="20sp"
             android:fontFamily="@font/poppins_bold"
             app:layout_constraintBottom_toBottomOf="@+id/ib_back"
             app:layout_constraintStart_toEndOf="@+id/ib_back"

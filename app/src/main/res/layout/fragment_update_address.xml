@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="14dp"
         android:contentDescription="back"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:background="?android:attr/selectableItemBackgroundBorderless"
         android:src="@drawable/round_arrow_back_24"
         app:layout_constraintStart_toStartOf="parent"

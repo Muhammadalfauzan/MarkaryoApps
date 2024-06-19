@@ -5,14 +5,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <com.google.android.material.card.MaterialCardView
+    <androidx.cardview.widget.CardView
         android:id="@+id/materialCardView2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="12dp"
+        android:layout_marginBottom="4dp"
+        android:layout_marginTop="4dp"
         android:backgroundTint="@color/white"
-        android:layout_marginTop="0dp"
-        app:cardCornerRadius="0dp"
-        app:cardElevation="10dp"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="2dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -28,8 +31,8 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="16dp"
-                android:src="@drawable/ari_blek"
                 android:scaleType="fitXY"
+                android:src="@drawable/ari_blek"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -45,40 +48,40 @@
 
             <TextView
                 android:id="@+id/tvNilaiRatting"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
+                android:height="24dp"
+                android:fontFamily="@font/poppins_semi_bold"
+                android:gravity="center"
                 android:paddingTop="3dp"
                 android:text="4.7"
                 android:textSize="12sp"
-                android:fontFamily="@font/poppins_semi_bold"
-                android:gravity="center"
-                android:height="24dp" />
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/textView2"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
-                android:fontFamily="@font/poppins_semi_bold"
-                android:textSize="15sp"
-                android:singleLine="true"
                 android:ellipsize="end"
+                android:fontFamily="@font/poppins_semi_bold"
+                android:singleLine="true"
                 android:text="Hai,  Jeniver"
-                app:layout_constraintStart_toEndOf="@+id/imageView3"
+                android:textSize="15sp"
                 app:layout_constraintEnd_toStartOf="@+id/tvRatting"
+                app:layout_constraintStart_toEndOf="@+id/imageView3"
                 app:layout_constraintTop_toTopOf="@+id/imageView3" />
 
             <ImageView
                 android:id="@+id/imageViewProses"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_proses"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="4dp"
+                android:src="@drawable/ic_proses"
                 app:layout_constraintStart_toEndOf="@+id/imageView3"
                 app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
@@ -86,17 +89,17 @@
                 android:id="@+id/tv_status"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="4dp"
+                android:ellipsize="end"
                 android:fontFamily="@font/poppins_light"
-                android:text=" Sedang Dalam Perjalanan"
                 android:paddingTop="2dp"
                 android:singleLine="true"
-                android:ellipsize="end"
-                android:layout_marginTop="4dp"
-                android:layout_marginStart="4dp"
+                android:text=" Sedang Dalam Perjalanan"
                 android:textSize="12sp"
                 app:layout_constraintBottom_toBottomOf="@+id/imageViewProses"
-                app:layout_constraintStart_toEndOf="@+id/imageViewProses"
                 app:layout_constraintEnd_toStartOf="@+id/tvRatting"
+                app:layout_constraintStart_toEndOf="@+id/imageViewProses"
                 app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
             <TextView
@@ -104,16 +107,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dp"
+                android:layout_marginBottom="6dp"
+                android:ellipsize="end"
                 android:fontFamily="@font/poppins_regular"
+                android:singleLine="true"
                 android:text=" 14 May, 2024"
                 android:textSize="10sp"
-                android:singleLine="true"
-                android:ellipsize="end"
-                android:layout_marginBottom="6dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/textView2"
                 app:layout_constraintTop_toBottomOf="@+id/tv_status" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </com.google.android.material.card.MaterialCardView>
+    </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

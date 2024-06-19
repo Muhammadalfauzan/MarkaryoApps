@@ -16,6 +16,7 @@ import android.view.Window
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.core.os.bundleOf
+import androidx.core.os.postDelayed
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
@@ -59,6 +60,10 @@ class HomeFragment : Fragment(), RecomendedAdapter.OnItemClickListener {
         const val PREFS_NAME = "prefs"
         const val KEY_LOCATION_PERMISSION_GRANTED = "isLocationPermissionGranted"
         const val KEY_LOCATION_PERMISSION_DIALOG_SHOWN = "isLocationPermissionDialogShown"
+
+        private const val KEY_LAST_SHOWN_TIME = "last_shown_time"
+        private const val INTERVAL_MILLIS: Long = 60000 // 60 detik
+     /*   const val KEY_ADS_DIALOG_SHOWN = "isAdsDialogShown"*/
     }
 
     private var lastTabSelectedJob: Job? = null
@@ -70,7 +75,9 @@ class HomeFragment : Fragment(), RecomendedAdapter.OnItemClickListener {
     ): View? {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         sharedPreferences = requireContext().getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
+
         return binding.root
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -79,11 +86,12 @@ class HomeFragment : Fragment(), RecomendedAdapter.OnItemClickListener {
         setupSecondRecyclerView()
         startShimmerEffect()
         refreshViewsBasedOnPermission()
-        dialogAds()
+
         // Check if location permission dialog has been shown before and permission is not granted
         if (!isLocationPermissionDialogShown() && !isLocationPermissionGranted) {
             showLocationPermissionDialog()
         }
+
 
         binding.tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab) {
@@ -105,8 +113,15 @@ class HomeFragment : Fragment(), RecomendedAdapter.OnItemClickListener {
         binding.cardViewProfile.setOnClickListener {
             findNavController().navigate(R.id.action_homeFragment_to_profileFragment)
         }
+
+        sharedPreferences = requireContext().getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
+        showDialogIfNecessary()
     }
 
+    override fun onResume() {
+        super.onResume()
+        showDialogIfNecessary()
+    }
     private fun showLocationPermissionDialog() {
         val dialog = LocationPermissionDialogFragment()
         dialog.setTargetFragment(this, REQUEST_CODE_LOCATION_PERMISSION)
@@ -275,6 +290,8 @@ class HomeFragment : Fragment(), RecomendedAdapter.OnItemClickListener {
             it.shimmerRekomendasi.startShimmer()
             it.shimmerBanner.visibility = View.VISIBLE
             it.shimmerBanner.startShimmer()
+            it.shimerProfile.visibility = View.VISIBLE
+            it.shimerProfile.startShimmer()
             it.tabLayout.visibility = View.GONE
             it.imgLocation.visibility = View.GONE
             it.tvLocation.visibility = View.GONE
@@ -294,6 +311,8 @@ class HomeFragment : Fragment(), RecomendedAdapter.OnItemClickListener {
             it.shimmerRekomendasi.visibility = View.GONE
             it.shimmerBanner.stopShimmer()
             it.shimmerBanner.visibility = View.GONE
+            it.shimerProfile.stopShimmer()
+            it.shimerProfile.visibility = View.GONE
             it.recyclerView.visibility = View.VISIBLE
             it.rvRekomendasi.visibility = View.VISIBLE
             it.cardViewProfile.visibility = View.VISIBLE
@@ -311,12 +330,33 @@ class HomeFragment : Fragment(), RecomendedAdapter.OnItemClickListener {
                 slides.add(SlideModel(R.drawable.ad_slide1))
                 slides.add(SlideModel(R.drawable.ad_slide22))
                 slides.add(SlideModel(R.drawable.ad_slide33))
-                slides.add(SlideModel(R.drawable.ad_slide4))
+//                slides.add(SlideModel(R.drawable.ad_slide4))
                 it.setImageList(slides, ScaleTypes.FIT)
                 it.visibility = View.VISIBLE
 
             }
         }, 1000)
+    }
+
+/*code setting waktu dialog*/
+
+    private fun showDialogIfNecessary() {
+        val lastShownTime = sharedPreferences.getLong(KEY_LAST_SHOWN_TIME, 0)
+        val currentTime = System.currentTimeMillis()
+
+        if (lastShownTime == 0L) {
+            // Pertama kali membuka aplikasi, langsung tampilkan dialog
+            dialogAds()
+        } else if (currentTime - lastShownTime >= INTERVAL_MILLIS) {
+            // Jika sudah lebih dari 1 menit sejak dialog terakhir ditampilkan, tampilkan dialog lagi
+            dialogAds()
+        }
+    }
+    private fun saveDialogShownTime() {
+        with(sharedPreferences.edit()) {
+            putLong(KEY_LAST_SHOWN_TIME, System.currentTimeMillis())
+            apply()
+        }
     }
     private fun dialogAds() {
         val dialog = Dialog(requireContext())
@@ -332,6 +372,9 @@ class HomeFragment : Fragment(), RecomendedAdapter.OnItemClickListener {
 
         close.setOnClickListener {
             dialog.dismiss()
+           /* saveAdsDialogShown() // Simpan status setelah dialog ditutup*/
+            dialog.dismiss()
+            saveDialogShownTime() // Simpan waktu setelah dialog ditutup
         }
 
         dialog.show()
