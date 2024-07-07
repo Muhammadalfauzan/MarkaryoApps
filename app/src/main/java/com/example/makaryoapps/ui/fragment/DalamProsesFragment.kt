@@ -35,11 +35,11 @@ class DalamProsesFragment : Fragment() {
 
         val dataProses = listOf(
             ProsesModel(
-                R.drawable.sumanto,
-                "Sumanto",
+                R.drawable.bambang,
+                "Bambang",
                 "sedang dikerjakan ",
                 "2 Juni, 2024",
-                "4.3",
+                "4.8",
                 R.drawable.ic_dikerjakan
             ),
             ProsesModel(
@@ -59,11 +59,11 @@ class DalamProsesFragment : Fragment() {
                 R.drawable.ic_proses
             ),
             ProsesModel(
-                R.drawable.ari_blek,
-                "Ari Blek",
+                R.drawable.muthu,
+                "Muthu",
                 "sedang dikerjakan",
                 "15 Juni, 2024",
-                "4.7",
+                "4.8",
                 R.drawable.ic_dikerjakan
             ),
             ProsesModel(

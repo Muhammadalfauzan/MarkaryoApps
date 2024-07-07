@@ -35,7 +35,7 @@ class CustomButton : AppCompatButton {
         super.onDraw(canvas)
 
         background = if (isEnabled) enabledBackground else disabledBackground
-        text = if (isEnabled) "Masuk" else "Isi dulu"
+        text = if (isEnabled) "Masuk" else "Masuk"
         textSize = 18f
         setTextColor(txtColor)
     }

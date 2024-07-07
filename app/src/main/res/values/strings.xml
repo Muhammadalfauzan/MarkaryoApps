@@ -97,7 +97,7 @@
         <item>Boyy</item>
         <item>Gentaaa</item>
         <item>Pascol</item>
-        <item>Sumanto</item>
+        <item>Yono</item>
         <item>Ari Blekk</item>
 
 
@@ -107,7 +107,7 @@
         <item>@drawable/boy</item>
         <item>@drawable/genta</item>
         <item>@drawable/pascol_miya</item>
-        <item>@drawable/sumanto</item>
+        <item>@drawable/yono</item>
         <item>@drawable/ari_blek</item>
 
     </integer-array>
@@ -127,7 +127,7 @@
         <item>Syamsudin</item>
         <item>Yonoo</item>
         <item>Memett</item>
-        <item>Sonny</item>
+        <item>Alex</item>
         <item>Miekum</item>
 
     </string-array>
@@ -136,7 +136,7 @@
         <item>@drawable/syamsudin</item>
         <item>@drawable/yono</item>
         <item>@drawable/memet</item>
-        <item>@drawable/sony</item>
+        <item>@drawable/alex</item>
         <item>@drawable/miekum</item>
 
 
@@ -394,7 +394,7 @@
     <string name="proses_login_anda_berhasil">Proses login anda berhasil! </string>
     <string name="proses_login_anda_gagal">Proses login anda gagal!</string>
     <string name="succes_order">Tukang berhasil di pesan!</string>
-    <string name="proses_register_anda_berhasil">Proses Register anda berhasil! </string>
+    <string name="proses_register_anda_berhasil">Proses register anda berhasil! </string>
     <string name="success_add_address">Berhasil menambahkan alamat! </string>
     <string name="success_update_address">Berhasil mengubah alamat! </string>
     <string name="success_update_profile">Berhasil mengubah data akun! </string>

@@ -1,11 +1,11 @@
-package com.example.makaryoapps
+package com.example.makaryoapps.ui.activity
 
 import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
-import com.example.makaryoapps.ui.activity.ActivityLogin
+import com.example.makaryoapps.R
 
 
 @SuppressLint("CustomSplashScreen")

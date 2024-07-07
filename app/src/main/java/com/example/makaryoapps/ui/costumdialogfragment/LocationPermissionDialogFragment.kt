@@ -1,6 +1,7 @@
 package com.example.makaryoapps.ui.costumdialogfragment
 
 import android.app.Activity
+import android.app.Dialog
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
@@ -48,11 +49,13 @@ class LocationPermissionDialogFragment : DialogFragment() {
         }
         targetFragment?.onActivityResult(targetRequestCode, Activity.RESULT_OK, intent)
 
+
         // Save location permission choice to SharedPreferences
         val editor = sharedPreferences.edit()
         editor.putBoolean(HomeFragment.KEY_LOCATION_PERMISSION_GRANTED, isGranted)
         editor.putBoolean(HomeFragment.KEY_LOCATION_PERMISSION_DIALOG_SHOWN, true)
         editor.apply()
+
 
         dismiss()
     }
@@ -61,4 +64,12 @@ class LocationPermissionDialogFragment : DialogFragment() {
         super.onDestroyView()
         _binding = null
     }
+
+    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
+        return super.onCreateDialog(savedInstanceState).apply {
+            setCancelable(false)
+            setCanceledOnTouchOutside(false)
+        }
+    }
 }
+

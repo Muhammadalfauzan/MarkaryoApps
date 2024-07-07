@@ -16,8 +16,6 @@ import android.view.Window
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.core.os.bundleOf
-import androidx.core.os.postDelayed
-import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -63,11 +61,13 @@ class HomeFragment : Fragment(), RecomendedAdapter.OnItemClickListener {
 
         private const val KEY_LAST_SHOWN_TIME = "last_shown_time"
         private const val INTERVAL_MILLIS: Long = 60000 // 60 detik
-     /*   const val KEY_ADS_DIALOG_SHOWN = "isAdsDialogShown"*/
     }
 
     private var lastTabSelectedJob: Job? = null
     private val debounceTime = 300L
+
+    // mengatur dialog iklan tampil setelan men trigger button izin atau lewati lokasi
+    private var isLocationPermissionDialogShownCurrently = false
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -77,7 +77,6 @@ class HomeFragment : Fragment(), RecomendedAdapter.OnItemClickListener {
         sharedPreferences = requireContext().getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
 
         return binding.root
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -90,8 +89,9 @@ class HomeFragment : Fragment(), RecomendedAdapter.OnItemClickListener {
         // Check if location permission dialog has been shown before and permission is not granted
         if (!isLocationPermissionDialogShown() && !isLocationPermissionGranted) {
             showLocationPermissionDialog()
+        } else {
+            showDialogIfNecessary()
         }
-
 
         binding.tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab) {
@@ -115,23 +115,69 @@ class HomeFragment : Fragment(), RecomendedAdapter.OnItemClickListener {
         }
 
         sharedPreferences = requireContext().getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
-        showDialogIfNecessary()
     }
 
     override fun onResume() {
         super.onResume()
-        showDialogIfNecessary()
+        if (!isLocationPermissionDialogShownCurrently) {
+            showDialogIfNecessary()
+        }
     }
+
     private fun showLocationPermissionDialog() {
+        isLocationPermissionDialogShownCurrently = true
         val dialog = LocationPermissionDialogFragment()
         dialog.setTargetFragment(this, REQUEST_CODE_LOCATION_PERMISSION)
         dialog.show(parentFragmentManager, "com.example.makaryoapps.ui.costumdialogfragment.LocationPermissionDialogFragment")
     }
 
-    private fun dismissLocationPermissionDialog() {
-        val dialogFragment =
-            parentFragmentManager.findFragmentByTag("com.example.makaryoapps.ui.costumdialogfragment.LocationPermissionDialogFragment") as? DialogFragment
-        dialogFragment?.dismiss()
+    private fun dialogAds() {
+        val dialog = Dialog(requireContext())
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        dialog.setContentView(R.layout.dialog_home)
+
+        // Mengatur agar dialog tidak bisa ditutup dengan menekan tombol kembali atau di luar dialog
+        dialog.setCancelable(false)
+        dialog.setCanceledOnTouchOutside(false)
+
+        val close = dialog.findViewById<ImageView>(R.id.btn_close)
+
+        close.setOnClickListener {
+            dialog.dismiss()
+            saveDialogShownTime() // Simpan waktu setelah dialog ditutup
+        }
+
+        dialog.show()
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        handler.removeCallbacks(shimmerRunnable)
+        handler.removeCallbacks(bannerRunnable)
+        _binding = null
+    }
+
+    private fun showDialogIfNecessary() {  // Tampilkan dialog ketika dibutuhkan
+        if (isLocationPermissionDialogShownCurrently) return
+
+        val lastShownTime = sharedPreferences.getLong(KEY_LAST_SHOWN_TIME, 0)
+        val currentTime = System.currentTimeMillis()
+
+        if (lastShownTime == 0L) {
+            // Pertama kali membuka aplikasi, langsung tampilkan dialog
+            dialogAds()
+        } else if (currentTime - lastShownTime >= INTERVAL_MILLIS) {
+            // Jika sudah lebih dari 1 menit sejak dialog terakhir ditampilkan, tampilkan dialog lagi
+            dialogAds()
+        }
+    }
+
+    private fun saveDialogShownTime() {  // Function Save dialog kedalam sharedpreferences
+        with(sharedPreferences.edit()) {
+            putLong(KEY_LAST_SHOWN_TIME, System.currentTimeMillis())
+            apply()
+        }
     }
 
     private fun refreshViewsBasedOnPermission() {
@@ -160,7 +206,7 @@ class HomeFragment : Fragment(), RecomendedAdapter.OnItemClickListener {
         sharedPreferences.edit().putBoolean(KEY_LOCATION_PERMISSION_GRANTED, isGranted).apply()
     }
 
-    fun setLocationPermission(isGranted: Boolean) {
+    private fun setLocationPermission(isGranted: Boolean) {
         saveLocationPermissionChoice(isGranted)
         refreshViewsBasedOnPermission()
         if (!isGranted) {
@@ -170,6 +216,9 @@ class HomeFragment : Fragment(), RecomendedAdapter.OnItemClickListener {
                 Toast.LENGTH_SHORT
             ).show()
         }
+
+        isLocationPermissionDialogShownCurrently = false
+        showDialogIfNecessary()
     }
 
     @Deprecated("Deprecated in Java")
@@ -177,12 +226,14 @@ class HomeFragment : Fragment(), RecomendedAdapter.OnItemClickListener {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == REQUEST_CODE_LOCATION_PERMISSION) {
             val isGranted = data?.getBooleanExtra("isGranted", false) ?: false
+
             setLocationPermission(isGranted)
             if (isGranted) {
                 setLocationPermission(true)
             }
         }
     }
+
 
     private fun showTab() {
         binding.tabLayout.removeAllTabs()
@@ -338,54 +389,7 @@ class HomeFragment : Fragment(), RecomendedAdapter.OnItemClickListener {
         }, 1000)
     }
 
-/*code setting waktu dialog*/
 
-    private fun showDialogIfNecessary() {
-        val lastShownTime = sharedPreferences.getLong(KEY_LAST_SHOWN_TIME, 0)
-        val currentTime = System.currentTimeMillis()
-
-        if (lastShownTime == 0L) {
-            // Pertama kali membuka aplikasi, langsung tampilkan dialog
-            dialogAds()
-        } else if (currentTime - lastShownTime >= INTERVAL_MILLIS) {
-            // Jika sudah lebih dari 1 menit sejak dialog terakhir ditampilkan, tampilkan dialog lagi
-            dialogAds()
-        }
-    }
-    private fun saveDialogShownTime() {
-        with(sharedPreferences.edit()) {
-            putLong(KEY_LAST_SHOWN_TIME, System.currentTimeMillis())
-            apply()
-        }
-    }
-    private fun dialogAds() {
-        val dialog = Dialog(requireContext())
-        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
-        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-        dialog.setContentView(R.layout.dialog_home)
-
-        // Mengatur agar dialog tidak bisa ditutup dengan menekan tombol kembali atau di luar dialog
-        dialog.setCancelable(false)
-        dialog.setCanceledOnTouchOutside(false)
-
-        val close = dialog.findViewById<ImageView>(R.id.btn_close)
-
-        close.setOnClickListener {
-            dialog.dismiss()
-           /* saveAdsDialogShown() // Simpan status setelah dialog ditutup*/
-            dialog.dismiss()
-            saveDialogShownTime() // Simpan waktu setelah dialog ditutup
-        }
-
-        dialog.show()
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        handler.removeCallbacks(shimmerRunnable)
-        handler.removeCallbacks(bannerRunnable)
-        _binding = null
-    }
 
     override fun onItemClick(data: RecomendedModel) {
         val bundle = bundleOf("item" to data)

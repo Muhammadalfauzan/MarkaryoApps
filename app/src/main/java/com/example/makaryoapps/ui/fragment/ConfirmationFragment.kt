@@ -111,6 +111,7 @@ class ConfirmationFragment : Fragment()/*, MainActivity.PaymentMethodListener*/ 
         dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         dialog.setContentView(R.layout.dialog_succes_order)
 
+
         val next = dialog.findViewById<Button>(R.id.btn_sukses)
         next.setOnClickListener {
             findNavController().navigate(R.id.action_confirmationFragment_to_historyFragment2)
